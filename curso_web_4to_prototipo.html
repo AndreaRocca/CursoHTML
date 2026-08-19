@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diseñar para la Web · Tecnología 4.º año</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --surface:#ffffff;
+      --text:#172033;
+      --muted:#64748b;
+      --primary:#3157d5;
+      --primary-dark:#2442a6;
+      --accent:#ef8354;
+      --ok:#14804a;
+      --bad:#b42318;
+      --line:#dbe3ef;
+      --soft:#eef3ff;
+      --shadow:0 12px 30px rgba(31,45,78,.10);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    button,input,textarea{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit}
+    .app{
+      display:grid;
+      grid-template-columns:290px minmax(0,1fr);
+      min-height:100vh;
+    }
+    aside{
+      background:#15213d;
+      color:white;
+      padding:24px 18px;
+      position:sticky;
+      top:0;
+      height:100vh;
+      overflow:auto;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:24px;
+    }
+    .brand-mark{
+      width:46px;height:46px;border-radius:14px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,#6f8cff,#ef8354);
+      font-weight:800;
+      font-size:20px;
+    }
+    .brand small{display:block;color:#b8c3db}
+    .progress-card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      padding:14px;
+      margin-bottom:18px;
+    }
+    .progress-row{
+      display:flex;justify-content:space-between;gap:8px;
+      font-size:13px;color:#d8e1f3;margin-bottom:8px;
+    }
+    .progress-track{
+      height:9px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+    }
+    .progress-fill{
+      height:100%;width:0;background:#72d7a0;border-radius:inherit;transition:.3s;
+    }
+    nav{display:grid;gap:8px}
+    .nav-btn{
+      width:100%;
+      text-align:left;
+      border:0;
+      border-radius:13px;
+      padding:11px 12px;
+      background:transparent;
+      color:#dce4f5;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .nav-btn:hover,.nav-btn.active{background:rgba(255,255,255,.10);color:white}
+    .nav-num{
+      width:27px;height:27px;border-radius:9px;
+      display:grid;place-items:center;
+      background:rgba(255,255,255,.11);
+      flex:0 0 auto;font-size:12px;font-weight:800;
+    }
+    .nav-btn.done .nav-num{background:#1f8f59}
+    .nav-title{font-weight:700;font-size:14px;display:block}
+    .nav-sub{font-size:12px;color:#9eabc6;display:block;margin-top:2px}
+    main{min-width:0}
+    .topbar{
+      height:66px;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 34px;
+      position:sticky;top:0;z-index:5;
+    }
+    .topbar strong{font-size:14px}
+    .pill{
+      background:var(--soft);
+      color:var(--primary);
+      padding:7px 11px;border-radius:999px;
+      font-size:12px;font-weight:700;
+    }
+    .content{
+      width:min(1000px,calc(100% - 42px));
+      margin:34px auto 70px;
+    }
+    .screen{display:none}
+    .screen.active{display:block}
+    .hero{
+      background:linear-gradient(135deg,#243d99 0%,#4969de 58%,#ef8354 125%);
+      color:white;
+      border-radius:26px;
+      padding:46px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:after{
+      content:"</>";
+      position:absolute;
+      right:30px;bottom:-28px;
+      font-size:150px;font-weight:900;
+      opacity:.08;
+      transform:rotate(-7deg);
+    }
+    .eyebrow{
+      text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;
+      opacity:.84;
+    }
+    h1{font-size:clamp(34px,5vw,58px);line-height:1.02;margin:10px 0 18px;max-width:760px}
+    h2{font-size:30px;line-height:1.15;margin:0 0 12px}
+    h3{margin:0 0 8px;font-size:20px}
+    .lead{font-size:19px;max-width:770px;opacity:.94}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .btn{
+      border:0;border-radius:12px;padding:11px 16px;font-weight:800;
+      background:var(--primary);color:white;
+    }
+    .btn:hover{background:var(--primary-dark)}
+    .btn.secondary{background:white;color:var(--primary)}
+    .btn.ghost{background:transparent;color:var(--primary);border:1px solid var(--line)}
+    .btn.ok{background:var(--ok)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    .card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:0 4px 15px rgba(35,47,78,.04);
+    }
+    .card p:last-child{margin-bottom:0}
+    .icon{
+      width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+      background:var(--soft);font-size:21px;margin-bottom:12px;
+    }
+    .section-head{
+      display:flex;justify-content:space-between;gap:16px;align-items:flex-end;
+      margin-bottom:18px;
+    }
+    .section-head p{margin:0;color:var(--muted);max-width:680px}
+    .lesson{
+      display:grid;gap:18px;
+    }
+    .callout{
+      border-left:5px solid var(--accent);
+      background:#fff8f4;
+      padding:16px 18px;border-radius:0 14px 14px 0;
+    }
+    .example-site{
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;background:white;
+    }
+    .fake-browser{
+      background:#edf1f6;border-bottom:1px solid var(--line);
+      padding:9px 12px;display:flex;gap:7px;align-items:center;
+    }
+    .dot{width:10px;height:10px;border-radius:50%;background:#b7c1d0}
+    .urlbar{margin-left:5px;background:white;border-radius:8px;padding:5px 10px;color:#7b879b;font-size:12px;flex:1}
+    .site-body{padding:22px}
+    .bad-site{font-family:"Comic Sans MS",cursive;background:#fffbea}
+    .bad-site h3{color:#b42318;font-size:27px;text-align:center;text-decoration:underline}
+    .bad-site p{text-align:center}
+    .choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .choice{
+      border:2px solid var(--line);border-radius:14px;padding:14px;background:white;text-align:left;
+      transition:.15s;
+    }
+    .choice:hover{border-color:#9bb0f4}
+    .choice.selected{border-color:var(--primary);background:var(--soft)}
+    .feedback{
+      display:none;padding:14px 16px;border-radius:12px;margin-top:12px;font-weight:650;
+    }
+    .feedback.show{display:block}
+    .feedback.ok{background:#e9f8ef;color:#11623a}
+    .feedback.bad{background:#fff0ee;color:#8d2218}
+    .match-grid{
+      display:grid;grid-template-columns:1fr 1.3fr;gap:12px;
+    }
+    .term,.definition{
+      border:1px solid var(--line);
+      background:white;border-radius:12px;padding:14px;
+    }
+    .term{font-weight:800}
+    .select-line{
+      display:flex;gap:10px;align-items:center;margin-top:8px;
+    }
+    select{
+      width:100%;padding:9px;border:1px solid #cfd8e6;border-radius:9px;background:white;
+    }
+    textarea{
+      width:100%;min-height:130px;border:1px solid #cfd8e6;border-radius:12px;padding:12px;
+      resize:vertical;background:white;
+    }
+    .mini-status{
+      font-size:13px;color:var(--muted);margin-top:6px;
+    }
+    .summary-box{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+    }
+    .summary-box .card{text-align:center;padding:15px}
+    .summary-box strong{display:block;font-size:22px;color:var(--primary)}
+    .locked{
+      opacity:.55;filter:grayscale(.2)
+    }
+    footer{
+      margin-top:26px;color:var(--muted);font-size:13px;text-align:center;
+    }
+    @media(max-width:850px){
+      .app{grid-template-columns:1fr}
+      aside{position:relative;height:auto}
+      nav{grid-template-columns:repeat(2,1fr)}
+      .topbar{position:relative;padding:0 18px}
+      .grid,.summary-box{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:560px){
+      .content{width:min(100% - 24px,1000px);margin-top:20px}
+      .hero{padding:28px 22px}
+      .grid,.choice-grid,.summary-box,.match-grid{grid-template-columns:1fr}
+      nav{grid-template-columns:1fr}
+      .section-head{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand">
+      <div class="brand-mark">&lt;/&gt;</div>
+      <div>
+        <strong>Diseñar para la Web</strong>
+        <small>Tecnología · 4.º año</small>
+      </div>
+    </div>
+
+    <div class="progress-card">
+      <div class="progress-row">
+        <span>Tu recorrido</span>
+        <strong id="progressText">0%</strong>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <nav id="nav">
+      <button class="nav-btn active" data-screen="home">
+        <span class="nav-num">★</span>
+        <span><span class="nav-title">Inicio</span><span class="nav-sub">El desafío del cuatrimestre</span></span>
+      </button>
+      <button class="nav-btn" data-screen="m0" id="nav-m0">
+        <span class="nav-num">0</span>
+        <span><span class="nav-title">Comunicar en la web</span><span class="nav-sub">Mirar antes de diseñar</span></span>
+      </button>
+      <button class="nav-btn" data-screen="m1" id="nav-m1">
+        <span class="nav-num">1</span>
+        <span><span class="nav-title">La web por dentro</span><span class="nav-sub">Página, sitio, landing...</span></span>
+      </button>
+      <button class="nav-btn locked" data-screen="soon">
+        <span class="nav-num">2</span>
+        <span><span class="nav-title">Diseñar para personas</span><span class="nav-sub">Usabilidad y accesibilidad</span></span>
+      </button>
+      <button class="nav-btn locked" data-screen="soon">
+        <span class="nav-num">3</span>
+        <span><span class="nav-title">Organizar información</span><span class="nav-sub">Jerarquía y navegación</span></span>
+      </button>
+      <button class="nav-btn locked" data-screen="soon">
+        <span class="nav-num">4</span>
+        <span><span class="nav-title">Identidad visual</span><span class="nav-sub">Color, tipografía e imágenes</span></span>
+      </button>
+      <button class="nav-btn locked" data-screen="soon">
+        <span class="nav-num">5</span>
+        <span><span class="nav-title">HTML</span><span class="nav-sub">Construir la estructura</span></span>
+      </button>
+      <button class="nav-btn locked" data-screen="soon">
+        <span class="nav-num">6</span>
+        <span><span class="nav-title">CSS</span><span class="nav-sub">Dar estilo</span></span>
+      </button>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <strong>¿Cómo puede una organización comunicar su propuesta en la web?</strong>
+      <span class="pill">Prototipo v1</span>
+    </div>
+
+    <div class="content">
+
+      <section class="screen active" id="home">
+        <div class="hero">
+          <div class="eyebrow">Proyecto del cuatrimestre</div>
+          <h1>De usuario de la web a diseñador/a de una propuesta digital</h1>
+          <p class="lead">Vas a analizar, planificar, diseñar, probar y mejorar un sitio web para una organización, un emprendimiento o un proyecto escolar.</p>
+          <div class="actions">
+            <button class="btn secondary" onclick="go('m0')">Empezar recorrido →</button>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon">🔎</div>
+            <h3>Primero observamos</h3>
+            <p>Antes de diseñar, vamos a mirar cómo otros sitios organizan información, imágenes, botones y mensajes.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🧩</div>
+            <h3>Después construimos</h3>
+            <p>Vamos a trabajar con Google Sites y también a mirar “debajo del capó” usando HTML y CSS.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🛠️</div>
+            <h3>Finalmente mejoramos</h3>
+            <p>Un buen sitio no nace terminado: se prueba, se corrige y se revisa pensando en quienes lo van a usar.</p>
+          </article>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <h3>🎯 Producto final</h3>
+          <p>Un sitio web simple para presentar una organización, emprendimiento o proyecto. Tendrá identidad visual, información clara, secciones organizadas, enlaces funcionales, imágenes adecuadas, criterios de accesibilidad y registro de fuentes.</p>
+        </div>
+      </section>
+
+      <section class="screen" id="m0">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" style="color:var(--primary)">Módulo 0</div>
+            <h2>Comunicar en la web</h2>
+            <p>Diseñar un sitio no es solamente elegir colores. Primero necesitamos saber qué queremos comunicar, a quién y para qué.</p>
+          </div>
+          <span class="pill">20–30 min</span>
+        </div>
+
+        <div class="lesson">
+          <div class="callout">
+            <strong>Pregunta para pensar:</strong> cuando entrás por primera vez a una página, ¿cuánto tardás en decidir si entendés qué ofrece?
+          </div>
+
+          <div class="example-site">
+            <div class="fake-browser">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <div class="urlbar">www.supermegaemprendimiento.example</div>
+            </div>
+            <div class="site-body bad-site">
+              <h3>¡¡¡BIENVENIDOOOO!!!</h3>
+              <p>✨✨✨ LO MEJOR ESTÁ ACÁ ✨✨✨</p>
+              <p>Tenemos cosas increíbles. Consultanos. Entrá. Mirá. Comprá.</p>
+              <p style="font-size:11px">Av. Siempre Viva 123 · 1998–2026 · todos los derechos reservados · contacto · novedades · productos · empresa · nuestras cosas · otros</p>
+            </div>
+          </div>
+
+          <article class="card">
+            <h3>Actividad 1 · ¿Qué problema tiene?</h3>
+            <p>Elegí <strong>las tres críticas más importantes</strong>. No busques “qué está feo”: pensá qué dificulta comprender la propuesta.</p>
+            <div class="choice-grid" id="problemChoices">
+              <button class="choice" data-good="true">No queda claro qué ofrece la organización.</button>
+              <button class="choice" data-good="false">El sitio no usa una foto de fondo.</button>
+              <button class="choice" data-good="true">No hay una jerarquía clara entre la información.</button>
+              <button class="choice" data-good="false">El título debería estar escrito en inglés.</button>
+              <button class="choice" data-good="true">Los llamados a la acción son confusos.</button>
+              <button class="choice" data-good="false">Le faltan más emojis.</button>
+            </div>
+            <div class="actions">
+              <button class="btn" onclick="checkProblems()">Comprobar</button>
+            </div>
+            <div class="feedback" id="problemFeedback"></div>
+          </article>
+
+          <article class="card">
+            <h3>Actividad 2 · Antes de diseñar</h3>
+            <p>Imaginá una organización o emprendimiento que podría ser el tema de tu proyecto final. No tiene que ser definitivo.</p>
+            <textarea id="projectIdea" placeholder="Ejemplo: un emprendimiento de pastelería, un club barrial, una campaña escolar, un servicio de reparación..."></textarea>
+            <div class="actions">
+              <button class="btn ghost" onclick="saveIdea()">Guardar idea</button>
+            </div>
+            <div class="mini-status" id="saveStatus">Tu respuesta queda guardada solamente en este navegador.</div>
+          </article>
+
+          <article class="card">
+            <h3>Una idea importante</h3>
+            <p>Una página web comunica incluso antes de que leamos todo: la organización de los elementos, los títulos, las imágenes y los botones nos indican qué es importante y qué podemos hacer.</p>
+          </article>
+
+          <div class="actions">
+            <button class="btn ok" onclick="completeModule('m0','m1')">Terminé el módulo 0 →</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="m1">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" style="color:var(--primary)">Módulo 1</div>
+            <h2>La web por dentro</h2>
+            <p>Usamos muchas palabras como si fueran sinónimos: página, sitio, landing, dominio, alojamiento. Pero no significan lo mismo.</p>
+          </div>
+          <span class="pill">25–35 min</span>
+        </div>
+
+        <div class="lesson">
+          <div class="grid">
+            <article class="card"><div class="icon">📄</div><h3>Página web</h3><p>Un documento individual que se muestra en el navegador.</p></article>
+            <article class="card"><div class="icon">🗂️</div><h3>Sitio web</h3><p>Un conjunto organizado de páginas y recursos relacionados.</p></article>
+            <article class="card"><div class="icon">🎯</div><h3>Landing page</h3><p>Una página pensada para presentar una propuesta y orientar a una acción concreta.</p></article>
+            <article class="card"><div class="icon">🏷️</div><h3>Dominio</h3><p>El nombre o dirección que usamos para encontrar un sitio, por ejemplo ejemplo.com.ar.</p></article>
+            <article class="card"><div class="icon">🖥️</div><h3>Alojamiento</h3><p>El servicio donde se guardan los archivos para que estén disponibles en internet.</p></article>
+            <article class="card"><div class="icon">🌐</div><h3>Navegador</h3><p>El programa que solicita, interpreta y muestra el contenido web.</p></article>
+          </div>
+
+          <article class="card">
+            <h3>Mini juego · ¿Quién es quién?</h3>
+            <p>Seleccioná el concepto que corresponde a cada situación.</p>
+
+            <div class="term">1. “chimeleta.com.ar” es…</div>
+            <div class="select-line">
+              <select id="q1">
+                <option value="">Elegí una opción</option>
+                <option>Dominio</option><option>Sitio web</option><option>Alojamiento</option><option>Landing page</option>
+              </select>
+            </div>
+
+            <div class="term" style="margin-top:12px">2. Una página creada para presentar un único producto y llevar al visitante al botón “Comprar” es…</div>
+            <div class="select-line">
+              <select id="q2">
+                <option value="">Elegí una opción</option>
+                <option>Página de inicio</option><option>Landing page</option><option>Dominio</option><option>Navegador</option>
+              </select>
+            </div>
+
+            <div class="term" style="margin-top:12px">3. Chrome, Firefox o Edge son…</div>
+            <div class="select-line">
+              <select id="q3">
+                <option value="">Elegí una opción</option>
+                <option>Alojamientos</option><option>Dominios</option><option>Navegadores</option><option>Sitios web</option>
+              </select>
+            </div>
+
+            <div class="term" style="margin-top:12px">4. Un conjunto con Inicio, Quiénes somos, Productos y Contacto es…</div>
+            <div class="select-line">
+              <select id="q4">
+                <option value="">Elegí una opción</option>
+                <option>Un sitio web</option><option>Un dominio</option><option>Un navegador</option><option>Un protocolo</option>
+              </select>
+            </div>
+
+            <div class="actions"><button class="btn" onclick="checkQuiz()">Corregir mini juego</button></div>
+            <div class="feedback" id="quizFeedback"></div>
+          </article>
+
+          <article class="card">
+            <h3>¿Qué ocurre cuando escribimos una dirección?</h3>
+            <div class="summary-box">
+              <div class="card"><strong>1</strong>Escribís una URL.</div>
+              <div class="card"><strong>2</strong>El navegador busca dónde está el sitio.</div>
+              <div class="card"><strong>3</strong>Solicita los archivos al servidor.</div>
+              <div class="card"><strong>4</strong>Interpreta y muestra la página.</div>
+            </div>
+            <p class="mini-status">Más adelante vamos a profundizar en cliente–servidor, protocolos y publicación.</p>
+          </article>
+
+          <article class="card">
+            <h3>Conectalo con tu proyecto</h3>
+            <p>¿Tu idea necesita un sitio con varias secciones o podría funcionar como una única landing page? Explicá por qué.</p>
+            <textarea id="siteDecision" placeholder="Creo que conviene... porque..."></textarea>
+            <div class="actions"><button class="btn ghost" onclick="saveDecision()">Guardar respuesta</button></div>
+            <div class="mini-status" id="decisionStatus">Tu respuesta queda guardada solamente en este navegador.</div>
+          </article>
+
+          <div class="actions">
+            <button class="btn ghost" onclick="go('m0')">← Volver</button>
+            <button class="btn ok" onclick="completeModule('m1','soon')">Terminé el módulo 1 →</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="soon">
+        <div class="card">
+          <div class="icon">🚧</div>
+          <h2>Próximo módulo</h2>
+          <p>La base ya está preparada para seguir incorporando actividades sin cambiar la estructura del curso.</p>
+          <div class="actions"><button class="btn" onclick="go('home')">Volver al inicio</button></div>
+        </div>
+      </section>
+
+      <footer>Curso interactivo · Tecnología 4.º año · Prototipo en desarrollo</footer>
+    </div>
+  </main>
+</div>
+
+<script>
+  const state = JSON.parse(localStorage.getItem('webCourseState') || '{"done":[]}');
+
+  function persist(){
+    localStorage.setItem('webCourseState', JSON.stringify(state));
+    updateProgress();
+  }
+
+  function go(id){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.screen===id));
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  document.querySelectorAll('.nav-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>go(btn.dataset.screen));
+  });
+
+  document.querySelectorAll('#problemChoices .choice').forEach(btn=>{
+    btn.addEventListener('click',()=>btn.classList.toggle('selected'));
+  });
+
+  function checkProblems(){
+    const choices=[...document.querySelectorAll('#problemChoices .choice')];
+    const selected=choices.filter(c=>c.classList.contains('selected'));
+    const exact = selected.length===3 &&
+      selected.every(c=>c.dataset.good==='true');
+    const box=document.getElementById('problemFeedback');
+    box.className='feedback show '+(exact?'ok':'bad');
+    box.innerHTML= exact
+      ? '✅ Bien. Elegiste problemas de <strong>comunicación y organización</strong>, no detalles decorativos.'
+      : '🔎 Revisá. Buscamos tres problemas que dificulten entender <strong>qué ofrece el sitio, qué es importante y qué acción realizar</strong>.';
+    if(exact){ state.problemDone=true; persist(); }
+  }
+
+  function checkQuiz(){
+    const answers=[
+      document.getElementById('q1').value==='Dominio',
+      document.getElementById('q2').value==='Landing page',
+      document.getElementById('q3').value==='Navegadores',
+      document.getElementById('q4').value==='Un sitio web'
+    ];
+    const score=answers.filter(Boolean).length;
+    const box=document.getElementById('quizFeedback');
+    box.className='feedback show '+(score===4?'ok':'bad');
+    box.innerHTML = score===4
+      ? '✅ 4/4. Distinguís los conceptos básicos.'
+      : `Obtuviste <strong>${score}/4</strong>. Probá otra vez: prestá atención a la diferencia entre la dirección, el conjunto de páginas y el programa que las muestra.`;
+    if(score===4){ state.quizDone=true; persist(); }
+  }
+
+  function saveIdea(){
+    state.projectIdea=document.getElementById('projectIdea').value;
+    persist();
+    document.getElementById('saveStatus').textContent='✓ Idea guardada en este navegador.';
+  }
+
+  function saveDecision(){
+    state.siteDecision=document.getElementById('siteDecision').value;
+    persist();
+    document.getElementById('decisionStatus').textContent='✓ Respuesta guardada en este navegador.';
+  }
+
+  function completeModule(module,next){
+    if(!state.done.includes(module)) state.done.push(module);
+    persist();
+    go(next);
+  }
+
+  function updateProgress(){
+    const done=state.done.filter(x=>['m0','m1'].includes(x)).length;
+    const pct=Math.round(done/2*100);
+    document.getElementById('progressText').textContent=pct+'%';
+    document.getElementById('progressFill').style.width=pct+'%';
+    ['m0','m1'].forEach(id=>{
+      document.getElementById('nav-'+id)?.classList.toggle('done',state.done.includes(id));
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded',()=>{
+    document.getElementById('projectIdea').value=state.projectIdea||'';
+    document.getElementById('siteDecision').value=state.siteDecision||'';
+    updateProgress();
+  });
+</script>
+</body>
+</html>
