@@ -211,6 +211,47 @@
     .feedback.show{display:block}
     .feedback.ok{background:#e9f8ef;color:#11623a}
     .feedback.bad{background:#fff0ee;color:#8d2218}
+    .micro-lesson{
+      border:1px solid #b9c8f4;background:linear-gradient(180deg,#f7f9ff,#fff);
+    }
+    .micro-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .micro-counter{font-size:13px;font-weight:800;color:var(--primary);white-space:nowrap}
+    .micro-track{height:7px;border-radius:999px;background:#dfe6fa;margin:16px 0 22px;overflow:hidden}
+    .micro-fill{height:100%;width:20%;background:var(--primary);transition:width .2s ease}
+    .micro-step{display:none}
+    .micro-step.active{display:block}
+    .micro-visual{
+      margin:16px 0;padding:18px;border:1px dashed #9fb2ea;border-radius:16px;
+      background:white;text-align:center;
+    }
+    .file-chip,.folder-chip,.browser-chip{
+      display:inline-block;border-radius:10px;padding:9px 13px;margin:4px;
+      font-family:Consolas,monospace;font-weight:700;
+    }
+    .file-chip{background:#eef3ff;color:#2442a6;border:1px solid #c9d5fa}
+    .folder-chip{background:#fff4db;color:#805800;border:1px solid #f1d58f}
+    .browser-chip{display:block;background:#f2f4f7;color:#475467;border:1px solid #d0d5dd;text-align:left}
+    .micro-arrow{display:inline-block;margin:4px 8px;color:var(--primary);font-weight:900}
+    .micro-controls{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+    .micro-options{display:grid;gap:10px;margin-top:14px}
+    .micro-option{border:2px solid var(--line);border-radius:12px;padding:12px;background:white;text-align:left}
+    .micro-option:hover{border-color:#9bb0f4}
+    .video-embed{
+      position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;
+      overflow:hidden;background:#111827;margin-top:14px;
+    }
+    .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .video-local-fallback{
+      display:none;min-height:260px;margin-top:14px;padding:28px;border-radius:14px;
+      background:#111827;color:white;text-align:center;place-items:center;
+    }
+    .video-local-fallback.show{display:grid}
+    .video-local-fallback p{max-width:620px;color:#d0d5dd}
+    .video-local-fallback .btn{display:inline-block;text-decoration:none;margin-top:8px}
+    .lesson-label{
+      display:inline-flex;align-items:center;gap:7px;background:var(--soft);color:var(--primary);
+      border-radius:999px;padding:7px 11px;font-size:13px;font-weight:800;margin-bottom:10px;
+    }
     .match-grid{
       display:grid;grid-template-columns:1fr 1.3fr;gap:12px;
     }
@@ -228,6 +269,10 @@
     textarea{
       width:100%;min-height:130px;border:1px solid #cfd8e6;border-radius:12px;padding:12px;
       resize:vertical;background:white;
+    }
+    .student-name{
+      width:100%;border:1px solid #cfd8e6;border-radius:12px;
+      padding:12px;margin-top:10px;background:white;
     }
     .mini-status{
       font-size:13px;color:var(--muted);margin-top:6px;
@@ -327,9 +372,6 @@
           <div class="eyebrow">Proyecto del cuatrimestre</div>
           <h1>De usuario de la web a diseñador/a de una propuesta digital</h1>
           <p class="lead">Vas a analizar, planificar, diseñar, probar y mejorar un sitio web para una organización, un emprendimiento o un proyecto escolar.</p>
-          <div class="actions">
-            <button class="btn secondary" onclick="go('m0')">Empezar recorrido →</button>
-          </div>
         </div>
 
         <div class="grid">
@@ -353,6 +395,10 @@
         <div class="card" style="margin-top:18px">
           <h3>🎯 Producto final</h3>
           <p>Un sitio web simple para presentar una organización, emprendimiento o proyecto. Tendrá identidad visual, información clara, secciones organizadas, enlaces funcionales, imágenes adecuadas, criterios de accesibilidad y registro de fuentes.</p>
+        </div>
+
+        <div class="actions">
+          <button class="btn" onclick="go('m0')">Empezar recorrido →</button>
         </div>
       </section>
 
@@ -425,61 +471,197 @@
       <section class="screen" id="m1">
         <div class="section-head">
           <div>
-            <div class="eyebrow" style="color:var(--primary)">Módulo 1</div>
-            <h2>La web por dentro</h2>
-            <p>Usamos muchas palabras como si fueran sinónimos: página, sitio, landing, dominio, alojamiento. Pero no significan lo mismo.</p>
+            <div class="eyebrow" style="color:var(--primary)">Módulo 1 · Lección 1</div>
+            <h2>Archivos, páginas y navegador</h2>
+            <p>Primero vamos a entender qué es una página web antes de pensar cómo publicarla.</p>
           </div>
-          <span class="pill">25–35 min</span>
+          <span class="pill">20–25 min</span>
         </div>
 
         <div class="lesson">
-          <div class="grid">
-            <article class="card"><div class="icon">📄</div><h3>Página web</h3><p>Un documento individual que se muestra en el navegador.</p></article>
+          <article class="card video-card">
+            <div class="lesson-label">▶ Mirá primero</div>
+            <h3>¿Dónde vive una página web?</h3>
+            <p>El video presenta la idea general. Después vas a recorrerla paso a paso y resolver una situación.</p>
+            <div class="video-embed" id="youtubeEmbed">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/j6eHyUBweyE"
+                title="¿Qué es una página web?"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="video-local-fallback" id="videoLocalFallback">
+              <div>
+                <div style="font-size:46px">▶</div>
+                <h3>El video necesita una página publicada</h3>
+                <p>Estás viendo el curso como un archivo local. YouTube no permite reproducir el video incrustado sin la dirección de un sitio web. Cuando el curso esté publicado en GitHub Pages, aparecerá acá mismo.</p>
+                <a class="btn" href="https://youtu.be/j6eHyUBweyE" target="_blank" rel="noopener noreferrer">Mirar el video en YouTube ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card micro-lesson" id="microLessonOne">
+            <div class="micro-head">
+              <div><div class="eyebrow" style="color:var(--primary)">Antes de jugar</div><h3>¿Dónde vive una página web?</h3></div>
+              <span class="micro-counter" id="microCounterOne">Paso 1 de 5</span>
+            </div>
+            <div class="micro-track" aria-hidden="true"><div class="micro-fill" id="microFillOne"></div></div>
+
+            <div class="micro-step micro-step-one active">
+              <h3>1. Una página comienza como un archivo</h3>
+              <p>Podemos escribir instrucciones en un archivo de texto y guardarlo con la extensión <strong>.html</strong>. Esa extensión indica que contiene código HTML.</p>
+              <div class="micro-visual"><span class="file-chip">📄 index.html</span></div>
+            </div>
+            <div class="micro-step micro-step-one">
+              <h3>2. El archivo puede estar en una carpeta</h3>
+              <p>Antes de publicarlo, puede estar guardado en cualquier carpeta de la computadora junto con otras páginas e imágenes.</p>
+              <div class="micro-visual"><span class="folder-chip">📁 mi-proyecto</span><span class="micro-arrow">→</span><span class="file-chip">📄 index.html</span><span class="file-chip">🖼️ logo.png</span></div>
+              <p class="mini-status">Si movemos archivos, debemos revisar que los enlaces y las imágenes sigan apuntando al lugar correcto.</p>
+            </div>
+            <div class="micro-step micro-step-one">
+              <h3>3. El navegador interpreta el HTML</h3>
+              <p>Chrome, Firefox o Edge pueden abrir el archivo, leer sus etiquetas y convertirlas en títulos, párrafos, imágenes y botones.</p>
+              <div class="micro-visual"><span class="browser-chip">file:///C:/mi-proyecto/index.html</span><p style="font-size:24px;margin:18px 0 6px"><strong>Mi emprendimiento</strong></p><p style="margin:0">Página abierta desde la computadora.</p></div>
+            </div>
+            <div class="micro-step micro-step-one">
+              <h3>4. Una página no es lo mismo que un sitio</h3>
+              <p>Cada archivo HTML puede representar una página. Varias páginas y recursos relacionados forman un sitio web.</p>
+              <div class="micro-visual"><span class="file-chip">Inicio</span><span class="file-chip">Productos</span><span class="file-chip">Contacto</span><div style="margin-top:12px"><strong>3 páginas → 1 sitio web</strong></div></div>
+            </div>
+            <div class="micro-step micro-step-one">
+              <h3>5. Verla no significa publicarla</h3>
+              <p>El navegador puede mostrar un archivo local, pero otras personas no pueden entrar desde sus dispositivos mientras permanezca solamente en tu computadora.</p>
+              <p><strong>Pregunta puente:</strong> Martina abre <code>index.html</code> en su notebook y lo ve perfectamente. ¿Su página ya está publicada?</p>
+              <div class="micro-options">
+                <button class="micro-option" onclick="checkMicroAnswerOne(false)">Sí, porque el navegador puede mostrarla.</button>
+                <button class="micro-option" onclick="checkMicroAnswerOne(true)">No, porque el archivo sigue solamente en su computadora.</button>
+              </div>
+              <div class="feedback" id="microFeedbackOne" aria-live="polite"></div>
+            </div>
+            <div class="micro-controls">
+              <button class="btn ghost" id="microPrevOne" onclick="changeMicroStepOne(-1)" disabled>← Anterior</button>
+              <button class="btn" id="microNextOne" onclick="changeMicroStepOne(1)">Siguiente →</button>
+            </div>
+          </article>
+
+          <div class="grid" id="conceptCardsOne">
+            <article class="card"><div class="icon">📄</div><h3>Página web</h3><p>Un archivo o documento individual que el navegador interpreta y muestra.</p></article>
             <article class="card"><div class="icon">🗂️</div><h3>Sitio web</h3><p>Un conjunto organizado de páginas y recursos relacionados.</p></article>
-            <article class="card"><div class="icon">🎯</div><h3>Landing page</h3><p>Una página pensada para presentar una propuesta y orientar a una acción concreta.</p></article>
-            <article class="card"><div class="icon">🏷️</div><h3>Dominio</h3><p>El nombre o dirección que usamos para encontrar un sitio, por ejemplo ejemplo.com.ar.</p></article>
-            <article class="card"><div class="icon">🖥️</div><h3>Alojamiento</h3><p>El servicio donde se guardan los archivos para que estén disponibles en internet.</p></article>
-            <article class="card"><div class="icon">🌐</div><h3>Navegador</h3><p>El programa que solicita, interpreta y muestra el contenido web.</p></article>
+            <article class="card"><div class="icon">🌐</div><h3>Navegador</h3><p>El programa que interpreta y muestra archivos y contenidos web.</p></article>
           </div>
 
           <article class="card">
-            <h3>Mini juego · ¿Quién es quién?</h3>
-            <p>Seleccioná el concepto que corresponde a cada situación.</p>
+            <h3>Mini juego 1 · Archivo, página o sitio</h3>
+            <p>Seleccioná el concepto que corresponde.</p>
+            <div class="term">1. Chrome, Firefox o Edge son…</div>
+            <div class="select-line"><select id="q1a"><option value="">Elegí una opción</option><option>Navegadores</option><option>Sitios web</option><option>Páginas web</option></select></div>
+            <div class="term" style="margin-top:12px">2. <code>productos.html</code> es un archivo que puede representar…</div>
+            <div class="select-line"><select id="q1b"><option value="">Elegí una opción</option><option>Una página web</option><option>Un navegador</option><option>Un dominio</option></select></div>
+            <div class="term" style="margin-top:12px">3. Inicio, Productos y Contacto, relacionadas entre sí, forman…</div>
+            <div class="select-line"><select id="q1c"><option value="">Elegí una opción</option><option>Un sitio web</option><option>Un navegador</option><option>Un archivo de imagen</option></select></div>
+            <div class="actions"><button class="btn" onclick="checkQuizOne()">Corregir mini juego 1</button></div>
+            <div class="feedback" id="quizFeedbackOne"></div>
+          </article>
 
-            <div class="term">1. “chimeleta.com.ar” es…</div>
-            <div class="select-line">
-              <select id="q1">
-                <option value="">Elegí una opción</option>
-                <option>Dominio</option><option>Sitio web</option><option>Alojamiento</option><option>Landing page</option>
-              </select>
+          <div class="actions">
+            <button class="btn ghost" onclick="go('m0')">← Volver</button>
+            <button class="btn ok" onclick="go('m1b')">Continuar: publicar y encontrar →</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="m1b">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" style="color:var(--primary)">Módulo 1 · Lección 2</div>
+            <h2>Publicar y encontrar una web</h2>
+            <p>Ahora vamos a llevar esos archivos desde una computadora hasta Internet y darles una dirección.</p>
+          </div>
+          <span class="pill">20–25 min</span>
+        </div>
+
+        <div class="lesson">
+          <article class="card micro-lesson" id="microLessonTwo">
+            <div class="micro-head">
+              <div><div class="eyebrow" style="color:var(--primary)">Antes de jugar</div><h3>De la carpeta a Internet</h3></div>
+              <span class="micro-counter" id="microCounterTwo">Paso 1 de 6</span>
             </div>
+            <div class="micro-track" aria-hidden="true"><div class="micro-fill" id="microFillTwo"></div></div>
 
-            <div class="term" style="margin-top:12px">2. Una página creada para presentar un único producto y llevar al visitante al botón “Comprar” es…</div>
-            <div class="select-line">
-              <select id="q2">
-                <option value="">Elegí una opción</option>
-                <option>Página de inicio</option><option>Landing page</option><option>Dominio</option><option>Navegador</option>
-              </select>
+            <div class="micro-step micro-step-two active">
+              <h3>1. Recordemos el punto de partida</h3>
+              <p>Tu archivo <code>index.html</code> funciona en el navegador, pero sigue siendo local. Para que otras personas lo vean hay que publicarlo.</p>
+              <div class="micro-visual"><span class="folder-chip">💻 Archivo local</span><span class="micro-arrow">→ publicar →</span><span class="file-chip">🌍 Internet</span></div>
             </div>
-
-            <div class="term" style="margin-top:12px">3. Chrome, Firefox o Edge son…</div>
-            <div class="select-line">
-              <select id="q3">
-                <option value="">Elegí una opción</option>
-                <option>Alojamientos</option><option>Dominios</option><option>Navegadores</option><option>Sitios web</option>
-              </select>
+            <div class="micro-step micro-step-two">
+              <h3>2. Hosting y servidor trabajan juntos</h3>
+              <p>El <strong>hosting o alojamiento</strong> es el servicio que guarda y mantiene disponibles los archivos. Esos archivos se encuentran en una computadora preparada para responder solicitudes: el <strong>servidor</strong>.</p>
+              <div class="micro-visual"><span class="file-chip">☁️ Servicio de hosting</span><span class="micro-arrow">usa</span><span class="folder-chip">🖥️ Servidor</span></div>
             </div>
-
-            <div class="term" style="margin-top:12px">4. Un conjunto con Inicio, Quiénes somos, Productos y Contacto es…</div>
-            <div class="select-line">
-              <select id="q4">
-                <option value="">Elegí una opción</option>
-                <option>Un sitio web</option><option>Un dominio</option><option>Un navegador</option><option>Un protocolo</option>
-              </select>
+            <div class="micro-step micro-step-two">
+              <h3>3. El dominio es un nombre fácil de recordar</h3>
+              <p>En lugar de memorizar una dirección técnica, usamos un dominio como <strong>chimeleta.com.ar</strong>. En Argentina los dominios terminados en <strong>.ar</strong> se registran y administran mediante <strong>NIC Argentina</strong>.</p>
+              <div class="micro-visual"><span class="file-chip">🇦🇷 chimeleta.com.ar</span><span class="file-chip">🌎 proyecto.com</span></div>
+              <p class="mini-status"><strong>.com</strong> es internacional y genérico; no pertenece exclusivamente a Estados Unidos. El dominio territorial estadounidense es <strong>.us</strong>.</p>
             </div>
+            <div class="micro-step micro-step-two">
+              <h3>4. La URL indica una ubicación completa</h3>
+              <p>El dominio es una parte de la dirección. La <strong>URL</strong> es la dirección completa de una página, imagen u otro recurso e incluye información más precisa sobre dónde encontrarlo.</p>
+              <div class="micro-visual">
+                <span class="browser-chip">https://chimeleta.com.ar/productos.html</span>
+                <p style="margin:14px 0 4px"><strong>Dominio:</strong> chimeleta.com.ar</p>
+                <p style="margin:4px 0"><strong>Ruta:</strong> /productos.html</p>
+                <p style="margin:4px 0"><strong>URL completa:</strong> https://chimeleta.com.ar/productos.html</p>
+              </div>
+              <p class="mini-status">Un mismo dominio puede tener muchas URL diferentes: una para Inicio, otra para Productos y otra para Contacto.</p>
+            </div>
+            <div class="micro-step micro-step-two">
+              <h3>5. Las terminaciones también comunican</h3>
+              <p>Existen muchas terminaciones: <strong>.com</strong> suele asociarse con actividades comerciales, <strong>.edu</strong> con instituciones educativas, <strong>.org</strong> con organizaciones, <strong>.tv</strong> se usa con frecuencia en proyectos audiovisuales y <strong>.ar</strong> identifica a Argentina.</p>
+              <p class="mini-status">Las reglas para registrar cada terminación pueden ser diferentes. La terminación orienta, pero no explica por sí sola todo lo que hace un sitio.</p>
+            </div>
+            <div class="micro-step micro-step-two">
+              <h3>6. Una landing page tiene una misión concreta</h3>
+              <p>Una landing page es una página diseñada para recibir visitantes de una campaña y guiarlos hacia una acción principal: inscribirse, descargar, reservar o comprar.</p>
+              <div class="micro-visual"><strong>📣 Anuncio</strong><span class="micro-arrow">→</span><span class="file-chip">🎯 Landing page</span><span class="micro-arrow">→</span><strong>✅ Inscripción</strong></div>
+              <p><strong>Pregunta puente:</strong> una campaña de una semana busca que las personas se inscriban a un taller. ¿Qué conviene crear?</p>
+              <div class="micro-options">
+                <button class="micro-option" onclick="checkMicroAnswerTwo(true)">Una landing page centrada en la inscripción.</button>
+                <button class="micro-option" onclick="checkMicroAnswerTwo(false)">Un sitio web completo con muchas secciones.</button>
+              </div>
+              <div class="feedback" id="microFeedbackTwo" aria-live="polite"></div>
+            </div>
+            <div class="micro-controls">
+              <button class="btn ghost" id="microPrevTwo" onclick="changeMicroStepTwo(-1)" disabled>← Anterior</button>
+              <button class="btn" id="microNextTwo" onclick="changeMicroStepTwo(1)">Siguiente →</button>
+            </div>
+          </article>
 
-            <div class="actions"><button class="btn" onclick="checkQuiz()">Corregir mini juego</button></div>
-            <div class="feedback" id="quizFeedback"></div>
+          <div class="grid" id="conceptCardsTwo">
+            <article class="card"><div class="icon">☁️</div><h3>Hosting</h3><p>Servicio que aloja los archivos para mantenerlos disponibles en Internet.</p></article>
+            <article class="card"><div class="icon">🖥️</div><h3>Servidor</h3><p>Computadora preparada para responder solicitudes y entregar los archivos.</p></article>
+            <article class="card"><div class="icon">🏷️</div><h3>Dominio</h3><p>Nombre fácil de recordar que ayuda a encontrar un sitio.</p></article>
+            <article class="card"><div class="icon">🔗</div><h3>URL</h3><p>Dirección completa de un recurso concreto en la web.</p></article>
+            <article class="card"><div class="icon">🎯</div><h3>Landing page</h3><p>Página enfocada en una acción principal.</p></article>
+          </div>
+
+          <article class="card">
+            <h3>Mini juego 2 · Publicar y encontrar</h3>
+            <p>Relacioná cada situación con el concepto correcto.</p>
+            <div class="term">1. Luna quiere que los archivos de su notebook estén disponibles en Internet. Necesita…</div>
+            <div class="select-line"><select id="q2a"><option value="">Elegí una opción</option><option>Un hosting</option><option>Una landing page</option><option>Un navegador nuevo</option></select></div>
+            <div class="term" style="margin-top:12px">2. La computadora que responde solicitudes y entrega los archivos cumple el rol de…</div>
+            <div class="select-line"><select id="q2b"><option value="">Elegí una opción</option><option>Servidor</option><option>Dominio</option><option>Landing page</option></select></div>
+            <div class="term" style="margin-top:12px">3. <code>chimeleta.com.ar</code> es…</div>
+            <div class="select-line"><select id="q2c"><option value="">Elegí una opción</option><option>Un dominio</option><option>Un servidor</option><option>Una imagen</option></select></div>
+            <div class="term" style="margin-top:12px">4. La dirección completa de una página o recurso es…</div>
+            <div class="select-line"><select id="q2d"><option value="">Elegí una opción</option><option>Una URL</option><option>Un hosting</option><option>Un navegador</option></select></div>
+            <div class="term" style="margin-top:12px">5. Una campaña necesita una página enfocada únicamente en conseguir inscripciones. Conviene…</div>
+            <div class="select-line"><select id="q2e"><option value="">Elegí una opción</option><option>Una landing page</option><option>Otro dominio obligatorio</option><option>Un servidor por visitante</option></select></div>
+            <div class="actions"><button class="btn" onclick="checkQuizTwo()">Corregir mini juego 2</button></div>
+            <div class="feedback" id="quizFeedbackTwo"></div>
           </article>
 
           <article class="card">
@@ -490,7 +672,6 @@
               <div class="card"><strong>3</strong>Solicita los archivos al servidor.</div>
               <div class="card"><strong>4</strong>Interpreta y muestra la página.</div>
             </div>
-            <p class="mini-status">Más adelante vamos a profundizar en cliente–servidor, protocolos y publicación.</p>
           </article>
 
           <article class="card">
@@ -502,7 +683,7 @@
           </article>
 
           <div class="actions">
-            <button class="btn ghost" onclick="go('m0')">← Volver</button>
+            <button class="btn ghost" onclick="go('m1')">← Volver a la lección 1</button>
             <button class="btn ok" onclick="completeModule('m1','soon')">Terminé el módulo 1 →</button>
           </div>
         </div>
@@ -515,6 +696,18 @@
           <p>La base ya está preparada para seguir incorporando actividades sin cambiar la estructura del curso.</p>
           <div class="actions"><button class="btn" onclick="go('home')">Volver al inicio</button></div>
         </div>
+
+        <div class="card" style="margin-top:18px">
+          <div class="icon">📥</div>
+          <h2>Descargá tu trabajo</h2>
+          <p>Escribí tu nombre y descargá un archivo con las ideas y respuestas que guardaste durante el recorrido. Después podés entregarlo en Classroom.</p>
+          <label for="studentName"><strong>Nombre y apellido</strong></label>
+          <input class="student-name" id="studentName" type="text" autocomplete="name" placeholder="Ejemplo: Luna Pérez">
+          <div class="actions">
+            <button class="btn ok" onclick="downloadWork()">Descargar mi trabajo (.txt)</button>
+          </div>
+          <div class="mini-status" id="downloadStatus" aria-live="polite"></div>
+        </div>
       </section>
 
       <footer>Curso interactivo · Tecnología 4.º año · Prototipo en desarrollo</footer>
@@ -524,6 +717,8 @@
 
 <script>
   const state = JSON.parse(localStorage.getItem('webCourseState') || '{"done":[]}');
+  if(!Array.isArray(state.done)) state.done=[];
+  const microSteps={one:0,two:0};
 
   function persist(){
     localStorage.setItem('webCourseState', JSON.stringify(state));
@@ -533,7 +728,8 @@
   function go(id){
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.screen===id));
+    const navScreen=id==='m1b'?'m1':id;
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.screen===navScreen));
     window.scrollTo({top:0,behavior:'smooth'});
   }
 
@@ -558,20 +754,77 @@
     if(exact){ state.problemDone=true; persist(); }
   }
 
-  function checkQuiz(){
+  function showMicroStep(which){
+    const suffix=which==='one'?'One':'Two';
+    const steps=[...document.querySelectorAll(`.micro-step-${which}`)];
+    const current=microSteps[which];
+    steps.forEach((step,index)=>step.classList.toggle('active',index===current));
+    document.getElementById(`microCounter${suffix}`).textContent=`Paso ${current+1} de ${steps.length}`;
+    document.getElementById(`microFill${suffix}`).style.width=`${(current+1)/steps.length*100}%`;
+    document.getElementById(`microPrev${suffix}`).disabled=current===0;
+    document.getElementById(`microNext${suffix}`).style.visibility=current===steps.length-1?'hidden':'visible';
+  }
+
+  function changeMicroStep(which,direction){
+    const total=document.querySelectorAll(`.micro-step-${which}`).length;
+    microSteps[which]=Math.max(0,Math.min(total-1,microSteps[which]+direction));
+    showMicroStep(which);
+    document.getElementById(which==='one'?'microLessonOne':'microLessonTwo').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function changeMicroStepOne(direction){ changeMicroStep('one',direction); }
+  function changeMicroStepTwo(direction){ changeMicroStep('two',direction); }
+
+  function checkMicroAnswerOne(correct){
+    const box=document.getElementById('microFeedbackOne');
+    box.className='feedback show '+(correct?'ok':'bad');
+    if(correct){
+      box.innerHTML='✅ Exacto. La página funciona de manera <strong>local</strong>, pero todavía no está disponible para otras personas. <div class="actions"><button class="btn ok" onclick="document.getElementById(\'conceptCardsOne\').scrollIntoView({behavior:\'smooth\'})">Continuar con los conceptos ↓</button></div>';
+      state.microLessonOneDone=true;
+      persist();
+    }else{
+      box.innerHTML='🔎 Todavía no. El navegador también puede abrir archivos que están guardados localmente. Para que otras personas accedan, hay que publicarlos.';
+    }
+  }
+
+  function checkMicroAnswerTwo(correct){
+    const box=document.getElementById('microFeedbackTwo');
+    box.className='feedback show '+(correct?'ok':'bad');
+    if(correct){
+      box.innerHTML='✅ Exacto. La landing page concentra el mensaje y la acción principal de la campaña. <div class="actions"><button class="btn ok" onclick="document.getElementById(\'conceptCardsTwo\').scrollIntoView({behavior:\'smooth\'})">Continuar con los conceptos ↓</button></div>';
+      state.microLessonTwoDone=true;
+      persist();
+    }else{
+      box.innerHTML='🔎 Un sitio completo podría servir, pero para una campaña breve con una sola acción conviene una página enfocada en la inscripción.';
+    }
+  }
+
+  function checkQuizOne(){
     const answers=[
-      document.getElementById('q1').value==='Dominio',
-      document.getElementById('q2').value==='Landing page',
-      document.getElementById('q3').value==='Navegadores',
-      document.getElementById('q4').value==='Un sitio web'
+      document.getElementById('q1a').value==='Navegadores',
+      document.getElementById('q1b').value==='Una página web',
+      document.getElementById('q1c').value==='Un sitio web'
     ];
     const score=answers.filter(Boolean).length;
-    const box=document.getElementById('quizFeedback');
-    box.className='feedback show '+(score===4?'ok':'bad');
-    box.innerHTML = score===4
-      ? '✅ 4/4. Distinguís los conceptos básicos.'
-      : `Obtuviste <strong>${score}/4</strong>. Probá otra vez: prestá atención a la diferencia entre la dirección, el conjunto de páginas y el programa que las muestra.`;
-    if(score===4){ state.quizDone=true; persist(); }
+    const box=document.getElementById('quizFeedbackOne');
+    box.className='feedback show '+(score===3?'ok':'bad');
+    box.innerHTML = score===3 ? '✅ 3/3. Distinguís archivo, página, sitio y navegador.' : `Obtuviste <strong>${score}/3</strong>. Revisá las tres tarjetas y probá otra vez.`;
+    if(score===3){ state.quizOneDone=true; persist(); }
+  }
+
+  function checkQuizTwo(){
+    const answers=[
+      document.getElementById('q2a').value==='Un hosting',
+      document.getElementById('q2b').value==='Servidor',
+      document.getElementById('q2c').value==='Un dominio',
+      document.getElementById('q2d').value==='Una URL',
+      document.getElementById('q2e').value==='Una landing page'
+    ];
+    const score=answers.filter(Boolean).length;
+    const box=document.getElementById('quizFeedbackTwo');
+    box.className='feedback show '+(score===5?'ok':'bad');
+    box.innerHTML = score===5 ? '✅ 5/5. Relacionás publicación, dirección y propósito.' : `Obtuviste <strong>${score}/5</strong>. Volvé a recorrer la explicación y probá otra vez.`;
+    if(score===5){ state.quizTwoDone=true; state.quizDone=true; persist(); }
   }
 
   function saveIdea(){
@@ -584,6 +837,65 @@
     state.siteDecision=document.getElementById('siteDecision').value;
     persist();
     document.getElementById('decisionStatus').textContent='✓ Respuesta guardada en este navegador.';
+  }
+
+  function downloadWork(){
+    const name=document.getElementById('studentName').value.trim();
+    const status=document.getElementById('downloadStatus');
+
+    if(!name){
+      status.textContent='Escribí tu nombre y apellido antes de descargar.';
+      document.getElementById('studentName').focus();
+      return;
+    }
+
+    state.studentName=name;
+    state.projectIdea=document.getElementById('projectIdea').value;
+    state.siteDecision=document.getElementById('siteDecision').value;
+    persist();
+
+    const completed=state.done.filter(x=>['m0','m1'].includes(x)).length;
+    const progress=Math.round(completed/2*100);
+    const text=[
+      'DISEÑAR PARA LA WEB — TRABAJO DEL RECORRIDO',
+      'Tecnología · 4.º año',
+      '',
+      `Estudiante: ${name}`,
+      `Fecha de descarga: ${new Date().toLocaleString('es-AR')}`,
+      `Progreso: ${progress}%`,
+      '',
+      '1. IDEA PARA EL PROYECTO FINAL',
+      state.projectIdea.trim() || '(Sin respuesta)',
+      '',
+      '2. DECISIÓN: SITIO WEB O LANDING PAGE',
+      state.siteDecision.trim() || '(Sin respuesta)',
+      '',
+      'ACTIVIDADES COMPLETADAS',
+      `Análisis de comunicación web: ${state.problemDone ? 'Sí' : 'No'}`,
+      `Microlección «¿Dónde vive una página web?»: ${state.microLessonOneDone ? 'Sí' : 'No'}`,
+      `Mini juego 1: ${state.quizOneDone ? 'Sí' : 'No'}`,
+      `Microlección «De la carpeta a Internet»: ${state.microLessonTwoDone ? 'Sí' : 'No'}`,
+      `Mini juego 2: ${state.quizTwoDone ? 'Sí' : 'No'}`,
+      `Módulo 0 finalizado: ${state.done.includes('m0') ? 'Sí' : 'No'}`,
+      `Módulo 1 finalizado: ${state.done.includes('m1') ? 'Sí' : 'No'}`,
+      ''
+    ].join('\n');
+
+    const safeName=name.normalize('NFD')
+      .replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-zA-Z0-9]+/g,'-')
+      .replace(/^-|-$/g,'')
+      .toLowerCase() || 'estudiante';
+    const blob=new Blob(['\uFEFF'+text],{type:'text/plain;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const link=document.createElement('a');
+    link.href=url;
+    link.download=`curso-html-${safeName}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    status.textContent='✓ Archivo descargado. Ya podés subirlo a Classroom.';
   }
 
   function completeModule(module,next){
@@ -603,8 +915,15 @@
   }
 
   window.addEventListener('DOMContentLoaded',()=>{
+    if(window.location.protocol==='file:'){
+      document.getElementById('youtubeEmbed').style.display='none';
+      document.getElementById('videoLocalFallback').classList.add('show');
+    }
     document.getElementById('projectIdea').value=state.projectIdea||'';
     document.getElementById('siteDecision').value=state.siteDecision||'';
+    document.getElementById('studentName').value=state.studentName||'';
+    showMicroStep('one');
+    showMicroStep('two');
     updateProgress();
   });
 </script>

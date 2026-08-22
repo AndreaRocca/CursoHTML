@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>¡Publicá la web!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <header>
+    <div>
+      <span class="eyebrow">MISIÓN WEB</span>
+      <h1>¡Publicá la web!</h1>
+      <p class="subtitle">Ayudá a Luna a llevar su emprendimiento desde una notebook hasta Internet.</p>
+    </div>
+    <div class="score">⭐ <span id="score">0</span></div>
+  </header>
+
+  <section id="map" class="map" aria-label="Mapa de progreso"></section>
+
+  <section class="game-card">
+    <div id="sceneIcon" class="scene-icon">💻</div>
+    <div class="scene">
+      <div class="step" id="step"></div>
+      <h2 id="title"></h2>
+      <p id="story"></p>
+      <div id="visual" class="visual"></div>
+      <div id="options" class="options"></div>
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+      <button id="next" class="next hidden">Continuar →</button>
+    </div>
+  </section>
+
+  <footer>HTML • CSS • JavaScript — pensado para GitHub Pages</footer>
+</main>
+<script src="game.js"></script>
+</body>
+</html>
