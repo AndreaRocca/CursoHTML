@@ -237,7 +237,7 @@ El 22 de agosto de 2026 se recuperó el archivo `publica_la_web_MVP.zip`. El ZIP
 
 Se incorporó una copia intacta en `juego/v0.1-original/`. Esta carpeta funciona como evidencia de la primera versión y no deberá modificarse. Las iteraciones posteriores se realizarán en otra ubicación o mediante copias claramente identificadas.
 
-La revisión confirmó que el juego presenta a **Luna** y propone ayudarla a llevar su emprendimiento desde una notebook hasta Internet.
+La revisión confirmó que el juego presenta a **Martina** y propone ayudarla a llevar su emprendimiento desde una notebook hasta Internet. El nombre se unificó con el utilizado en los videos para mantener la continuidad narrativa del curso.
 
 ### Características registradas
 
@@ -367,7 +367,7 @@ Se agregó al final del recorrido una sección «Descargá tu trabajo». El estu
 - decisión fundamentada entre sitio web y landing page;
 - estado de las actividades y módulos completados.
 
-La descarga recupera también el contenido que permanezca escrito en los campos, aunque el estudiante no haya presionado previamente el botón «Guardar». El nombre se utiliza para generar un archivo identificable, por ejemplo `curso-html-luna-perez.txt`, que puede entregarse directamente mediante Classroom.
+La descarga recupera también el contenido que permanezca escrito en los campos, aunque el estudiante no haya presionado previamente el botón «Guardar». El nombre se utiliza para generar un archivo identificable, por ejemplo `curso-html-martina-perez.txt`, que puede entregarse directamente mediante Classroom.
 
 ### Fundamento
 
@@ -418,13 +418,12 @@ El Módulo 1 se dividió en dos lecciones internas dentro del mismo archivo del 
 
 **Lección 2 — Publicar y encontrar una web**
 
-1. recuperación de la diferencia entre archivo local y página publicada;
-2. hosting y servidor;
-3. dominio y URL;
-4. dominios `.ar`, `.com.ar` y otras terminaciones;
-5. landing page;
-6. mini juego de cinco situaciones;
-7. aplicación al proyecto del estudiante.
+1. video introductorio «¿Cómo llega una página web a Internet?»;
+2. explicación interactiva en un recorrido deslizante con íconos;
+3. tarjetas conceptuales de hosting, servidor, dominio, URL y landing page;
+4. síntesis visual «¿Qué ocurre cuando escribimos una dirección?» como puente entre los conceptos y su aplicación;
+5. mini juego de cinco situaciones;
+6. aplicación al proyecto del estudiante.
 
 Se mantuvo un único `index.html`, pero cada lección funciona como una pantalla separada. Esto reduce la extensión visible de cada recorrido sin fragmentar el almacenamiento, el progreso ni la descarga de evidencias.
 
@@ -437,6 +436,22 @@ Durante la prueba local apareció el error 153 del reproductor de YouTube. La ca
 Se aclaró que `.com` es un dominio genérico internacional y no un dominio exclusivo de Estados Unidos; el dominio territorial de ese país es `.us`. También se incorporó que NIC Argentina es el registro oficial de los dominios `.ar` y que `.com.ar` es una de sus zonas de registro.
 
 Durante la revisión se detectó que URL aparecía en las tarjetas y en la evaluación, pero todavía no tenía una explicación propia. Se agregó un paso que distingue dominio de URL mediante el ejemplo `https://chimeleta.com.ar/productos.html`: `chimeleta.com.ar` es el dominio, `/productos.html` es la ruta y el conjunto constituye la URL completa. La microlección pasó de cinco a seis pasos. También se decidió producir un segundo video integrador sobre hosting, servidor, dominio, URL y landing page.
+
+El segundo video fue producido con una herramienta de IA gratuita, mediante un único prompt y sin iteraciones de corrección. La explicación conceptual, el audio y los textos descriptivos son correctos; los problemas aparecen en algunas imágenes generadas, por ejemplo una notebook cuya pantalla está del lado equivocado o palabras inexistentes integradas en la escena. Inicialmente se lo presentó como «Repasemos con mirada crítica», pero al revisar la secuencia se advirtió que aparece antes de la explicación. Por eso se reformuló como «Primera aproximación»: el video introduce los conceptos, la explicación interactiva con íconos los desarrolla paso a paso y el minijuego permite aplicarlos. La observación de objetos imposibles, partes invertidas o texto inventado se mantiene como consigna secundaria de alfabetización mediática, sin poner en duda el contenido conceptual.
+
+### Cierre de la primera clase de 90 minutos
+
+El aviso genérico «Próximo módulo» se reemplazó por un cierre completo para la primera jornada. Después de las dos lecciones, los estudiantes realizan el juego integrador «¡Publicá la web!», compuesto por siete misiones sobre página, sitio, hosting, servidor, dominio, URL y landing page. El juego quedó incorporado dentro del curso y comunica su puntaje al recorrido principal para incluirlo en la evidencia final.
+
+Después del juego se incorporó una devolución escrita con cinco preguntas:
+
+1. ¿Qué aprendiste hoy que antes no sabías?
+2. ¿Qué ocurre desde que una persona escribe una dirección hasta que ve una página web?
+3. ¿Qué concepto resultó más claro y por qué?
+4. ¿Qué preguntas quedaron sin responder?
+5. ¿Qué aspecto no se entendió o requiere más explicación?
+
+Las preguntas cumplen una doble función. Si la clase alcanza los 90 minutos, funcionan como cierre metacognitivo y evaluación de salida. Si no hay tiempo suficiente, quedan disponibles para abrir la clase siguiente y recuperar dudas. Las cinco respuestas, incluso cuando alguna quede sin completar, se agregan al archivo TXT junto con la idea de proyecto, la decisión entre sitio y landing page, el resultado del juego y el registro de actividades. De este modo se genera una única evidencia descargable para entregar mediante Classroom.
 
 ---
 

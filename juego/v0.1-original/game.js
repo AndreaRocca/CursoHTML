@@ -1,23 +1,23 @@
 
 const missions = [
  {key:"pagina",icon:"📄",label:"Página",title:"Un archivo no es todavía un sitio",
- story:"Luna diseñó la portada de su emprendimiento y guardó index.html en su notebook. Esa portada, vista en el navegador, es…",
+ story:"Martina diseñó la portada de su emprendimiento y guardó index.html en su notebook. Esa portada, vista en el navegador, es…",
  visual:"📁 proyecto /  📄 index.html",
  opts:["un dominio","una página web","un hosting","un servidor"],ans:1,
  good:"Exacto. Una página web es un documento individual que puede verse en un navegador.",
  bad:"Pensá en una sola pantalla/documento HTML, no en todo el conjunto."},
  {key:"sitio",icon:"🗂️",label:"Sitio",title:"El proyecto creció",
- story:"Ahora Luna tiene Inicio, Productos, Nosotros y Contacto. ¿Cómo llamamos al conjunto de todas esas páginas relacionadas?",
+ story:"Ahora Martina tiene Inicio, Productos, Nosotros y Contacto. ¿Cómo llamamos al conjunto de todas esas páginas relacionadas?",
  visual:"📄 Inicio   📄 Productos   📄 Nosotros   📄 Contacto",
  opts:["sitio web","URL","landing page","dominio"],ans:0,
  good:"¡Bien! Varias páginas relacionadas forman un sitio web.",
  bad:"No buscamos una dirección ni una página especial: buscamos el conjunto completo."},
  {key:"hosting",icon:"☁️",label:"Hosting",title:"Nadie puede verla",
- story:"Luna le manda a una amiga la ruta C:\\Usuarios\\Luna\\Desktop\\index.html. En el celular de su amiga no funciona. ¿Qué necesita hacer?",
- visual:"💻 Luna  ─── ? ───  📱 amiga",
+ story:"Martina le manda a una amiga la ruta C:\\Usuarios\\Martina\\Desktop\\index.html. En el celular de su amiga no funciona. ¿Qué necesita hacer?",
+ visual:"💻 Martina  ─── ? ───  📱 amiga",
  opts:["cambiar el color del sitio","subir los archivos a un hosting","comprar otro celular","convertir HTML en PDF"],ans:1,
  good:"Correcto. El hosting permite alojar los archivos para que estén disponibles en Internet.",
- bad:"El problema es que los archivos siguen viviendo solamente en la computadora de Luna."},
+ bad:"El problema es que los archivos siguen viviendo solamente en la computadora de Martina."},
  {key:"servidor",icon:"🖥️",label:"Servidor",title:"¿Dónde viven los archivos?",
  story:"El servicio de hosting guarda el sitio en una computadora preparada para responder solicitudes de Internet. Esa computadora cumple el rol de…",
  visual:"📱 visitante  →  🌐 Internet  →  🖥️ ______  →  📄 archivos",
@@ -25,19 +25,19 @@ const missions = [
  good:"Exacto: el servidor entrega los archivos cuando alguien solicita el sitio.",
  bad:"Buscamos la máquina/sistema que responde y entrega los archivos del sitio."},
  {key:"dominio",icon:"🌐",label:"Dominio",title:"Una dirección fácil de recordar",
- story:"El sitio ya está alojado, pero Luna quiere que sus clientes recuerden algo como lunacrea.com. ¿Qué necesita?",
- visual:"?  →  lunacrea.com",
+ story:"El sitio ya está alojado, pero Martina quiere que sus clientes recuerden algo como martinacrea.com. ¿Qué necesita?",
+ visual:"?  →  martinacrea.com",
  opts:["una nueva página","un dominio","otro hosting","una imagen JPG"],ans:1,
  good:"Sí. El dominio es el nombre que usamos para identificar y encontrar un sitio con facilidad.",
  bad:"Buscamos el nombre legible que las personas pueden recordar."},
  {key:"url",icon:"🔗",label:"URL",title:"Llegar al lugar exacto",
- story:"Un cliente quiere compartir directamente la página de productos: https://lunacrea.com/productos.html. Esa dirección completa es…",
- visual:"https://lunacrea.com/productos.html",
+ story:"Un cliente quiere compartir directamente la página de productos: https://martinacrea.com/productos.html. Esa dirección completa es…",
+ visual:"https://martinacrea.com/productos.html",
  opts:["un servidor","una URL","un sitio web","un archivo local"],ans:1,
  good:"¡Exacto! La URL indica la ubicación concreta de un recurso en la web.",
  bad:"Fijate que aparece una dirección completa que lleva a un recurso específico."},
  {key:"landing",icon:"🎯",label:"Landing",title:"La campaña",
- story:"Luna lanza un curso por Instagram. Quiere una página centrada en una sola acción: que la gente se inscriba. ¿Qué conviene crear?",
+ story:"Martina lanza un curso por Instagram. Quiere una página centrada en una sola acción: que la gente se inscriba. ¿Qué conviene crear?",
  visual:"📣 ANUNCIO → ? → [ INSCRIBIRME ]",
  opts:["una landing page","otro dominio obligatorio","un servidor nuevo","cuatro sitios diferentes"],ans:0,
  good:"Perfecto. Una landing page está diseñada alrededor de un objetivo o conversión concreta.",
@@ -67,6 +67,8 @@ function choose(n){
 }
 $("next").onclick=()=>{i++; if(i<missions.length)render(); else finish()};
 function finish(){
+ try{localStorage.setItem("publicaLaWebResult",JSON.stringify({score,total:missions.length,finishedAt:new Date().toISOString()}))}catch(error){}
+ window.parent.postMessage({type:"publicaLaWebFinished",score,total:missions.length},"*");
  $("map").innerHTML=missions.map(m=>`<div class="node done"><div class="dot">✓</div><span>${m.label}</span></div>`).join("");
  document.querySelector(".game-card").innerHTML=`<div class="final" style="grid-column:1/-1">
  <div class="big">🚀</div><h2>¡El sitio está online!</h2>

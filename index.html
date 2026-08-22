@@ -274,6 +274,13 @@
       width:100%;border:1px solid #cfd8e6;border-radius:12px;
       padding:12px;margin-top:10px;background:white;
     }
+    .game-frame{
+      width:100%;height:760px;border:1px solid var(--line);border-radius:16px;
+      background:var(--bg);margin-top:16px;
+    }
+    .reflection-list{display:grid;gap:16px;margin-top:18px}
+    .reflection-item label{display:block;font-weight:800;margin-bottom:7px}
+    .reflection-item textarea{min-height:92px}
     .mini-status{
       font-size:13px;color:var(--muted);margin-top:6px;
     }
@@ -283,7 +290,7 @@
     .summary-box .card{text-align:center;padding:15px}
     .summary-box strong{display:block;font-size:22px;color:var(--primary)}
     .locked{
-      opacity:.55;filter:grayscale(.2)
+      opacity:.55;filter:grayscale(.2);cursor:not-allowed
     }
     footer{
       margin-top:26px;color:var(--muted);font-size:13px;text-align:center;
@@ -301,6 +308,7 @@
       .grid,.choice-grid,.summary-box,.match-grid{grid-template-columns:1fr}
       nav{grid-template-columns:1fr}
       .section-head{align-items:flex-start;flex-direction:column}
+      .game-frame{height:900px}
     }
   </style>
 </head>
@@ -336,23 +344,27 @@
         <span class="nav-num">1</span>
         <span><span class="nav-title">La web por dentro</span><span class="nav-sub">Página, sitio, landing...</span></span>
       </button>
-      <button class="nav-btn locked" data-screen="soon">
+      <button class="nav-btn" data-screen="soon" id="nav-soon">
+        <span class="nav-num">✓</span>
+        <span><span class="nav-title">Cierre de la clase</span><span class="nav-sub">Juego, devolución y entrega</span></span>
+      </button>
+      <button class="nav-btn locked" data-screen="module2" disabled>
         <span class="nav-num">2</span>
         <span><span class="nav-title">Diseñar para personas</span><span class="nav-sub">Usabilidad y accesibilidad</span></span>
       </button>
-      <button class="nav-btn locked" data-screen="soon">
+      <button class="nav-btn locked" data-screen="module3" disabled>
         <span class="nav-num">3</span>
         <span><span class="nav-title">Organizar información</span><span class="nav-sub">Jerarquía y navegación</span></span>
       </button>
-      <button class="nav-btn locked" data-screen="soon">
+      <button class="nav-btn locked" data-screen="module4" disabled>
         <span class="nav-num">4</span>
         <span><span class="nav-title">Identidad visual</span><span class="nav-sub">Color, tipografía e imágenes</span></span>
       </button>
-      <button class="nav-btn locked" data-screen="soon">
+      <button class="nav-btn locked" data-screen="module5" disabled>
         <span class="nav-num">5</span>
         <span><span class="nav-title">HTML</span><span class="nav-sub">Construir la estructura</span></span>
       </button>
-      <button class="nav-btn locked" data-screen="soon">
+      <button class="nav-btn locked" data-screen="module6" disabled>
         <span class="nav-num">6</span>
         <span><span class="nav-title">CSS</span><span class="nav-sub">Dar estilo</span></span>
       </button>
@@ -583,6 +595,32 @@
         </div>
 
         <div class="lesson">
+          <article class="card video-card">
+            <div class="lesson-label">▶ Primera aproximación</div>
+            <h3>¿Cómo llega una página web a Internet?</h3>
+            <p>Este video presenta por primera vez las ideas de hosting, servidor, dominio, URL y landing page. Después vas a recorrerlas paso a paso y ponerlas en práctica en el minijuego.</p>
+            <div class="callout">
+              <strong>Mientras mirás:</strong> las imágenes fueron generadas con IA en una sola pasada. Fijate si descubrís algún objeto imposible, una parte ubicada al revés o palabras inventadas dentro de una imagen.
+            </div>
+            <div class="video-embed" id="youtubeEmbedTwo">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/2_FsgkIlt2g"
+                title="¿Cómo llega una página web a Internet?"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="video-local-fallback" id="videoLocalFallbackTwo">
+              <div>
+                <div style="font-size:46px">▶</div>
+                <h3>El video necesita una página publicada</h3>
+                <p>Estás viendo el curso como un archivo local. Cuando esté publicado en GitHub Pages, el reproductor aparecerá acá mismo.</p>
+                <a class="btn" href="https://youtu.be/2_FsgkIlt2g" target="_blank" rel="noopener noreferrer">Mirar el video en YouTube ↗</a>
+              </div>
+            </div>
+          </article>
+
           <article class="card micro-lesson" id="microLessonTwo">
             <div class="micro-head">
               <div><div class="eyebrow" style="color:var(--primary)">Antes de jugar</div><h3>De la carpeta a Internet</h3></div>
@@ -648,9 +686,19 @@
           </div>
 
           <article class="card">
+            <h3>¿Qué ocurre cuando escribimos una dirección?</h3>
+            <div class="summary-box">
+              <div class="card"><strong>1</strong>Escribís una URL.</div>
+              <div class="card"><strong>2</strong>El navegador busca dónde está el sitio.</div>
+              <div class="card"><strong>3</strong>Solicita los archivos al servidor.</div>
+              <div class="card"><strong>4</strong>Interpreta y muestra la página.</div>
+            </div>
+          </article>
+
+          <article class="card">
             <h3>Mini juego 2 · Publicar y encontrar</h3>
             <p>Relacioná cada situación con el concepto correcto.</p>
-            <div class="term">1. Luna quiere que los archivos de su notebook estén disponibles en Internet. Necesita…</div>
+            <div class="term">1. Martina quiere que los archivos de su notebook estén disponibles en Internet. Necesita…</div>
             <div class="select-line"><select id="q2a"><option value="">Elegí una opción</option><option>Un hosting</option><option>Una landing page</option><option>Un navegador nuevo</option></select></div>
             <div class="term" style="margin-top:12px">2. La computadora que responde solicitudes y entrega los archivos cumple el rol de…</div>
             <div class="select-line"><select id="q2b"><option value="">Elegí una opción</option><option>Servidor</option><option>Dominio</option><option>Landing page</option></select></div>
@@ -662,16 +710,6 @@
             <div class="select-line"><select id="q2e"><option value="">Elegí una opción</option><option>Una landing page</option><option>Otro dominio obligatorio</option><option>Un servidor por visitante</option></select></div>
             <div class="actions"><button class="btn" onclick="checkQuizTwo()">Corregir mini juego 2</button></div>
             <div class="feedback" id="quizFeedbackTwo"></div>
-          </article>
-
-          <article class="card">
-            <h3>¿Qué ocurre cuando escribimos una dirección?</h3>
-            <div class="summary-box">
-              <div class="card"><strong>1</strong>Escribís una URL.</div>
-              <div class="card"><strong>2</strong>El navegador busca dónde está el sitio.</div>
-              <div class="card"><strong>3</strong>Solicita los archivos al servidor.</div>
-              <div class="card"><strong>4</strong>Interpreta y muestra la página.</div>
-            </div>
           </article>
 
           <article class="card">
@@ -691,18 +729,49 @@
 
       <section class="screen" id="soon">
         <div class="card">
-          <div class="icon">🚧</div>
-          <h2>Próximo módulo</h2>
-          <p>La base ya está preparada para seguir incorporando actividades sin cambiar la estructura del curso.</p>
-          <div class="actions"><button class="btn" onclick="go('home')">Volver al inicio</button></div>
+          <div class="icon">🚀</div>
+          <h2>Juego integrador · ¡Publicá la web!</h2>
+          <p>Ayudá a Martina a llevar su proyecto desde una notebook hasta Internet. El juego recupera los conceptos de las dos lecciones.</p>
+          <iframe class="game-frame" src="juego/v0.1-original/index.html" title="Juego ¡Publicá la web!"></iframe>
+          <p class="mini-status" id="gameStatus">Cuando completes las siete misiones, continuá con la devolución final. El puntaje se agregará al archivo de entrega.</p>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <div class="icon">💬</div>
+          <h2>Tu devolución sobre la clase</h2>
+          <p>Estas preguntas nos ayudan a saber qué quedó claro y qué necesitamos retomar. Si se termina el tiempo, podés responderlas al comienzo de la próxima clase.</p>
+          <div class="reflection-list">
+            <div class="reflection-item">
+              <label for="reflection1">1. ¿Qué aprendiste hoy que antes no sabías?</label>
+              <textarea id="reflection1" placeholder="Hoy aprendí que..."></textarea>
+            </div>
+            <div class="reflection-item">
+              <label for="reflection2">2. Explicá con tus palabras qué ocurre desde que una persona escribe una dirección hasta que ve una página web.</label>
+              <textarea id="reflection2" placeholder="Primero... después..."></textarea>
+            </div>
+            <div class="reflection-item">
+              <label for="reflection3">3. ¿Qué concepto te resultó más claro? ¿Por qué?</label>
+              <textarea id="reflection3" placeholder="El concepto que me resultó más claro fue..."></textarea>
+            </div>
+            <div class="reflection-item">
+              <label for="reflection4">4. ¿Qué preguntas te quedaron sin responder sobre este tema?</label>
+              <textarea id="reflection4" placeholder="Todavía me pregunto..."></textarea>
+            </div>
+            <div class="reflection-item">
+              <label for="reflection5">5. ¿Hay algo que no hayas entendido o sobre lo que quieras más explicación?</label>
+              <textarea id="reflection5" placeholder="Me gustaría que expliquemos nuevamente..."></textarea>
+            </div>
+          </div>
+          <div class="actions"><button class="btn ghost" onclick="saveReflection()">Guardar devolución</button></div>
+          <div class="mini-status" id="reflectionStatus">Tus respuestas quedan guardadas solamente en este navegador.</div>
         </div>
 
         <div class="card" style="margin-top:18px">
           <div class="icon">📥</div>
-          <h2>Descargá tu trabajo</h2>
-          <p>Escribí tu nombre y descargá un archivo con las ideas y respuestas que guardaste durante el recorrido. Después podés entregarlo en Classroom.</p>
+          <h2>Prepará la entrega para Classroom</h2>
+          <p>Escribí tu nombre y descargá un archivo con las ideas, actividades, resultado del juego y devolución final.</p>
           <label for="studentName"><strong>Nombre y apellido</strong></label>
-          <input class="student-name" id="studentName" type="text" autocomplete="name" placeholder="Ejemplo: Luna Pérez">
+          <input class="student-name" id="studentName" type="text" autocomplete="name" placeholder="Ejemplo: Martina Pérez">
           <div class="actions">
             <button class="btn ok" onclick="downloadWork()">Descargar mi trabajo (.txt)</button>
           </div>
@@ -839,6 +908,25 @@
     document.getElementById('decisionStatus').textContent='✓ Respuesta guardada en este navegador.';
   }
 
+  function collectReflection(){
+    state.reflection=Array.from({length:5},(_,index)=>
+      document.getElementById(`reflection${index+1}`).value.trim()
+    );
+  }
+
+  function saveReflection(){
+    collectReflection();
+    persist();
+    document.getElementById('reflectionStatus').textContent='✓ Devolución guardada en este navegador.';
+  }
+
+  window.addEventListener('message',event=>{
+    if(event.data?.type!=='publicaLaWebFinished') return;
+    state.gameResult={score:event.data.score,total:event.data.total};
+    persist();
+    document.getElementById('gameStatus').textContent=`✓ Juego completado: ${event.data.score}/${event.data.total} estrellas. El resultado se incluirá en la entrega.`;
+  });
+
   function downloadWork(){
     const name=document.getElementById('studentName').value.trim();
     const status=document.getElementById('downloadStatus');
@@ -852,6 +940,7 @@
     state.studentName=name;
     state.projectIdea=document.getElementById('projectIdea').value;
     state.siteDecision=document.getElementById('siteDecision').value;
+    collectReflection();
     persist();
 
     const completed=state.done.filter(x=>['m0','m1'].includes(x)).length;
@@ -869,6 +958,26 @@
       '',
       '2. DECISIÓN: SITIO WEB O LANDING PAGE',
       state.siteDecision.trim() || '(Sin respuesta)',
+      '',
+      '3. RESULTADO DEL JUEGO INTEGRADOR «¡PUBLICÁ LA WEB!»',
+      state.gameResult ? `${state.gameResult.score}/${state.gameResult.total} estrellas` : '(Juego todavía no completado)',
+      '',
+      '4. DEVOLUCIÓN FINAL',
+      '',
+      '4.1 ¿Qué aprendiste hoy que antes no sabías?',
+      state.reflection[0] || '(Sin respuesta)',
+      '',
+      '4.2 Explicá qué ocurre desde que una persona escribe una dirección hasta que ve una página web.',
+      state.reflection[1] || '(Sin respuesta)',
+      '',
+      '4.3 ¿Qué concepto te resultó más claro? ¿Por qué?',
+      state.reflection[2] || '(Sin respuesta)',
+      '',
+      '4.4 ¿Qué preguntas te quedaron sin responder sobre este tema?',
+      state.reflection[3] || '(Sin respuesta)',
+      '',
+      '4.5 ¿Hay algo que no hayas entendido o sobre lo que quieras más explicación?',
+      state.reflection[4] || '(Sin respuesta)',
       '',
       'ACTIVIDADES COMPLETADAS',
       `Análisis de comunicación web: ${state.problemDone ? 'Sí' : 'No'}`,
@@ -918,10 +1027,19 @@
     if(window.location.protocol==='file:'){
       document.getElementById('youtubeEmbed').style.display='none';
       document.getElementById('videoLocalFallback').classList.add('show');
+      document.getElementById('youtubeEmbedTwo').style.display='none';
+      document.getElementById('videoLocalFallbackTwo').classList.add('show');
     }
     document.getElementById('projectIdea').value=state.projectIdea||'';
     document.getElementById('siteDecision').value=state.siteDecision||'';
     document.getElementById('studentName').value=state.studentName||'';
+    const savedReflection=Array.isArray(state.reflection)?state.reflection:[];
+    Array.from({length:5},(_,index)=>{
+      document.getElementById(`reflection${index+1}`).value=savedReflection[index]||'';
+    });
+    if(state.gameResult){
+      document.getElementById('gameStatus').textContent=`✓ Juego completado: ${state.gameResult.score}/${state.gameResult.total} estrellas. El resultado se incluirá en la entrega.`;
+    }
     showMicroStep('one');
     showMicroStep('two');
     updateProgress();
