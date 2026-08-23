@@ -453,6 +453,10 @@ Después del juego se incorporó una devolución escrita con cinco preguntas:
 
 Las preguntas cumplen una doble función. Si la clase alcanza los 90 minutos, funcionan como cierre metacognitivo y evaluación de salida. Si no hay tiempo suficiente, quedan disponibles para abrir la clase siguiente y recuperar dudas. Las cinco respuestas, incluso cuando alguna quede sin completar, se agregan al archivo TXT junto con la idea de proyecto, la decisión entre sitio y landing page, el resultado del juego y el registro de actividades. De este modo se genera una única evidencia descargable para entregar mediante Classroom.
 
+### Corrección de navegación en celulares
+
+Durante una prueba desde un teléfono se observó que, al seleccionar una opción del menú, cambiaba la sección activa pero la página se desplazaba hacia el inicio general. Como en la disposición móvil el menú se encuentra encima del contenido, el estudiante permanecía visualmente en el menú y podía interpretar que la opción no había funcionado. Se modificó la navegación para que, en pantallas de hasta 850 píxeles, el desplazamiento termine directamente en el comienzo de la sección seleccionada. En pantallas grandes se mantiene el desplazamiento habitual hacia la parte superior.
+
 ---
 
 ## Plantilla para próximas entradas

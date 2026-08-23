@@ -796,10 +796,17 @@
 
   function go(id){
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+    const activeScreen=document.getElementById(id);
+    activeScreen.classList.add('active');
     const navScreen=id==='m1b'?'m1':id;
     document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.screen===navScreen));
-    window.scrollTo({top:0,behavior:'smooth'});
+    requestAnimationFrame(()=>{
+      if(window.matchMedia('(max-width: 850px)').matches){
+        activeScreen.scrollIntoView({behavior:'smooth',block:'start'});
+      }else{
+        window.scrollTo({top:0,behavior:'smooth'});
+      }
+    });
   }
 
   document.querySelectorAll('.nav-btn').forEach(btn=>{
