@@ -457,6 +457,8 @@ Las preguntas cumplen una doble función. Si la clase alcanza los 90 minutos, fu
 
 Durante una prueba desde un teléfono se observó que, al seleccionar una opción del menú, cambiaba la sección activa pero la página se desplazaba hacia el inicio general. Como en la disposición móvil el menú se encuentra encima del contenido, el estudiante permanecía visualmente en el menú y podía interpretar que la opción no había funcionado. Se modificó la navegación para que, en pantallas de hasta 850 píxeles, el desplazamiento termine directamente en el comienzo de la sección seleccionada. En pantallas grandes se mantiene el desplazamiento habitual hacia la parte superior.
 
+En una segunda prueba móvil, el paso 4 de «De la carpeta a Internet» se extendía fuera de la pantalla al mostrar la URL completa en orientación vertical. Las direcciones web son cadenas largas sin espacios y algunos navegadores evitan dividirlas automáticamente. Se ajustaron los ejemplos para que puedan repartirse visualmente entre varias líneas y se limitó el ancho mínimo de los elementos de la lección. La URL conserva todos sus caracteres y su significado, pero ya no debería generar desplazamiento horizontal.
+
 ---
 
 ## Plantilla para próximas entradas
@@ -482,3 +484,8 @@ Durante una prueba desde un teléfono se observó que, al seleccionar una opció
 ### Preguntas abiertas
 
 ### Siguiente paso
+
+
+## Entrega para Classroom en PDF
+
+La docente comunica que probó CursoHTML con sus estudiantes y considera que funcionó; es una valoración docente, aún sin análisis sistemático. También observó edición del archivo de entrega. Solicita una barrera práctica, sin controles estrictos. Se sustituye la descarga TXT por un informe que se guarda como PDF mediante la impresión del navegador. Conserva nombre, ideas, actividades, juego y reflexiones; el avance local permanece. No se presenta el PDF como evidencia inalterable. La modificación local todavía debe publicarse para llegar al sitio de GitHub.

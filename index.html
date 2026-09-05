@@ -178,6 +178,7 @@
     .lesson{
       display:grid;gap:18px;
     }
+    .lesson>*{min-width:0}
     .callout{
       border-left:5px solid var(--accent);
       background:#fff8f4;
@@ -230,7 +231,11 @@
     }
     .file-chip{background:#eef3ff;color:#2442a6;border:1px solid #c9d5fa}
     .folder-chip{background:#fff4db;color:#805800;border:1px solid #f1d58f}
-    .browser-chip{display:block;background:#f2f4f7;color:#475467;border:1px solid #d0d5dd;text-align:left}
+    .browser-chip{
+      display:block;max-width:100%;background:#f2f4f7;color:#475467;
+      border:1px solid #d0d5dd;text-align:left;overflow-wrap:anywhere;word-break:break-word;
+    }
+    .micro-visual p{overflow-wrap:anywhere;word-break:break-word}
     .micro-arrow{display:inline-block;margin:4px 8px;color:var(--primary);font-weight:900}
     .micro-controls{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
     .micro-options{display:grid;gap:10px;margin-top:14px}
@@ -769,11 +774,11 @@
         <div class="card" style="margin-top:18px">
           <div class="icon">📥</div>
           <h2>Prepará la entrega para Classroom</h2>
-          <p>Escribí tu nombre y descargá un archivo con las ideas, actividades, resultado del juego y devolución final.</p>
+          <p>Escribí tu nombre y prepará el informe con tus ideas, actividades, resultado del juego y devolución final. Guardalo como PDF desde la ventana de impresión y adjuntalo en Classroom.</p>
           <label for="studentName"><strong>Nombre y apellido</strong></label>
           <input class="student-name" id="studentName" type="text" autocomplete="name" placeholder="Ejemplo: Martina Pérez">
           <div class="actions">
-            <button class="btn ok" onclick="downloadWork()">Descargar mi trabajo (.txt)</button>
+            <button class="btn ok" onclick="downloadWork()">Preparar entrega en PDF</button>
           </div>
           <div class="mini-status" id="downloadStatus" aria-live="polite"></div>
         </div>
@@ -934,12 +939,34 @@
     document.getElementById('gameStatus').textContent=`✓ Juego completado: ${event.data.score}/${event.data.total} estrellas. El resultado se incluirá en la entrega.`;
   });
 
+// Shared, offline report view. Student text is inserted with textContent.
+function openWorkReport(title, text, status){
+  const report=window.open('', '_blank');
+  if(!report){status.textContent='Permití abrir la ventana del informe y volvé a intentarlo.';return false;}
+  report.opener=null;
+  const doc=report.document;
+  doc.title=title;
+  doc.documentElement.lang='es-AR';
+  const meta=doc.createElement('meta');meta.name='viewport';meta.content='width=device-width, initial-scale=1';doc.head.append(meta);
+  const style=doc.createElement('style');
+  style.textContent='body{font:16px/1.6 system-ui,sans-serif;color:#172b43;max-width:800px;margin:32px auto;padding:0 24px}pre{font:inherit;white-space:pre-wrap;overflow-wrap:anywhere}button{font:inherit;padding:12px 18px;cursor:pointer;background:#2155bd;color:white;border:0;border-radius:8px}button:focus-visible{outline:3px solid #e97819;outline-offset:3px}@page{size:A4;margin:18mm}@media print{.controls{display:none}body{margin:0;padding:0;max-width:none;font-size:11pt;color:black}pre{orphans:3;widows:3}}';
+  doc.head.append(style);
+  const controls=doc.createElement('div');controls.className='controls';
+  const instructions=doc.createElement('p');instructions.textContent='Elegí «Guardar como PDF» como destino en la ventana de impresión. Después adjuntá el PDF en Classroom.';
+  const button=doc.createElement('button');button.type='button';button.textContent='Guardar como PDF';button.onclick=()=>{report.focus();report.print()};
+  controls.append(instructions,button);
+  const content=doc.createElement('pre');content.textContent=text;
+  doc.body.append(controls,content);
+  status.textContent='Informe abierto. Guardalo como PDF y adjuntalo en Classroom.';
+  return true;
+}
+
   function downloadWork(){
     const name=document.getElementById('studentName').value.trim();
     const status=document.getElementById('downloadStatus');
 
     if(!name){
-      status.textContent='Escribí tu nombre y apellido antes de descargar.';
+      status.textContent='Escribí tu nombre y apellido antes de preparar la entrega.';
       document.getElementById('studentName').focus();
       return;
     }
@@ -957,7 +984,7 @@
       'Tecnología · 4.º año',
       '',
       `Estudiante: ${name}`,
-      `Fecha de descarga: ${new Date().toLocaleString('es-AR')}`,
+      `Fecha de preparación: ${new Date().toLocaleString('es-AR')}`,
       `Progreso: ${progress}%`,
       '',
       '1. IDEA PARA EL PROYECTO FINAL',
@@ -997,21 +1024,7 @@
       ''
     ].join('\n');
 
-    const safeName=name.normalize('NFD')
-      .replace(/[\u0300-\u036f]/g,'')
-      .replace(/[^a-zA-Z0-9]+/g,'-')
-      .replace(/^-|-$/g,'')
-      .toLowerCase() || 'estudiante';
-    const blob=new Blob(['\uFEFF'+text],{type:'text/plain;charset=utf-8'});
-    const url=URL.createObjectURL(blob);
-    const link=document.createElement('a');
-    link.href=url;
-    link.download=`curso-html-${safeName}.txt`;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-    status.textContent='✓ Archivo descargado. Ya podés subirlo a Classroom.';
+    openWorkReport('Curso HTML - '+name,text,status);
   }
 
   function completeModule(module,next){
