@@ -44,6 +44,7 @@
       position:sticky;
       top:0;
       height:100vh;
+      overflow-y:auto;
       overflow:auto;
     }
     .brand{
@@ -286,6 +287,20 @@
     .reflection-list{display:grid;gap:16px;margin-top:18px}
     .reflection-item label{display:block;font-weight:800;margin-bottom:7px}
     .reflection-item textarea{min-height:92px}
+    .site-comparison{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .mock-site{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:white}
+    .mock-bar{padding:8px 12px;background:#edf1f6;color:#667085;font-size:12px}
+    .mock-body{padding:20px;min-height:300px}
+    .mock-good .mock-body{background:#fffdf7}
+    .mock-good h3{font-size:27px;color:#24543b}
+    .mock-good .mock-cta{display:inline-block;background:#24543b;color:white;padding:10px 14px;border-radius:9px;font-weight:800}
+    .mock-bad .mock-body{background:linear-gradient(135deg,#fff200,#ff8ad8);font-family:"Comic Sans MS",cursive;text-align:center}
+    .mock-bad h3{font-size:31px;color:#7b1290;text-decoration:underline}
+    .mock-bad .mock-cta{display:inline-block;margin:4px;padding:9px;background:#00f0ff;color:#7a003f;border:3px dashed red;font-weight:900}
+    .comparison-questions{display:grid;gap:14px;margin-top:18px}
+    .project-form{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+    .project-form .wide{grid-column:1/-1}
+    .project-form label{display:block;font-weight:800;margin-bottom:7px}
     .mini-status{
       font-size:13px;color:var(--muted);margin-top:6px;
     }
@@ -297,6 +312,12 @@
     .locked{
       opacity:.55;filter:grayscale(.2);cursor:not-allowed
     }
+    .license-note{
+      margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.16);
+      color:#cbd5e8;font-size:12px;line-height:1.5;
+    }
+    .license-note strong{display:block;color:white;margin-bottom:3px}
+    .license-note a{color:#b9cdf8;text-decoration:underline;text-underline-offset:2px}
     footer{
       margin-top:26px;color:var(--muted);font-size:13px;text-align:center;
     }
@@ -306,6 +327,7 @@
       nav{grid-template-columns:repeat(2,1fr)}
       .topbar{position:relative;padding:0 18px}
       .grid,.summary-box{grid-template-columns:1fr 1fr}
+      .site-comparison{grid-template-columns:1fr}
     }
     @media(max-width:560px){
       .content{width:min(100% - 24px,1000px);margin-top:20px}
@@ -314,6 +336,8 @@
       nav{grid-template-columns:1fr}
       .section-head{align-items:flex-start;flex-direction:column}
       .game-frame{height:900px}
+      .project-form{grid-template-columns:1fr}
+      .project-form .wide{grid-column:auto}
     }
   </style>
 </head>
@@ -353,9 +377,9 @@
         <span class="nav-num">✓</span>
         <span><span class="nav-title">Cierre de la clase</span><span class="nav-sub">Juego, devolución y entrega</span></span>
       </button>
-      <button class="nav-btn locked" data-screen="module2" disabled>
+      <button class="nav-btn" data-screen="module2" id="nav-module2">
         <span class="nav-num">2</span>
-        <span><span class="nav-title">Diseñar para personas</span><span class="nav-sub">Usabilidad y accesibilidad</span></span>
+        <span><span class="nav-title">Propósito y destinatarios</span><span class="nav-sub">Qué comunicar y para quién</span></span>
       </button>
       <button class="nav-btn locked" data-screen="module3" disabled>
         <span class="nav-num">3</span>
@@ -374,6 +398,11 @@
         <span><span class="nav-title">CSS</span><span class="nav-sub">Dar estilo</span></span>
       </button>
     </nav>
+    <div class="license-note">
+      <strong>Creado por Andrea Rocca</strong>
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a><br>
+      Uso no comercial · Compartir igual
+    </div>
   </aside>
 
   <main>
@@ -772,13 +801,193 @@
         </div>
 
         <div class="card" style="margin-top:18px">
+          <div class="icon">➡️</div>
+          <h2>¿Cómo querés continuar?</h2>
+          <p>Podés preparar la entrega de esta clase o comenzar el módulo siguiente.</p>
+          <div class="actions">
+            <button class="btn ok" onclick="openDelivery('class1')">Ir a la entrega →</button>
+            <button class="btn ghost" onclick="go('module2')">Comenzar el módulo 2 →</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="module2">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" style="color:var(--primary)">Módulo 2 · Segunda clase</div>
+            <h2>Propósito y destinatarios</h2>
+            <p>Antes de elegir colores o escribir código, necesitamos saber qué queremos comunicar, a quién y para qué.</p>
+          </div>
+          <span class="pill">90 min</span>
+        </div>
+
+        <div class="lesson">
+          <article class="card">
+            <div class="lesson-label">🔎 Primero observamos</div>
+            <h3>Dos sitios, dos maneras de comunicar</h3>
+            <p>Imaginá que estos sitios aparecen en los resultados de una búsqueda. Miralos como visitante: ¿entendés rápidamente qué ofrecen y qué podés hacer?</p>
+            <div class="site-comparison">
+              <div class="mock-site mock-good">
+                <div class="mock-bar">● ● ● &nbsp; viveroraizurbana.com.ar</div>
+                <div class="mock-body">
+                  <small>VIVERO RAÍZ URBANA</small>
+                  <h3>Plantas fáciles para llenar de verde tu casa</h3>
+                  <p>Te ayudamos a elegir plantas de interior y te explicamos cómo cuidarlas.</p>
+                  <p><strong>Entregas en el barrio · Asesoramiento para principiantes</strong></p>
+                  <span class="mock-cta">Ver plantas disponibles</span>
+                </div>
+              </div>
+              <div class="mock-site mock-bad">
+                <div class="mock-bar">● ● ● &nbsp; todomix.example</div>
+                <div class="mock-body">
+                  <h3>¡¡¡TODO MIX!!!</h3>
+                  <p>Bienvenidos a nuestra página. Tenemos muchas novedades, soluciones y cosas increíbles para todo el mundo.</p>
+                  <span class="mock-cta">ENTRAR</span><span class="mock-cta">MÁS</span><span class="mock-cta">CLICK</span>
+                  <p>Calidad, compromiso, innovación, trayectoria y excelencia.</p>
+                </div>
+              </div>
+            </div>
+            <div class="comparison-questions">
+              <div><label for="m2Compare1"><strong>1. ¿En cuál entendés más rápido qué se ofrece?</strong></label><select id="m2Compare1"><option value="">Elegí una opción</option><option value="a">Vivero Raíz Urbana</option><option value="b">Todo Mix</option></select></div>
+              <div><label for="m2Compare2"><strong>2. ¿Cuál presenta una acción más clara para el visitante?</strong></label><select id="m2Compare2"><option value="">Elegí una opción</option><option value="a">Vivero Raíz Urbana</option><option value="b">Todo Mix</option></select></div>
+              <div><label for="m2Compare3"><strong>3. ¿En cuál resulta más fácil imaginar a qué personas se dirige?</strong></label><select id="m2Compare3"><option value="">Elegí una opción</option><option value="a">Vivero Raíz Urbana</option><option value="b">Todo Mix</option></select></div>
+            </div>
+            <div class="actions"><button class="btn" onclick="checkModuleTwoComparison()">Comprobar observación</button></div>
+            <div class="feedback" id="m2ComparisonFeedback"></div>
+          </article>
+
+          <article class="card micro-lesson" id="microLessonThree">
+            <div class="micro-head">
+              <div><div class="eyebrow" style="color:var(--primary)">Confirmamos lo observado</div><h3>Cuatro decisiones antes de diseñar</h3></div>
+              <span class="micro-counter" id="microCounterThree">Paso 1 de 4</span>
+            </div>
+            <div class="micro-track" aria-hidden="true"><div class="micro-fill" id="microFillThree"></div></div>
+
+            <div class="micro-step micro-step-three active">
+              <h3>1. Propósito: ¿para qué existe el sitio?</h3>
+              <p>El propósito es el resultado que la organización busca conseguir: informar, vender, recibir consultas, conseguir inscripciones, convocar o presentar un proyecto.</p>
+              <div class="micro-visual"><span class="folder-chip">🏢 Organización</span><span class="micro-arrow">quiere</span><span class="file-chip">🎯 Lograr algo</span></div>
+            </div>
+            <div class="micro-step micro-step-three">
+              <h3>2. Destinatarios: ¿con quién queremos comunicarnos?</h3>
+              <p>Un sitio no habla de la misma manera a niñas y niños, familias, clientes, estudiantes o especialistas. Reconocer a los destinatarios ayuda a decidir el tono, la información y las imágenes.</p>
+              <div class="micro-visual"><span class="file-chip">👥 Personas concretas</span><span class="micro-arrow">necesitan</span><span class="folder-chip">💬 Un mensaje adecuado</span></div>
+            </div>
+            <div class="micro-step micro-step-three">
+              <h3>3. Propuesta de valor: ¿por qué elegir esta propuesta?</h3>
+              <p>Explica de manera breve qué ofrece la organización, qué necesidad resuelve y qué la diferencia. No alcanza con decir “calidad” o “excelencia”: conviene ser específico.</p>
+              <div class="micro-visual"><span class="browser-chip">Plantas fáciles + ayuda para aprender a cuidarlas</span></div>
+            </div>
+            <div class="micro-step micro-step-three">
+              <h3>4. Llamada a la acción: ¿qué queremos que haga la persona?</h3>
+              <p>Es una indicación visible y concreta: “Inscribirme”, “Consultar”, “Ver productos”, “Reservar turno” o “Descargar”. Debe estar relacionada con el propósito.</p>
+              <div class="micro-visual"><span class="file-chip">👤 Visitante</span><span class="micro-arrow">→</span><span class="folder-chip">🔘 Reservar un turno</span></div>
+            </div>
+
+            <div class="micro-controls">
+              <button class="btn ghost" id="microPrevThree" onclick="changeMicroStepThree(-1)" disabled>← Anterior</button>
+              <button class="btn" id="microNextThree" onclick="changeMicroStepThree(1)">Siguiente →</button>
+            </div>
+          </article>
+
+          <div class="grid" id="conceptCardsThree">
+            <article class="card"><div class="icon">🎯</div><h3>Propósito</h3><p>Lo que el sitio busca conseguir.</p></article>
+            <article class="card"><div class="icon">👥</div><h3>Destinatarios</h3><p>Las personas con las que queremos comunicarnos.</p></article>
+            <article class="card"><div class="icon">💎</div><h3>Propuesta de valor</h3><p>Qué ofrecemos, qué necesidad resolvemos y qué nos diferencia.</p></article>
+            <article class="card"><div class="icon">🔘</div><h3>Llamada a la acción</h3><p>La acción concreta que proponemos al visitante.</p></article>
+          </div>
+
+          <article class="card">
+            <h3>Minijuego · ¿Qué decisión falta?</h3>
+            <p>Relacioná cada situación con el concepto que ayuda a resolverla.</p>
+            <div class="term">1. La página de un taller explica todo correctamente, pero no indica cómo reservar un lugar.</div>
+            <div class="select-line"><select id="m2Quiz1"><option value="">Elegí una opción</option><option>Propósito</option><option>Destinatarios</option><option>Propuesta de valor</option><option>Llamada a la acción</option></select></div>
+            <div class="term" style="margin-top:12px">2. Un club sabe que quiere crear una web, pero todavía no decidió si busca sumar socios, informar horarios o recibir inscripciones.</div>
+            <div class="select-line"><select id="m2Quiz2"><option value="">Elegí una opción</option><option>Propósito</option><option>Destinatarios</option><option>Propuesta de valor</option><option>Llamada a la acción</option></select></div>
+            <div class="term" style="margin-top:12px">3. Un emprendimiento necesita explicar que entrega viandas saludables, listas para consumir y adaptadas a personas celíacas.</div>
+            <div class="select-line"><select id="m2Quiz3"><option value="">Elegí una opción</option><option>Propósito</option><option>Destinatarios</option><option>Propuesta de valor</option><option>Llamada a la acción</option></select></div>
+            <div class="term" style="margin-top:12px">4. Una biblioteca debe decidir si su mensaje estará pensado principalmente para estudiantes, familias o docentes.</div>
+            <div class="select-line"><select id="m2Quiz4"><option value="">Elegí una opción</option><option>Propósito</option><option>Destinatarios</option><option>Propuesta de valor</option><option>Llamada a la acción</option></select></div>
+            <div class="actions"><button class="btn" onclick="checkModuleTwoQuiz()">Corregir minijuego</button></div>
+            <div class="feedback" id="m2QuizFeedback"></div>
+          </article>
+
+          <article class="card">
+            <div class="lesson-label">✍️ Aplicalo a tu proyecto</div>
+            <h3>Ficha inicial de la organización o emprendimiento</h3>
+            <p>No tiene que ser una decisión definitiva. Esta primera versión servirá para conversar, revisar y mejorar la idea.</p>
+            <div class="project-form">
+              <div><label for="m2ProjectName">Nombre de la organización, emprendimiento o proyecto</label><input class="student-name" id="m2ProjectName" type="text" placeholder="Ejemplo: Huerta del Sur"></div>
+              <div><label for="m2ProjectType">¿Qué hace?</label><textarea id="m2ProjectType" placeholder="Se dedica a..."></textarea></div>
+              <div><label for="m2ProjectOffer">¿Qué producto, servicio o propuesta ofrece?</label><textarea id="m2ProjectOffer" placeholder="Ofrece..."></textarea></div>
+              <div><label for="m2ProjectAudience">¿A quién está dirigido?</label><textarea id="m2ProjectAudience" placeholder="Está pensado para..."></textarea></div>
+              <div><label for="m2ProjectNeed">¿Qué problema, necesidad o interés busca atender?</label><textarea id="m2ProjectNeed" placeholder="Busca ayudar a resolver..."></textarea></div>
+              <div><label for="m2ProjectDifference">¿Qué la diferencia de otras propuestas?</label><textarea id="m2ProjectDifference" placeholder="Se diferencia porque..."></textarea></div>
+              <div><label for="m2ProjectAction">¿Qué acción principal debería realizar quien visite el sitio?</label><textarea id="m2ProjectAction" placeholder="La acción principal será..."></textarea></div>
+              <div><label for="m2ProjectTone">¿Qué tono debería tener la comunicación?</label><textarea id="m2ProjectTone" placeholder="Formal, juvenil, cercano, institucional..."></textarea></div>
+              <div class="wide"><label for="m2ProjectInformation">¿Qué información debería encontrar una persona al ingresar?</label><textarea id="m2ProjectInformation" placeholder="Debería encontrar..."></textarea></div>
+            </div>
+            <div class="actions"><button class="btn ghost" onclick="saveModuleTwoProject()">Guardar ficha</button></div>
+            <div class="mini-status" id="m2ProjectStatus">La ficha queda guardada solamente en este navegador.</div>
+          </article>
+
+          <article class="card">
+            <div class="icon">✅</div>
+            <h3>Cierre de la segunda clase</h3>
+            <p>Guardá la ficha y prepará el informe de esta clase para Classroom. Será una entrega independiente del trabajo realizado en el módulo anterior.</p>
+            <div class="actions">
+              <button class="btn ok" onclick="finishModuleTwo()">Terminé y quiero preparar la entrega →</button>
+            </div>
+            <div class="mini-status" id="m2FinishStatus"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen" id="module2Close">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" style="color:var(--primary)">Cierre del Módulo 2</div>
+            <h2>Semáforo de aprendizaje</h2>
+            <p>Antes de preparar la entrega, detenete un momento para reconocer qué comprendiste y qué conviene revisar.</p>
+          </div>
+          <span class="pill">5–10 min</span>
+        </div>
+        <div class="lesson">
+          <article class="card">
+            <div class="lesson-label">🚦 Mirá tu propio aprendizaje</div>
+            <p>Elegí <strong>verde</strong> si podrías explicarlo, <strong>amarillo</strong> si todavía dudás y <strong>rojo</strong> si necesitás volver a trabajarlo.</p>
+            <div class="comparison-questions">
+              <div><label for="m2MetaPurpose"><strong>Propósito</strong></label><select id="m2MetaPurpose"><option value="">Elegí un color</option><option>🟢 Verde: puedo explicarlo</option><option>🟡 Amarillo: tengo algunas dudas</option><option>🔴 Rojo: necesito más explicación</option></select></div>
+              <div><label for="m2MetaAudience"><strong>Destinatarios</strong></label><select id="m2MetaAudience"><option value="">Elegí un color</option><option>🟢 Verde: puedo explicarlo</option><option>🟡 Amarillo: tengo algunas dudas</option><option>🔴 Rojo: necesito más explicación</option></select></div>
+              <div><label for="m2MetaValue"><strong>Propuesta de valor</strong></label><select id="m2MetaValue"><option value="">Elegí un color</option><option>🟢 Verde: puedo explicarlo</option><option>🟡 Amarillo: tengo algunas dudas</option><option>🔴 Rojo: necesito más explicación</option></select></div>
+              <div><label for="m2MetaAction"><strong>Llamada a la acción</strong></label><select id="m2MetaAction"><option value="">Elegí un color</option><option>🟢 Verde: puedo explicarlo</option><option>🟡 Amarillo: tengo algunas dudas</option><option>🔴 Rojo: necesito más explicación</option></select></div>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Dos respuestas para cerrar</h3>
+            <div class="reflection-list">
+              <div class="reflection-item"><label for="m2MetaExplain">Elegí un concepto en verde y explicalo con tus palabras.</label><textarea id="m2MetaExplain" placeholder="Puedo explicar que..."></textarea></div>
+              <div class="reflection-item"><label for="m2MetaReview">¿Qué concepto querés revisar o qué pregunta te quedó?</label><textarea id="m2MetaReview" placeholder="Quiero revisar... / Me quedó la pregunta..."></textarea></div>
+            </div>
+            <div class="actions">
+              <button class="btn ghost" onclick="saveModuleTwoMeta()">Guardar semáforo</button>
+              <button class="btn ok" onclick="saveModuleTwoMetaAndDeliver()">Guardar e ir a la entrega →</button>
+            </div>
+            <div class="mini-status" id="m2MetaStatus">Las respuestas se incorporarán al informe.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen" id="delivery">
+        <div class="card">
           <div class="icon">📥</div>
-          <h2>Prepará la entrega para Classroom</h2>
-          <p>Escribí tu nombre y prepará el informe con tus ideas, actividades, resultado del juego y devolución final. Guardalo como PDF desde la ventana de impresión y adjuntalo en Classroom.</p>
+          <h2 id="deliveryTitle">Prepará la entrega para Classroom</h2>
+          <p id="deliveryDescription">El informe incluirá solamente las respuestas de la clase que acabás de completar.</p>
           <label for="studentName"><strong>Nombre y apellido</strong></label>
           <input class="student-name" id="studentName" type="text" autocomplete="name" placeholder="Ejemplo: Martina Pérez">
           <div class="actions">
             <button class="btn ok" onclick="downloadWork()">Preparar entrega en PDF</button>
+            <button class="btn ghost" onclick="go('home')">Volver al inicio</button>
           </div>
           <div class="mini-status" id="downloadStatus" aria-live="polite"></div>
         </div>
@@ -792,7 +1001,8 @@
 <script>
   const state = JSON.parse(localStorage.getItem('webCourseState') || '{"done":[]}');
   if(!Array.isArray(state.done)) state.done=[];
-  const microSteps={one:0,two:0};
+  const microSteps={one:0,two:0,three:0};
+  let deliveryMode='class1';
 
   function persist(){
     localStorage.setItem('webCourseState', JSON.stringify(state));
@@ -803,7 +1013,7 @@
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
     const activeScreen=document.getElementById(id);
     activeScreen.classList.add('active');
-    const navScreen=id==='m1b'?'m1':id;
+    const navScreen={m1b:'m1',module2Close:'module2'}[id]||id;
     document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.screen===navScreen));
     requestAnimationFrame(()=>{
       if(window.matchMedia('(max-width: 850px)').matches){
@@ -836,7 +1046,7 @@
   }
 
   function showMicroStep(which){
-    const suffix=which==='one'?'One':'Two';
+    const suffix={one:'One',two:'Two',three:'Three'}[which];
     const steps=[...document.querySelectorAll(`.micro-step-${which}`)];
     const current=microSteps[which];
     steps.forEach((step,index)=>step.classList.toggle('active',index===current));
@@ -850,11 +1060,13 @@
     const total=document.querySelectorAll(`.micro-step-${which}`).length;
     microSteps[which]=Math.max(0,Math.min(total-1,microSteps[which]+direction));
     showMicroStep(which);
-    document.getElementById(which==='one'?'microLessonOne':'microLessonTwo').scrollIntoView({behavior:'smooth',block:'start'});
+    const lessonId={one:'microLessonOne',two:'microLessonTwo',three:'microLessonThree'}[which];
+    document.getElementById(lessonId).scrollIntoView({behavior:'smooth',block:'start'});
   }
 
   function changeMicroStepOne(direction){ changeMicroStep('one',direction); }
   function changeMicroStepTwo(direction){ changeMicroStep('two',direction); }
+  function changeMicroStepThree(direction){ changeMicroStep('three',direction); }
 
   function checkMicroAnswerOne(correct){
     const box=document.getElementById('microFeedbackOne');
@@ -906,6 +1118,90 @@
     box.className='feedback show '+(score===5?'ok':'bad');
     box.innerHTML = score===5 ? '✅ 5/5. Relacionás publicación, dirección y propósito.' : `Obtuviste <strong>${score}/5</strong>. Volvé a recorrer la explicación y probá otra vez.`;
     if(score===5){ state.quizTwoDone=true; state.quizDone=true; persist(); }
+  }
+
+  function checkModuleTwoComparison(){
+    const answers=['m2Compare1','m2Compare2','m2Compare3'].map(id=>document.getElementById(id).value==='a');
+    const score=answers.filter(Boolean).length;
+    const box=document.getElementById('m2ComparisonFeedback');
+    box.className='feedback show '+(score===3?'ok':'bad');
+    box.innerHTML=score===3
+      ? '✅ Las tres decisiones apuntan a Raíz Urbana: explica qué ofrece, permite imaginar a sus destinatarios y propone una acción concreta.'
+      : `Obtuviste <strong>${score}/3</strong>. Volvé a mirar los títulos, los textos y los botones de ambos sitios.`;
+    state.moduleTwoComparisonScore=score;
+    if(score===3) state.moduleTwoComparisonDone=true;
+    persist();
+  }
+
+  function checkModuleTwoQuiz(){
+    const answers=[
+      document.getElementById('m2Quiz1').value==='Llamada a la acción',
+      document.getElementById('m2Quiz2').value==='Propósito',
+      document.getElementById('m2Quiz3').value==='Propuesta de valor',
+      document.getElementById('m2Quiz4').value==='Destinatarios'
+    ];
+    const score=answers.filter(Boolean).length;
+    const box=document.getElementById('m2QuizFeedback');
+    box.className='feedback show '+(score===4?'ok':'bad');
+    box.innerHTML=score===4
+      ? '✅ 4/4. Podés relacionar propósito, destinatarios, propuesta de valor y llamada a la acción.'
+      : `Obtuviste <strong>${score}/4</strong>. Revisá las cuatro tarjetas y probá nuevamente.`;
+    state.moduleTwoQuizScore=score;
+    if(score===4) state.moduleTwoQuizDone=true;
+    persist();
+  }
+
+  const moduleTwoProjectFields=[
+    'm2ProjectName','m2ProjectType','m2ProjectOffer','m2ProjectAudience','m2ProjectNeed',
+    'm2ProjectDifference','m2ProjectAction','m2ProjectTone','m2ProjectInformation'
+  ];
+
+  function collectModuleTwoProject(){
+    state.moduleTwoProject=Object.fromEntries(moduleTwoProjectFields.map(id=>[id,document.getElementById(id).value.trim()]));
+  }
+
+  function saveModuleTwoProject(){
+    collectModuleTwoProject();
+    persist();
+    document.getElementById('m2ProjectStatus').textContent='✓ Ficha guardada en este navegador.';
+  }
+
+  function finishModuleTwo(){
+    collectModuleTwoProject();
+    if(!state.done.includes('module2')) state.done.push('module2');
+    persist();
+    go('module2Close');
+  }
+
+  const moduleTwoMetaFields=['m2MetaPurpose','m2MetaAudience','m2MetaValue','m2MetaAction','m2MetaExplain','m2MetaReview'];
+
+  function collectModuleTwoMeta(){
+    state.moduleTwoMeta=Object.fromEntries(moduleTwoMetaFields.map(id=>[id,document.getElementById(id).value.trim()]));
+  }
+
+  function saveModuleTwoMeta(){
+    collectModuleTwoMeta();
+    persist();
+    document.getElementById('m2MetaStatus').textContent='✓ Semáforo guardado en este navegador.';
+  }
+
+  function saveModuleTwoMetaAndDeliver(){
+    saveModuleTwoMeta();
+    openDelivery('module2');
+    document.getElementById('downloadStatus').textContent='✓ Cierre del Módulo 2 guardado. Ya podés preparar el informe.';
+  }
+
+  function openDelivery(mode){
+    deliveryMode=mode;
+    const isModuleTwo=mode==='module2';
+    document.getElementById('deliveryTitle').textContent=isModuleTwo
+      ? 'Entrega del Módulo 2'
+      : 'Entrega de la primera clase';
+    document.getElementById('deliveryDescription').textContent=isModuleTwo
+      ? 'El informe incluirá la comparación, el minijuego, la ficha del proyecto y el semáforo de aprendizaje de este módulo.'
+      : 'El informe incluirá las actividades, el juego integrador y la devolución de la primera clase.';
+    document.getElementById('downloadStatus').textContent='';
+    go('delivery');
   }
 
   function saveIdea(){
@@ -972,59 +1268,118 @@ function openWorkReport(title, text, status){
     }
 
     state.studentName=name;
-    state.projectIdea=document.getElementById('projectIdea').value;
-    state.siteDecision=document.getElementById('siteDecision').value;
-    collectReflection();
+    let lines;
+    let reportTitle;
+
+    if(deliveryMode==='module2'){
+      collectModuleTwoProject();
+      collectModuleTwoMeta();
+      const project=state.moduleTwoProject||{};
+      const meta=state.moduleTwoMeta||{};
+      lines=[
+        'DISEÑAR PARA LA WEB — ENTREGA DEL MÓDULO 2',
+        'Propósito y destinatarios · Tecnología · 4.º año',
+        '',
+        `Estudiante: ${name}`,
+        `Fecha de preparación: ${new Date().toLocaleString('es-AR')}`,
+        '',
+        'RESULTADOS DE LAS ACTIVIDADES',
+        `Comparación de sitios: ${Number.isInteger(state.moduleTwoComparisonScore) ? `${state.moduleTwoComparisonScore}/3` : '(Sin realizar)'}`,
+        `Minijuego «¿Qué decisión falta?»: ${Number.isInteger(state.moduleTwoQuizScore) ? `${state.moduleTwoQuizScore}/4` : '(Sin realizar)'}`,
+        '',
+        'FICHA INICIAL DEL PROYECTO',
+        '',
+        '1. Nombre de la organización, emprendimiento o proyecto',
+        project.m2ProjectName || '(Sin respuesta)',
+        '',
+        '2. ¿Qué hace?',
+        project.m2ProjectType || '(Sin respuesta)',
+        '',
+        '3. ¿Qué producto, servicio o propuesta ofrece?',
+        project.m2ProjectOffer || '(Sin respuesta)',
+        '',
+        '4. ¿A quién está dirigido?',
+        project.m2ProjectAudience || '(Sin respuesta)',
+        '',
+        '5. ¿Qué problema, necesidad o interés busca atender?',
+        project.m2ProjectNeed || '(Sin respuesta)',
+        '',
+        '6. ¿Qué la diferencia de otras propuestas?',
+        project.m2ProjectDifference || '(Sin respuesta)',
+        '',
+        '7. ¿Qué acción principal debería realizar quien visite el sitio?',
+        project.m2ProjectAction || '(Sin respuesta)',
+        '',
+        '8. ¿Qué tono debería tener la comunicación?',
+        project.m2ProjectTone || '(Sin respuesta)',
+        '',
+        '9. ¿Qué información debería encontrar una persona al ingresar?',
+        project.m2ProjectInformation || '(Sin respuesta)',
+        '',
+        'SEMÁFORO DE APRENDIZAJE',
+        `Propósito: ${meta.m2MetaPurpose || '(Sin respuesta)'}`,
+        `Destinatarios: ${meta.m2MetaAudience || '(Sin respuesta)'}`,
+        `Propuesta de valor: ${meta.m2MetaValue || '(Sin respuesta)'}`,
+        `Llamada a la acción: ${meta.m2MetaAction || '(Sin respuesta)'}`,
+        '',
+        'Concepto que puedo explicar:',
+        meta.m2MetaExplain || '(Sin respuesta)',
+        '',
+        'Concepto o pregunta que quiero revisar:',
+        meta.m2MetaReview || '(Sin respuesta)',
+        ''
+      ];
+      reportTitle='Curso HTML - Modulo 2 - '+name;
+    }else{
+      state.projectIdea=document.getElementById('projectIdea').value;
+      state.siteDecision=document.getElementById('siteDecision').value;
+      collectReflection();
+      lines=[
+        'DISEÑAR PARA LA WEB — ENTREGA DE LA PRIMERA CLASE',
+        'Tecnología · 4.º año',
+        '',
+        `Estudiante: ${name}`,
+        `Fecha de preparación: ${new Date().toLocaleString('es-AR')}`,
+        '',
+        '1. IDEA PARA EL PROYECTO FINAL',
+        state.projectIdea.trim() || '(Sin respuesta)',
+        '',
+        '2. DECISIÓN: SITIO WEB O LANDING PAGE',
+        state.siteDecision.trim() || '(Sin respuesta)',
+        '',
+        '3. RESULTADO DEL JUEGO INTEGRADOR «¡PUBLICÁ LA WEB!»',
+        state.gameResult ? `${state.gameResult.score}/${state.gameResult.total} estrellas` : '(Juego todavía no completado)',
+        '',
+        '4. DEVOLUCIÓN FINAL',
+        '',
+        '4.1 ¿Qué aprendiste hoy que antes no sabías?',
+        state.reflection[0] || '(Sin respuesta)',
+        '',
+        '4.2 ¿Qué ocurre desde que una persona escribe una dirección hasta que ve una página web?',
+        state.reflection[1] || '(Sin respuesta)',
+        '',
+        '4.3 ¿Qué concepto te resultó más claro? ¿Por qué?',
+        state.reflection[2] || '(Sin respuesta)',
+        '',
+        '4.4 ¿Qué preguntas te quedaron sin responder?',
+        state.reflection[3] || '(Sin respuesta)',
+        '',
+        '4.5 ¿Sobre qué necesitás más explicación?',
+        state.reflection[4] || '(Sin respuesta)',
+        '',
+        'ACTIVIDADES COMPLETADAS',
+        `Análisis de comunicación web: ${state.problemDone ? 'Sí' : 'No'}`,
+        `Microlección «¿Dónde vive una página web?»: ${state.microLessonOneDone ? 'Sí' : 'No'}`,
+        `Minijuego 1: ${state.quizOneDone ? 'Sí' : 'No'}`,
+        `Microlección «De la carpeta a Internet»: ${state.microLessonTwoDone ? 'Sí' : 'No'}`,
+        `Minijuego 2: ${state.quizTwoDone ? 'Sí' : 'No'}`,
+        ''
+      ];
+      reportTitle='Curso HTML - Clase 1 - '+name;
+    }
+
     persist();
-
-    const completed=state.done.filter(x=>['m0','m1'].includes(x)).length;
-    const progress=Math.round(completed/2*100);
-    const text=[
-      'DISEÑAR PARA LA WEB — TRABAJO DEL RECORRIDO',
-      'Tecnología · 4.º año',
-      '',
-      `Estudiante: ${name}`,
-      `Fecha de preparación: ${new Date().toLocaleString('es-AR')}`,
-      `Progreso: ${progress}%`,
-      '',
-      '1. IDEA PARA EL PROYECTO FINAL',
-      state.projectIdea.trim() || '(Sin respuesta)',
-      '',
-      '2. DECISIÓN: SITIO WEB O LANDING PAGE',
-      state.siteDecision.trim() || '(Sin respuesta)',
-      '',
-      '3. RESULTADO DEL JUEGO INTEGRADOR «¡PUBLICÁ LA WEB!»',
-      state.gameResult ? `${state.gameResult.score}/${state.gameResult.total} estrellas` : '(Juego todavía no completado)',
-      '',
-      '4. DEVOLUCIÓN FINAL',
-      '',
-      '4.1 ¿Qué aprendiste hoy que antes no sabías?',
-      state.reflection[0] || '(Sin respuesta)',
-      '',
-      '4.2 Explicá qué ocurre desde que una persona escribe una dirección hasta que ve una página web.',
-      state.reflection[1] || '(Sin respuesta)',
-      '',
-      '4.3 ¿Qué concepto te resultó más claro? ¿Por qué?',
-      state.reflection[2] || '(Sin respuesta)',
-      '',
-      '4.4 ¿Qué preguntas te quedaron sin responder sobre este tema?',
-      state.reflection[3] || '(Sin respuesta)',
-      '',
-      '4.5 ¿Hay algo que no hayas entendido o sobre lo que quieras más explicación?',
-      state.reflection[4] || '(Sin respuesta)',
-      '',
-      'ACTIVIDADES COMPLETADAS',
-      `Análisis de comunicación web: ${state.problemDone ? 'Sí' : 'No'}`,
-      `Microlección «¿Dónde vive una página web?»: ${state.microLessonOneDone ? 'Sí' : 'No'}`,
-      `Mini juego 1: ${state.quizOneDone ? 'Sí' : 'No'}`,
-      `Microlección «De la carpeta a Internet»: ${state.microLessonTwoDone ? 'Sí' : 'No'}`,
-      `Mini juego 2: ${state.quizTwoDone ? 'Sí' : 'No'}`,
-      `Módulo 0 finalizado: ${state.done.includes('m0') ? 'Sí' : 'No'}`,
-      `Módulo 1 finalizado: ${state.done.includes('m1') ? 'Sí' : 'No'}`,
-      ''
-    ].join('\n');
-
-    openWorkReport('Curso HTML - '+name,text,status);
+    openWorkReport(reportTitle,lines.join('\n'),status);
   }
 
   function completeModule(module,next){
@@ -1034,11 +1389,11 @@ function openWorkReport(title, text, status){
   }
 
   function updateProgress(){
-    const done=state.done.filter(x=>['m0','m1'].includes(x)).length;
-    const pct=Math.round(done/2*100);
+    const done=state.done.filter(x=>['m0','m1','module2'].includes(x)).length;
+    const pct=Math.round(done/3*100);
     document.getElementById('progressText').textContent=pct+'%';
     document.getElementById('progressFill').style.width=pct+'%';
-    ['m0','m1'].forEach(id=>{
+    ['m0','m1','module2'].forEach(id=>{
       document.getElementById('nav-'+id)?.classList.toggle('done',state.done.includes(id));
     });
   }
@@ -1060,8 +1415,17 @@ function openWorkReport(title, text, status){
     if(state.gameResult){
       document.getElementById('gameStatus').textContent=`✓ Juego completado: ${state.gameResult.score}/${state.gameResult.total} estrellas. El resultado se incluirá en la entrega.`;
     }
+    const savedModuleTwoProject=state.moduleTwoProject||{};
+    moduleTwoProjectFields.forEach(id=>{
+      document.getElementById(id).value=savedModuleTwoProject[id]||'';
+    });
+    const savedModuleTwoMeta=state.moduleTwoMeta||{};
+    moduleTwoMetaFields.forEach(id=>{
+      document.getElementById(id).value=savedModuleTwoMeta[id]||'';
+    });
     showMicroStep('one');
     showMicroStep('two');
+    showMicroStep('three');
     updateProgress();
   });
 </script>

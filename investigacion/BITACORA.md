@@ -459,6 +459,32 @@ Durante una prueba desde un teléfono se observó que, al seleccionar una opció
 
 En una segunda prueba móvil, el paso 4 de «De la carpeta a Internet» se extendía fuera de la pantalla al mostrar la URL completa en orientación vertical. Las direcciones web son cadenas largas sin espacios y algunos navegadores evitan dividirlas automáticamente. Se ajustaron los ejemplos para que puedan repartirse visualmente entre varias líneas y se limitó el ancho mínimo de los elementos de la lección. La URL conserva todos sus caracteres y su significado, pero ya no debería generar desplazamiento horizontal.
 
+## 6 de septiembre de 2026 - Incorporación del plan de aprendizaje original
+
+Se incorporó como fuente primaria el documento `investigacion/fuentes/plan-aprendizaje-taller-4to.pdf`, titulado «¿Cómo puede una organización comunicar su propuesta en la web de manera clara, atractiva y responsable?». Es un plan cuatrimestral de Tecnología para 4.º año, organizado en las etapas Punto de partida, Indagación y Producción, con dos instancias de evaluación.
+
+La revisión confirma que el CursoHTML responde a contenidos expresamente incluidos en el plan: diferencias entre página web, sitio web, landing page, dominio, alojamiento y publicación; Internet y arquitectura cliente-servidor; introducción a HTML y CSS; uso crítico de inteligencia artificial; documentación del proceso y entrega de evidencias mediante Classroom.
+
+El curso interactivo actual no reproduce literalmente el orden de las clases del documento. Anticipa nociones de publicación, hosting, servidor, dominio y URL -ubicadas en la clase 10 del plan- para construir un modelo mental básico antes de comenzar a escribir HTML. Esta reorganización se considera una decisión didáctica consciente: busca que los estudiantes comprendan qué es y dónde funciona una página web antes de aprender sus etiquetas. La futura secuencia de etiquetas HTML deberá vincularse especialmente con las clases 5 y 6 del plan, que proponen estructura básica, títulos, párrafos, listas, imágenes, enlaces y estilos CSS.
+
+También se detectó una inconsistencia en la página 22 del documento: dentro de la Evaluación 2 sobre presentación del sitio web aparece un párrafo referido a un «Arcade de aula», videojuegos, programación y afiches. El resto de las páginas 22 a 24 vuelve a referirse al sitio final en Google Sites y a la producción HTML/CSS. Por su contenido y falta de continuidad, se interpreta como un fragmento residual de otro plan que convendría corregir en la próxima versión del documento original.
+
+## 6 de septiembre de 2026 - Prototipo del Módulo 2
+
+Se construyó el Módulo 2 «Propósito y destinatarios» como propuesta para una segunda clase de 90 minutos. El módulo articula las clases 1 y 2 del plan de aprendizaje con la experiencia interactiva ya desarrollada. En lugar de comenzar con un video, propone observar dos sitios simulados: «Vivero Raíz Urbana», con una comunicación específica, y «Todo Mix», con mensajes genéricos y acciones ambiguas. La comparación permite discutir claridad, destinatarios y acción esperada sin depender de sitios externos que podrían cambiar o dejar de estar disponibles.
+
+Después de la observación se incorporó un recorrido interactivo de cuatro pasos sobre propósito, destinatarios, propuesta de valor y llamada a la acción; cuatro tarjetas conceptuales; un minijuego de aplicación; y una ficha inicial de nueve campos para definir la organización o emprendimiento del estudiante. La ficha recupera preguntas del plan original: nombre, actividad, oferta, destinatarios, necesidad, diferencia, acción principal, tono e información necesaria.
+
+El estado del módulo se conserva localmente. La comparación, el minijuego, la ficha del proyecto y la finalización se incorporan al informe acumulativo para Classroom. El progreso general pasó a considerar tres componentes completables: Módulo 0, Módulo 1 y Módulo 2. La versión queda abierta a revisión docente antes de su uso con estudiantes.
+
+Durante la revisión docente se observó que las cuatro situaciones del minijuego repetían el mismo orden de la explicación y de las tarjetas. Ese orden podía funcionar como pista involuntaria y permitir responder por posición en lugar de interpretar cada caso. Se mezclaron las situaciones -llamada a la acción, propósito, propuesta de valor y destinatarios- conservando el orden de las opciones en los desplegables.
+
+También se detectó que el botón de entrega del Módulo 2 llevaba al cierre de la primera clase y obligaba a volver a pasar por el juego «¡Publicá la web!». Se separó la preparación del informe en una pantalla común de entrega y se creó un cierre propio para el Módulo 2. Este cierre utiliza un semáforo metacognitivo: cada estudiante marca en verde, amarillo o rojo su nivel de comprensión de los cuatro conceptos, explica uno que considera aprendido y registra una duda o aspecto para revisar. El semáforo y las respuestas se guardan localmente y se incorporan al informe acumulativo.
+
+Una nueva revisión explicitó una condición material del aula: los estudiantes reciben una computadora al azar en cada clase. Por lo tanto, el almacenamiento local de un dispositivo no puede utilizarse como registro longitudinal y un informe acumulativo podría omitir el trabajo realizado en otra máquina. Se reemplazó ese supuesto por entregas independientes: la primera clase genera un informe con sus actividades, juego y devolución; el Módulo 2 genera otro informe con su comparación, minijuego, ficha de proyecto y semáforo metacognitivo. Classroom pasa a ser el espacio donde se conserva y acumula la trayectoria del estudiante. El almacenamiento del navegador queda limitado a la recuperación temporal durante la clase en curso.
+
+Se definió la licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0) para CursoHTML y CursoContable. La identificación «Creado por Andrea Rocca» y el enlace a la licencia se incorporaron de forma visible en los menús laterales. El juego «¡Publicá la web!» incluye también la atribución en su pie, para conservarla cuando se abre de manera independiente. La licencia permite compartir y adaptar los materiales con atribución, indicación de cambios y la misma licencia, pero no autoriza usos comerciales.
+
 ---
 
 ## Plantilla para próximas entradas
