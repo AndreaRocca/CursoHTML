@@ -559,3 +559,7 @@ Las pruebas automatizadas en Chrome aprobaron sintaxis, unicidad de IDs, guardad
 ### Autorización para la prueba en aula
 
 La docente solicita publicar esta versión para probarla con estudiantes, aun cuando anticipa cambios que comunicará después por falta de tiempo para revisarlos ahora. Se conserva el prototipo como punto de partida identificable en el historial de Git. Esta autorización no implica validación pedagógica: los cambios pendientes y los resultados de la aplicación todavía no se conocen. Las observaciones posteriores deberán registrar tiempos reales, dificultades, respuestas y propuestas de mejora, distinguiendo lo observado de las interpretaciones.
+
+### Publicación comprobada
+
+Se subió a main el commit `1d288f9` («Agregar modulo 3 HTML y documentar prueba en aula») desde GitHub Desktop, después de que la terminal no pudiera autenticarse. GitHub Pages completó correctamente el [despliegue 34967913169](https://github.com/AndreaRocca/CursoHTML/actions/runs/34967913169). La comprobación HTTP posterior confirmó que el sitio público sirve el index actualizado y modulo3.js con código 200. Los archivos temporales de tmp no se incorporaron a la publicación. Esta versión publicada constituye la referencia para contrastar las observaciones y ajustes posteriores al uso en aula.
