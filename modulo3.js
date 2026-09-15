@@ -79,16 +79,16 @@
       ? '⚠ No se pudo guardar en este navegador. Descargá el HTML y prepará el PDF antes de salir.'
       : '✓ Guardado automático en este navegador. No se envía a la docente.');
   }
-  function head(label,title,description,time){return `<div class="section-head"><div><div class="eyebrow" style="color:var(--primary)">Módulo 3 · Clase 3 · ${label}</div><h2>${title}</h2><p>${description}</p></div><span class="pill">${time}</span></div>`;}
+  function head(label,title,description){return `<div class="section-head"><div><div class="eyebrow" style="color:var(--primary)">Módulo 3 · Clase 3 · ${label}</div><h2>${title}</h2><p>${description}</p></div></div>`;}
   const status='<div class="mini-status m3-autosave" role="status">Se guarda en esta computadora; entregá el PDF antes de irte.</div>';
   const textField=(id,label,placeholder='')=>`<label for="${id}">${label}</label><textarea data-m3-field id="${id}" placeholder="${placeholder}"></textarea>`;
-  $('module3').innerHTML=head('Primera parte','Mi primera página HTML','Hoy no solamente vas a reconocer conceptos: vas a escribir, probar y mejorar una página propia.','90 min')+`
+  $('module3').innerHTML=head('Primera parte','Mi primera página HTML','Hoy no solamente vas a reconocer conceptos: vas a escribir, probar y mejorar una página propia.')+`
     <div class="lesson">
       <article class="card">
-        <div class="lesson-label">🎯 Un encargo real · 5 min</div>
+        <div class="lesson-label">🎯 Un encargo real</div>
         <h3>Martina ya sabe qué quiere comunicar. Falta construirlo.</h3>
         <p>Ayudala a reparar una página y después creá la de tu proyecto: puede ser un club, un emprendimiento, una banda, una biblioteca o una propuesta escolar. Si tu idea de la clase anterior está en otra computadora, recuperá el PDF de Classroom o elegí una idea provisoria. <strong>No necesitás volver a completar el Módulo 2.</strong></p>
-        <div class="m3-route"><span>5 min · Encargo</span><span>15 min · Mirar y entender</span><span>15 min · Reparar</span><span>30 min · Crear</span><span>10 min · Probar y compartir</span><span>5 min · Reflexionar</span><span>10 min · Entregar</span></div>
+        <div class="m3-route"><span>Encargo</span><span>Mirar y entender</span><span>Reparar</span><span>Crear</span><span>Probar y compartir</span><span>Reflexionar</span><span>Entregar</span></div>
         <p><strong>Meta:</strong> una página con título principal, descripción, dos secciones, lista y enlace útil. Los colores y las imágenes los trabajaremos después; hoy importa que se entienda la propuesta.</p>
         <label for="m3Name">Tu nombre y apellido (solo para la entrega)</label><input data-m3-field class="student-name" id="m3Name" autocomplete="name" placeholder="Nombre y apellido">
         <div class="callout">Las computadoras son compartidas. Si ves respuestas de otra persona, usá “Empezar como otro estudiante”. Antes de irte, guardá el PDF en Classroom y descargá tu HTML: el navegador no es tu carpeta personal.</div>
@@ -99,7 +99,7 @@
         <h3>Las mismas palabras, otra organización</h3>
         <p>Alterná entre texto sin marcar y HTML. No agregamos colores: agregamos significado y estructura.</p>
         <div class="actions"><button class="btn ghost" id="m3Plain" aria-pressed="false">Texto sin marcar</button><button class="btn" id="m3Marked" aria-pressed="true">Con HTML</button></div>
-        <div class="m3-split" style="margin-top:16px"><pre class="m3-code" id="m3DemoCode"></pre><iframe class="m3-preview m3-mini-preview" id="m3Demo" title="Comparación entre texto y HTML" sandbox=""></iframe></div>
+        <div class="m3-split" style="margin-top:16px"><pre class="m3-code" id="m3DemoCode"></pre><div><p class="m3-preview-caption">👁 Vista previa de la página</p><iframe class="m3-preview m3-mini-preview" id="m3Demo" title="Comparación entre texto y HTML" sandbox="allow-popups allow-popups-to-escape-sandbox"></iframe></div></div>
         ${textField('m3Observe','¿Qué cambia para quien visita la página? Nombrá una diferencia.','Ahora puedo distinguir...')}
       </article>
       <article class="card micro-lesson" id="m3Lesson">
@@ -107,7 +107,7 @@
         <div class="micro-track" aria-hidden="true"><div class="micro-fill" id="m3Fill"></div></div>
         <div id="m3Step"></div>
         <div class="micro-controls"><button class="btn ghost" id="m3Prev">← Anterior</button><button class="btn" id="m3Next">Siguiente →</button></div>
-        <p class="m3-source">Referencia: <a href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web/HTML_basics" target="_blank" rel="noopener noreferrer">Conceptos básicos de HTML · MDN</a>. No necesitás leerla para completar la clase.</p>
+        <p class="m3-source">Referencia: <a href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web/HTML_basics" target="_blank" rel="noopener noreferrer">Conceptos básicos de HTML · MDN</a>.</p>
       </article>
       <div class="grid">
         <article class="card"><div class="icon">🧳</div><h3>Documento</h3><p><code>head</code> prepara información; <code>body</code> contiene el contenido visible.</p></article>
@@ -116,18 +116,18 @@
         <article class="card"><div class="icon">🔗</div><h3>Enlace</h3><p><code>a</code> crea el enlace; <code>href</code> indica la dirección de destino.</p></article>
       </div>
       <article class="card" id="m3RepairGame">
-        <div class="lesson-label">🛠️ Minijuego · Rescatá la web de Martina · 15 min</div>
+        <div class="lesson-label">🛠️ Minijuego · Rescatá la web de Martina</div>
         <h3>Tres reparaciones, tres piezas recuperadas</h3>
         <p>Esta vez respondés <strong>editando HTML</strong>, no eligiendo definiciones. Probá, mirá y corregí. No hay penalización por intentar. Las misiones no siguen el orden de las tarjetas.</p>
-        <div class="m3-sticky-status"><strong id="m3RepairScore">0/3 piezas recuperadas</strong><span>No es una carrera: explicá lo que cambiás.</span></div>
-        ${repairs.map((r,i)=>`<article style="margin-top:24px"><h3>${r.title}</h3><p>${r.goal}</p><label for="m3Repair${i}">HTML que vas a reparar</label><textarea class="m3-editor m3-repair" id="m3Repair${i}" spellcheck="false"></textarea><details class="m3-hint"><summary>Necesito una pista</summary><p>${r.hint}</p></details><div class="actions"><button class="btn" data-repair="${i}">Probar reparación</button><button class="btn ghost" data-solution="${i}">Ver una solución</button></div><div class="feedback" id="m3RepairFeedback${i}" role="status"></div><iframe class="m3-preview m3-mini-preview" id="m3RepairPreview${i}" title="Resultado de la reparación ${i+1}" sandbox=""></iframe></article>`).join('')}
+        <div class="m3-sticky-status"><strong id="m3RepairScore">0/3 piezas recuperadas</strong><span>Explicá lo que cambiás.</span></div>
+        ${repairs.map((r,i)=>`<article style="margin-top:24px"><h3>${r.title}</h3><p>${r.goal}</p><label for="m3Repair${i}">HTML que vas a reparar</label><textarea class="m3-editor m3-repair" id="m3Repair${i}" spellcheck="false"></textarea><details class="m3-hint"><summary>Necesito una pista</summary><p>${r.hint}</p></details><div class="actions"><button class="btn" data-repair="${i}">Probar reparación</button><button class="btn ghost" data-solution="${i}">Ver una solución</button></div><div class="feedback" id="m3RepairFeedback${i}" role="status"></div><p class="m3-preview-caption" id="m3RepairCaption${i}">👁 Así se ve ahora tu página · Misión ${i+1}</p><iframe class="m3-preview m3-repair-preview ${i===0?'m3-link-preview':''}" id="m3RepairPreview${i}" title="Vista previa de la página reparada, misión ${i+1}" aria-describedby="m3RepairCaption${i}" sandbox="allow-popups allow-popups-to-escape-sandbox"></iframe></article>`).join('')}
         ${textField('m3RepairExplain','Elegí una reparación: ¿qué cambiaste y por qué?','Cambié... porque...')}
         ${status}
         <div class="actions"><button class="btn ok" id="m3ToWorkshop">Ahora construyo mi página →</button></div>
-        <p class="mini-status">Si una misión te cuesta, podés avanzar y pedir ayuda. La entrega registrará lo realizado, no inventará un resultado perfecto.</p>
+        <p class="mini-status">Si una misión te cuesta, podés avanzar y pedir ayuda. La entrega registrará lo realizado.</p>
       </article>
     </div>`;
-  $('module3Workshop').innerHTML=head('Taller','De una idea a una página','Tu proyecto, tus palabras y tus decisiones.','30 min')+`
+  $('module3Workshop').innerHTML=head('Taller','De una idea a una página','Tu proyecto, tus palabras y tus decisiones.')+`
     <div class="lesson">
       <article class="card">
         <div class="lesson-label">✍️ Recuperá tu intención</div>
@@ -136,38 +136,46 @@
         ${textField('m3Audience','¿Para quién es y qué querés que haga al visitar la página?','Está dirigida a... y quiero que...')}
       </article>
       <article class="card">
-        <div class="lesson-label">🚀 Taller en tres rondas de 10 minutos</div>
+        <div class="lesson-label">🚀 Construí tu página en tres pasos</div>
         <ol class="m3-mission-list"><li><strong>Dale identidad:</strong> cambiá el título de la pestaña, el h1 y la descripción. Explicá qué ofrecés y para quién.</li><li><strong>Organizá:</strong> escribí dos títulos h2, otro párrafo y una lista con al menos tres propuestas concretas.</li><li><strong>Invitá a actuar:</strong> cambiá el enlace por un destino real relacionado con tu propuesta y un texto claro. Puede ser el sitio de una institución o un recurso útil; no inventes un formulario que no existe.</li></ol>
         <p><strong>Acuerdo:</strong> podés usar la plantilla y pedir ayuda, pero no alcanza con entregar el ejemplo sin cambiar. Tenés que poder explicar al menos dos etiquetas y una decisión. No publiques datos personales, teléfonos, contraseñas ni fotos de personas.</p>
         <div class="m3-split">
           <div><label for="m3Code">Tu archivo index.html</label><textarea class="m3-editor" id="m3Code" spellcheck="false" aria-describedby="m3EditorHelp"></textarea></div>
-          <div><label for="m3Preview">Vista previa</label><iframe class="m3-preview" id="m3Preview" title="Vista previa de tu página HTML" sandbox=""></iframe></div>
+          <div><label for="m3Preview">Vista previa de tu página</label><iframe class="m3-preview" id="m3Preview" title="Vista previa de tu página HTML" sandbox="allow-popups allow-popups-to-escape-sandbox"></iframe></div>
         </div>
-        <p class="mini-status" id="m3EditorHelp">La vista cambia al escribir. Es una prueba local, no una publicación. Por seguridad no ejecuta JavaScript, formularios ni recursos externos. Los enlaces no se navegan aquí: se prueban en el HTML descargado o en el editor externo.</p>
+        <p class="mini-status" id="m3EditorHelp">La vista cambia al escribir. Es una prueba local, no una publicación. Por seguridad no ejecuta JavaScript, formularios ni recursos externos. Los enlaces con una dirección válida se abren en una pestaña nueva.</p>
         <div class="actions"><button class="btn" id="m3Check">Revisar mis misiones</button><button class="btn ghost" id="m3Download">Descargar index.html</button><button class="btn ghost" id="m3ResetCode">Volver a la plantilla</button></div>
         <ul class="m3-checklist" id="m3Checks" aria-live="polite"></ul>
         ${status}
         <details class="m3-hint"><summary>¿Cómo lo abro fuera del curso?</summary><p>Descargá index.html, buscá el archivo en Descargas y abrilo con el navegador. Sigue siendo local: esa ruta no le sirve a tu docente desde otra computadora. Para editarlo también podés abrirlo con un editor de texto. Asegurate de que no termine en .html.txt.</p></details>
       </article>
       <article class="card">
-        <h3>Si terminaste antes: un desafío extra, no más etiquetas</h3>
-        <p>Mostrale la vista a alguien durante diez segundos. ¿Puede decir qué ofrecés, para quién y qué debe hacer? Cambiá el texto que no se entiende. O cerrá la ayuda y agregá un nuevo elemento a la lista sin copiar uno existente.</p>
-        ${textField('m3Extra','Desafío extra (opcional): ¿qué probaste o mejoraste?')}
+        <h3>Revisá y mejorá tu trabajo</h3>
+        <p>Agregá un nuevo elemento a la lista sin copiar uno existente. Después revisá la claridad de tu página: ¿se entiende qué ofrecés, para quién y qué debe hacer quien la visite? Cambiá el texto que no se entiende.</p>
+        ${textField('m3Extra','¿Qué agregaste a la lista y qué revisaste o mejoraste?')}
         <div class="actions"><button class="btn ghost" id="m3BackLearn">← Volver a las explicaciones</button><button class="btn ok" id="m3ToShare">Probar y preparar el enlace →</button></div>
       </article>
     </div>`;
-  $('module3Share').innerHTML=head('Prueba','Que otra persona pueda verlo','Revisá la claridad de tu página y elegí cómo compartir el trabajo.','10 min')+`
+  $('module3Share').innerHTML=head('Prueba','Que otra persona pueda verlo','Revisá la claridad de tu página y prepará el trabajo para compartirlo.')+`
     <div class="lesson">
       <article class="card">
-        <div class="lesson-label">👥 Prueba de diez segundos</div>
-        <p>Mostrale la página a un compañero o compañera, sin explicar nada. Pedile que diga qué ofrecés y qué acción puede realizar. Si trabajás sin compañero, hacé la prueba como si fueras un visitante nuevo.</p>
-        ${textField('m3Peer','¿Qué entendió la otra persona? ¿Qué te sugirió cambiar?','Entendió... Me sugirió... / Hice la prueba individual y...')}
+        <div class="lesson-label">👥 Probá con un compañero o compañera</div>
+        <p>Mostrale la página a un compañero o compañera, sin explicar nada. Pedile que diga qué ofrecés y qué acción puede realizar.</p>
+        ${textField('m3Peer','¿Qué entendió la otra persona? ¿Qué te sugirió cambiar?','Entendió... Me sugirió...')}
         ${textField('m3Change','¿Qué mejoraste después de probar? Si no cambiaste nada, justificá por qué.')}
         <div class="actions"><button class="btn ghost" id="m3EditAgain">Volver al editor y mejorar</button></div>
       </article>
       <article class="card">
-        <div class="lesson-label">🔗 Opción con enlace · CodePen</div>
-        <p>Usala <strong>si la docente autoriza el servicio y tenés una cuenta</strong>. Guardar un trabajo en CodePen requiere iniciar sesión. Sus trabajos públicos pueden ser vistos por cualquiera: usá un alias y contenido ficticio, sin datos del curso ni nombre completo en la página pública. No copies este curso allí; publicá solamente tu producción.</p>
+        <div class="lesson-label">🔗 Editor HTML en línea · CodePen</div>
+        <p>Vamos a usar <strong>CodePen, un editor HTML en línea</strong>. Al guardar el trabajo en tu cuenta, vas a poder recuperarlo y continuar desde cualquier dispositivo con conexión a Internet.</p>
+        <p>Guardar un trabajo en CodePen requiere iniciar sesión. Sus trabajos públicos pueden ser vistos por cualquiera: usá un alias y contenido ficticio, sin datos del curso ni nombre completo en la página pública. No copies este curso allí; publicá solamente tu producción.</p>
+        <h3>Primero, probá cómo funciona el editor</h3>
+        <p>Usá este ejemplo para aprender a pegar, modificar y guardar código antes de llevar tu propia página.</p>
+        <pre class="m3-code" id="m3TrialCode"></pre>
+        <div class="actions"><button class="btn" id="m3CopyTrial">Copiar código de prueba</button></div>
+        <div class="mini-status" id="m3TrialStatus" role="status"></div>
+        <ol class="m3-mission-list"><li>Abrí <a href="https://codepen.io/pen/" target="_blank" rel="noopener noreferrer">el editor de CodePen</a> e iniciá sesión con tu propia cuenta.</li><li>Si ves los paneles HTML/CSS/JS, pegá el ejemplo en <strong>HTML</strong> y dejá CSS y JS vacíos. Si ves un archivo index.html, pegá el ejemplo dentro de su body.</li><li>Comprobá que aparezca la página. Cambiá el título visible y el párrafo para reconocer tu prueba.</li><li>Dale un nombre y guardala con <strong>Save</strong>. Volvé a la lista de tus trabajos y abrí la prueba desde tu cuenta. Si aparece lo que cambiaste, comprobaste que quedó guardado.</li></ol>
+        <h3>Ahora, llevá tu propia página</h3>
         <ol class="m3-mission-list"><li>Abrí <a href="https://codepen.io/pen/" target="_blank" rel="noopener noreferrer">el editor de CodePen</a> e iniciá sesión con tu propia cuenta. No compartas contraseñas.</li><li>Si ves un archivo <code>index.html</code>, copiá <strong>el documento completo</strong> desde el botón de abajo y pegalo allí. Si ves los paneles clásicos HTML/CSS/JS, copiá <strong>solo el contenido de body</strong> al panel HTML. Dejamos CSS y JS vacíos.</li><li>Dale un nombre al trabajo y guardalo con <strong>Save</strong>. Copiá el enlace para compartir el trabajo guardado, no la dirección de un editor vacío o temporal.</li><li>Abrí el enlace en una ventana privada o en otra computadora. ¿Se ve sin iniciar sesión? ¿Funciona la llamada a la acción? Si no, revisá el enlace y la configuración.</li><li>Pegá el enlace más abajo. Si cambiás el código en CodePen, volvé a traer la versión final al editor del curso para que el PDF y la web coincidan. Al terminar, cerrá sesión en la computadora compartida.</li></ol>
         <div class="actions"><button class="btn ghost" id="m3CopyFull">Copiar documento completo</button><button class="btn ghost" id="m3CopyBody">Copiar solo contenido de body</button></div>
         <div class="mini-status" id="m3CopyStatus" role="status"></div>
@@ -175,7 +183,7 @@
       </article>
       <article class="card">
         <div class="lesson-label">📁 Plan B · Sin cuenta o sin conexión</div>
-        <p>No crees una cuenta si no está autorizado. Descargá tu HTML y adjuntalo junto al PDF en Classroom. El PDF incluirá el código completo aunque no tengas un enlace. <strong>La dirección de esta página del curso no comparte lo que escribiste en su editor.</strong></p>
+        <p>Si no podés usar el editor en línea o guardar el trabajo en tu cuenta, descargá tu HTML y adjuntalo junto al PDF en Classroom. El PDF incluirá el código completo aunque no tengas un enlace. <strong>La dirección de esta página del curso no comparte lo que escribiste en su editor.</strong></p>
         <div class="actions"><button class="btn ghost" id="m3DownloadBackup">Descargar mi archivo HTML</button></div>
         <label for="m3DeliveryType">¿Cómo entregás tu producción?</label><select data-m3-field id="m3DeliveryType"><option value="">Elegí una opción</option><option value="link">Con enlace público a mi trabajo</option><option value="file">Sin enlace: adjunto HTML y PDF en Classroom</option></select>
         <label for="m3Url">Enlace al trabajo guardado (si elegiste entregar con enlace)</label><input data-m3-field id="m3Url" class="student-name" type="url" placeholder="https://codepen.io/tu-alias/pen/...">
@@ -186,7 +194,7 @@
         <div class="actions"><button class="btn ghost" id="m3BackWorkshop">← Volver a mi HTML</button><button class="btn ok" id="m3ToClose">Cierre de esta clase →</button></div>
       </article>
     </div>`;
-  $('module3Close').innerHTML=head('Cierre y entrega','Lo construí. ¿Puedo explicarlo?','Reconocé tus avances y dejá preguntas para la próxima clase.','5 + 10 min')+`
+  $('module3Close').innerHTML=head('Cierre y entrega','Lo construí. ¿Puedo explicarlo?','Reconocé tus avances y dejá preguntas para la próxima clase.')+`
     <div class="lesson">
       <article class="card">
         <div class="lesson-label">🧠 Cinco preguntas para cerrar o abrir la clase siguiente</div>
@@ -208,7 +216,8 @@
       </article>
     </div>`;
 
-  // Vista aislada: no scripts, almacenamiento, formularios ni peticiones a la red.
+  // Vista aislada: no scripts, almacenamiento, formularios ni recursos de red.
+  // Solo enlaces HTTP(S) sin credenciales abren un destino en otra pestaña.
   // Se retiran elementos activos antes de mostrarla; el código original sigue intacto.
   function parse(code){return new DOMParser().parseFromString(code,'text/html');}
   function preview(id,code){
@@ -216,7 +225,11 @@
     doc.querySelectorAll('script,iframe,object,embed,link,base,meta,style').forEach(el=>el.remove());
     doc.querySelectorAll('*').forEach(el=>{
       [...el.attributes].forEach(a=>{if(/^on/i.test(a.name)||['src','srcset','action','formaction','style'].includes(a.name)) el.removeAttribute(a.name);});
-      if(el.tagName==='A'){el.removeAttribute('href');el.setAttribute('title','Probá este enlace en tu archivo descargado o en CodePen.');el.style.color='#2155bd';el.style.textDecoration='underline';}
+      if(el.tagName==='A'){
+        const url=safeUrl(el.getAttribute('href')||'');
+        el.removeAttribute('href');el.removeAttribute('target');el.removeAttribute('rel');
+        if(url){el.href=url.href;el.target='_blank';el.rel='noopener noreferrer';el.title='Abrir en una pestaña nueva';el.style.color='#2155bd';el.style.textDecoration='underline';}
+      }
     });
     // CSP antes de todo contenido; las reglas de presentación son del curso.
     const csp=`<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; form-action 'none'; base-uri 'none'">`;
@@ -295,6 +308,12 @@
     try{await navigator.clipboard.writeText(value);$('m3CopyStatus').textContent=bodyOnly?'✓ Copiado solo el contenido de body para el panel HTML clásico.':'✓ Copiado el archivo completo para index.html.';}
     catch{$('m3CopyStatus').textContent='No se pudo copiar automáticamente. Volvé al editor, seleccioná el código y copiá con Ctrl+C. Para el editor clásico, seleccioná solo lo que está entre <body> y </body>.';}
   }
+  const trialCode='<h1>Mi primera página en CodePen</h1>\n<p>Estoy probando un editor HTML en línea.</p>\n<a href="https://andrearocca.github.io/CursoHTML/">Volver al curso</a>';
+  $('m3TrialCode').textContent=trialCode;
+  async function copyTrial(){
+    try{await navigator.clipboard.writeText(trialCode);$('m3TrialStatus').textContent='✓ Código de prueba copiado. Pegalo en HTML o dentro del body de index.html.';}
+    catch{$('m3TrialStatus').textContent='Seleccioná el ejemplo de arriba y copialo con Ctrl+C; después pegalo en el editor.';}
+  }
   function publicWorkUrl(){
     const url=safeUrl(work.fields.m3Url||'');
     if(!url)return null;
@@ -327,9 +346,9 @@
       `${work.checks.score}/${work.checks.total} criterios detectados. No equivale a una nota ni a una validación completa.`,
       ...work.checks.rows.map(([ok,label])=>(ok?'Cumple: ':'Para revisar: ')+label),
       '', '4. PRUEBA Y MEJORA',
-      'Lo que entendió otra persona o mi prueba individual:',answer('m3Peer'),
+      'Lo que entendió otra persona y lo que sugirió:',answer('m3Peer'),
       'Lo que mejoré:',answer('m3Change'),
-      'Desafío extra (opcional):',answer('m3Extra'),
+      'Revisión y mejora: elemento agregado a la lista y cambios realizados:',answer('m3Extra'),
       '', '5. ENTREGA DE LA PÁGINA',
       link?`Enlace público: ${link}`:'Sin enlace: se entrega el archivo index.html junto a este PDF en Classroom.',
       `El estudiante declara haber probado el enlace sin su cuenta: ${link?(f.m3LinkTested?'sí':'no'):'no corresponde'}. El curso no verificó su accesibilidad.`,
@@ -383,6 +402,7 @@
   bind('m3ResetCode',()=>{if(confirm('¿Reemplazar tu código por la plantilla? Descargá antes el HTML si querés conservarlo.')){$('m3Code').value=starter;collect();work.checks=null;$('m3Checks').textContent='';preview('m3Preview',starter);save();}});
   bind('m3ToShare',()=>{check();move('module3Share');});bind('m3BackWorkshop',()=>move('module3Workshop'));bind('m3EditAgain',()=>move('module3Workshop'));
   bind('m3CopyFull',()=>copy(false));bind('m3CopyBody',()=>copy(true));
+  bind('m3CopyTrial',copyTrial);
   bind('m3OpenLink',()=>{
     collect();save();const url=publicWorkUrl();if(!url){$('m3UrlStatus').textContent='Pegá una URL completa del trabajo guardado, no una ruta local ni el editor vacío.';return;}
     window.open(url,'_blank','noopener,noreferrer');$('m3UrlStatus').textContent='Probalo también en una ventana privada. Abrirlo acá no verifica que sea público.';

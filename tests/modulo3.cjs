@@ -23,12 +23,23 @@ const server=http.createServer((req,res)=>{
   try{
     browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe'});
     const context=await browser.newContext({viewport:{width:1366,height:900},acceptDownloads:true});
-    await context.route('**/*',route=>route.request().url().startsWith(url)?route.continue():route.abort());
+    await context.route('**/*',route=>{
+      const target=route.request().url();
+      if(target.startsWith(url))return route.continue();
+      // Verificar navegación sin depender de Internet ni cargar sitios externos.
+      if(target==='https://andrearocca.github.io/CursoHTML/')return route.fulfill({contentType:'text/html',body:'<!doctype html><title>Destino de prueba</title><p>Enlace abierto.</p>'});
+      return route.abort();
+    });
     const page=await context.newPage();const errors=[];
     page.on('pageerror',error=>errors.push(error.message));
     await page.goto(url);await page.click('#nav-module3');
     assert.equal(await page.locator('#module3').isVisible(),true);
     const ids=await page.locator('[id]').evaluateAll(nodes=>nodes.map(n=>n.id));assert.equal(ids.length,new Set(ids).size);
+    const studentContent=await page.locator('.screen').allTextContents();
+    assert.ok(!studentContent.join(' ').match(/\b\d+\s*(?:[–+\-]\s*\d+\s*)?(?:min(?:utos)?|segundos)\b/i),'Sin tiempos en las pantallas de estudiantes');
+    assert.equal(await page.locator('#m3CopyTrial').count(),1);
+    assert.match(await page.textContent('#m3TrialCode'),/Mi primera página en CodePen/);
+    assert.match(await page.textContent('#module3Workshop'),/Revisá y mejorá tu trabajo/);
     await page.fill('#m3Name','Estudiante Prueba');await page.fill('#m3Observe','Ahora se distingue el título.');
     await page.reload();await page.click('#nav-module3');assert.equal(await page.inputValue('#m3Name'),'Estudiante Prueba');
     // Error, solución consultada y tres reparaciones auténticas.
@@ -41,6 +52,13 @@ const server=http.createServer((req,res)=>{
     ];
     for(let i=0;i<3;i++){await page.fill('#m3Repair'+i,repairCode[i]);await page.click('[data-repair="'+i+'"]');}
     assert.match(await page.textContent('#m3RepairScore'),/3\/3/);
+    await page.frameLocator('#m3RepairPreview0').getByRole('link',{name:'Conocer el curso'}).waitFor();
+    assert.ok((await page.locator('#m3RepairPreview0').boundingBox()).height<=150,'Vista compacta de enlace');
+    const previewPopupPromise=page.waitForEvent('popup');
+    await page.frameLocator('#m3RepairPreview0').getByRole('link',{name:'Conocer el curso'}).click();
+    const previewPopup=await previewPopupPromise;await previewPopup.waitForLoadState();
+    assert.equal(previewPopup.url(),'https://andrearocca.github.io/CursoHTML/');await previewPopup.close();
+    assert.ok(await page.locator('#module3').isVisible(),'El enlace no cambia la pantalla del curso');
     await page.click('#m3ToWorkshop');await page.fill('#m3Project','Club del Libro');
     const code=`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Club del Libro</title></head><body><h1>Club del Libro</h1><p>Lecturas para jóvenes del barrio.</p><h2>Actividades</h2><ul><li>Leer novelas</li><li>Intercambiar libros</li><li>Debatir historias</li></ul><h2>Sumate a leer</h2><p>Encontrá una historia para compartir.</p><a href="https://example.org/">Ver la biblioteca</a></body></html>`;
     await page.fill('#m3Code',code);await page.frameLocator('#m3Preview').locator('h1').waitFor();
@@ -64,9 +82,10 @@ const server=http.createServer((req,res)=>{
     await page.evaluate(()=>{window.open=()=>null;});await page.click('#m3Report');assert.match(await page.textContent('#m3ReportStatus'),/Permití abrir/);
     await page.reload();await page.click('#nav-module3');await page.click('#m3ToWorkshop');
     // Código activo no puede ejecutar scripts en la vista ni acceder al curso.
-    await page.fill('#m3Code','<h1>Prueba segura</h1><script>parent.document.body.innerHTML="ATAQUE"</script><img src="https://example.org/imagen.png" onerror="alert(1)">');
+    await page.fill('#m3Code','<h1>Prueba segura</h1><script>parent.document.body.innerHTML="ATAQUE"</script><img src="https://example.org/imagen.png" onerror="alert(1)"><a href="javascript:alert(1)">Enlace riesgoso</a>');
     await page.waitForTimeout(100);assert.equal(await page.locator('#nav-module3').count(),1);
     assert.equal(await page.frameLocator('#m3Preview').locator('script').count(),0);
+    assert.equal(await page.frameLocator('#m3Preview').locator('a[href]').count(),0);
     await page.fill('#m3Code',code);
     await page.frameLocator('#m3Preview').locator('h1').waitFor();
     if(process.env.QA_DIR){

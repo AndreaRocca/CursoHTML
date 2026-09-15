@@ -22,20 +22,22 @@ Se adelanta HTML al Módulo 3 por solicitud docente. La organización de informa
 
 Los tiempos son una propuesta, no una garantía. Si el grupo necesita más ayuda, no dedicar la reserva de entrega a crear cuentas: usar el plan B. No bloquear el avance por un puntaje incompleto; el PDF documenta lo que realmente se pudo realizar.
 
+Por revisión docente, esta distribución se conserva en la guía de planificación, pero no se muestra en las pantallas de estudiantes. Se quitaron los indicadores de minutos y las pruebas cronometradas para evitar una presión temporal innecesaria. Es un criterio de diseño expresado por la docente, no un efecto sobre ansiedad medido en aula.
+
 ## Motivación y diferenciación
 
 - Un producto propio desde la primera clase de HTML, con libertad para elegir un tema significativo.
 - Tres reparaciones concretas, retroalimentación inmediata y piezas recuperadas, sin penalizar intentos ni hacer ranking.
 - Tres rondas cortas de creación, con una meta visible en cada una.
 - Apoyo: usar la plantilla y las pistas; identificar qué cambia en la vista antes de editar más.
-- Extensión: prueba con un visitante, mejorar una acción confusa o agregar un elemento de lista sin copiar. No sumar etiquetas nuevas solo para ocupar tiempo.
+- Parte del trabajo para todos: agregar un elemento de lista sin copiar y revisar la claridad de la propuesta. Registrar qué agregaron y qué mejoraron. Ya no se presenta como desafío extra ni opcional.
 - Si trabajan en pareja, definir quién edita y quién prueba, y cambiar roles. Acordar si la entrega es individual o grupal; el curso no decide ese criterio automáticamente.
 
 ## Publicación: preparar antes de la clase
 
 El editor del curso funciona sin cuentas. La vista previa **no publica** y su URL no comparte la producción local. Permite descargar un documento HTML completo.
 
-CodePen es una opción, no un requisito. Antes de proponerlo, comprobar acceso desde las máquinas escolares, condiciones de uso y autorización institucional. No crear cuentas ni publicar trabajos en nombre de estudiantes desde este prototipo. Guardar un Pen requiere cuenta. No usar apellidos, teléfonos, credenciales, fotos ni otros datos personales en trabajos públicos.
+Por pedido docente, CodePen se presenta como el editor en línea que se usará para guardar y recuperar la producción desde otros dispositivos. Primero se realiza una prueba con código breve ya armado: pegar, cambiar título y párrafo, guardar y volver a abrir desde la cuenta. Después se lleva la página propia. Antes de la clase, comprobar acceso desde las máquinas escolares, condiciones de uso y autorización institucional. No crear cuentas ni publicar trabajos en nombre de estudiantes desde este prototipo. Guardar un Pen requiere cuenta. No usar apellidos, teléfonos, credenciales, fotos ni otros datos personales en trabajos públicos. Se conserva el plan B para dificultades de acceso.
 
 Hay dos interfaces: una con archivos, donde se pega el documento completo en index.html; otra clásica con paneles, donde se pega solo el contenido de body en HTML. Los dos botones de copia evitan confundirlas. Si se modifica la versión externa, traer el código final al curso antes de generar el PDF.
 
@@ -48,6 +50,8 @@ Las condiciones de CodePen para los Pens públicos son distintas de la licencia 
 Solo el Módulo 3: nombre, proyecto, observación, códigos de reparación, intentos y consulta de soluciones, explicación de una reparación, revisión orientativa, prueba y mejora, enlace o modalidad de archivo, declaración de prueba de acceso, cinco respuestas, semáforo y código completo al preparar el informe.
 
 El enlace, cuando se incluye, aparece como enlace clicable en el informe. El curso comprueba su formato, no que exista, que pertenezca al estudiante ni que sea público. El checkbox registra la comprobación declarada por el estudiante. Tampoco comprueba que el PDF haya sido guardado o entregado.
+
+Las vistas previas de las reparaciones están identificadas y tienen altura reducida; la de un solo enlace es todavía más compacta. Los enlaces HTTP(S) sin credenciales abren una pestaña nueva, sin navegar el curso. Las vistas siguen aisladas sin JavaScript, formularios ni acceso al almacenamiento del curso. No se agrega permiso de navegación de la página principal ni de mismo origen.
 
 El almacenamiento es automático y local para esta clase. Como las máquinas se asignan al azar, Classroom sigue siendo el archivo longitudinal. La opción “Empezar como otro estudiante” reinicia solo M3 tras confirmar; no elimina entregas de Classroom ni datos de módulos anteriores. No es una solución integral de privacidad para una computadora compartida.
 

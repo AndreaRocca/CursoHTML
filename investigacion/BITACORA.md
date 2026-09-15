@@ -563,3 +563,23 @@ La docente solicita publicar esta versión para probarla con estudiantes, aun cu
 ### Publicación comprobada
 
 Se subió a main el commit `1d288f9` («Agregar modulo 3 HTML y documentar prueba en aula») desde GitHub Desktop, después de que la terminal no pudiera autenticarse. GitHub Pages completó correctamente el [despliegue 34967913169](https://github.com/AndreaRocca/CursoHTML/actions/runs/34967913169). La comprobación HTTP posterior confirmó que el sitio público sirve el index actualizado y modulo3.js con código 200. Los archivos temporales de tmp no se incorporaron a la publicación. Esta versión publicada constituye la referencia para contrastar las observaciones y ajustes posteriores al uso en aula.
+
+## 15 de septiembre de 2026 — Recuperación de ajustes realizados desde la escuela
+
+La docente solicita recuperar el trabajo de la tarde, realizado desde otro dispositivo. Se consultó la conversación «Pasar proyecto CursoHTML». La comparación de la referencia remota con Git local confirmó que esos pedidos no habían llegado al repositorio: GitHub seguía en `4bd378a`. Las respuestas de aquella conversación afirmaban haber preparado modificaciones, pero no se encontró una versión publicada; por eso se reconstruyen los cambios desde los pedidos explícitos y se verifica nuevamente la implementación.
+
+### Ajustes confirmados recuperados
+
+- Identificar las vistas previas de las reparaciones y reducir el espacio vacío, especialmente en la misión del enlace. Los enlaces HTTP(S) válidos se abren en otra pestaña; JavaScript y elementos activos siguen bloqueados en la vista.
+- Quitar indicadores temporales de las pantallas de estudiantes de los módulos 0 a 3. La docente expresa que pueden generar ansiedad; se registra como fundamento de diseño, no como resultado medido. La planificación de 90 minutos permanece en la guía docente, sin pruebas cronometradas para el estudiante.
+- Quitar «No necesitás leerla para completar la clase» de la referencia MDN, «No es una carrera», «no inventará un resultado perfecto» y la alternativa de prueba individual que había sido presentada en lugar de trabajar con un compañero.
+- Convertir el desafío extra en una tarea del recorrido: agregar un elemento a la lista sin copiar y revisar/mejorar la claridad. La respuesta se conserva en el PDF como revisión y mejora, no como producción opcional. Se mantienen los identificadores de los campos para no perder respuestas locales previas.
+- Presentar CodePen como editor en línea para guardar en la cuenta y recuperar el código desde otra computadora. Agregar primero una práctica con un ejemplo breve: copiar, pegar, modificar, guardar y volver a abrir; después llevar la producción propia. Se conserva la alternativa de HTML más PDF ante dificultades de acceso.
+
+### Decisión que quedó pendiente
+
+La docente describe la interfaz de CodePen como demasiado cargada y pregunta por un editor con HTML, CSS y JS y resultado en tiempo real. En la conversación se propone Liveweave, pero no hay confirmación posterior de reemplazo. No se interpreta esa sugerencia como una decisión acordada: se consulta nuevamente y, mientras tanto, se mantiene CodePen con las mejoras confirmadas. Las instrucciones de un eventual reemplazo deberán verificarse en el servicio elegido antes de publicarse.
+
+Estos ajustes son evidencia de revisión docente del prototipo. No se deduce de esta conversación que el Módulo 3 haya sido aplicado con estudiantes ni se inventan tiempos, participantes o resultados de aprendizaje.
+
+La nueva comprobación automatizada en Chrome aprobó las pruebas previas y agregó verificación de ausencia de tiempos en las pantallas, presencia del código de prueba, altura compacta de la misión del enlace y apertura del destino en otra pestaña conservando el curso. La navegación de prueba usó un destino simulado para no depender de Internet; no verificó el guardado real en una cuenta de CodePen. Se comprobaron también el bloqueo de URLs javascript y el mantenimiento de las entregas independientes. Los cambios quedan identificados en un commit separado de la versión inicial publicada.
