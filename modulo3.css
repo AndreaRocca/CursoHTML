@@ -1,0 +1,33 @@
+/* Módulo 3 reutiliza la identidad y los componentes del curso. */
+[id^="module3"] code,[id^="module3"] pre{font-family:Consolas,monospace;overflow-wrap:anywhere}
+[id^="module3"] code{background:#eef3ff;color:#2442a6;padding:2px 5px;border-radius:5px}
+.m3-code{white-space:pre-wrap;background:#15213d;color:#edf3ff;padding:18px;border-radius:12px;font-size:14px}
+.m3-code code{background:transparent;color:inherit;padding:0}
+.m3-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.m3-split>*{min-width:0}
+.m3-editor{font:15px/1.6 Consolas,monospace;tab-size:2;min-height:470px;white-space:pre;overflow:auto;background:#15213d;color:#edf3ff;border-color:#456090}
+.m3-repair{min-height:125px}
+.m3-preview{width:100%;height:470px;background:white;border:1px solid var(--line);border-radius:12px}
+.m3-mini-preview{height:210px}
+.m3-route{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.m3-route span{padding:7px 10px;border-radius:10px;background:var(--soft);font-size:13px}
+.m3-mission-list{padding-left:22px}
+.m3-mission-list li{margin:10px 0}
+.m3-checklist{display:grid;gap:8px;margin:16px 0;padding:0;list-style:none}
+.m3-checklist li{padding:10px;border-radius:10px;background:#f3f5f8}
+.m3-checklist li.ok{background:#e9f8ef;color:#11623a}
+.m3-checklist li.bad{background:#fff0ee;color:#8d2218}
+.m3-source{font-size:13px;color:var(--muted)}
+.m3-hint{background:#fff8e7;border:1px solid #edd89d;border-radius:12px;padding:12px;margin:12px 0}
+.m3-hint summary,[id^="module3"] details summary{cursor:pointer;font-weight:750}
+.m3-sticky-status{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--soft);padding:12px 16px;border-radius:12px}
+[id^="module3"] .feedback{font-weight:500}
+[id^="module3"] .btn:disabled{opacity:.55;cursor:not-allowed}
+[id^="module3"] :is(button,a,input,textarea,select,summary):focus-visible{outline:3px solid #dc7030;outline-offset:3px}
+[id^="module3"]{scroll-margin-top:80px}
+[id^="module3"] label{display:block;font-weight:750;margin:12px 0 7px}
+[id^="module3"] .inline-check{display:flex;gap:10px;align-items:flex-start}
+[id^="module3"] .inline-check input{margin-top:6px;flex:0 0 auto}
+[id^="module3"] a{overflow-wrap:anywhere}
+@media(max-width:850px){.m3-split{grid-template-columns:1fr}.m3-editor,.m3-preview{min-height:340px;height:340px}[id^="module3"]{scroll-margin-top:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

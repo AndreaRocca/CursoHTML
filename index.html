@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diseñar para la Web · Tecnología 4.º año</title>
+  <link rel="stylesheet" href="modulo3.css">
   <style>
     :root{
       --bg:#f4f7fb;
@@ -381,9 +382,9 @@
         <span class="nav-num">2</span>
         <span><span class="nav-title">Propósito y destinatarios</span><span class="nav-sub">Qué comunicar y para quién</span></span>
       </button>
-      <button class="nav-btn locked" data-screen="module3" disabled>
+      <button class="nav-btn" data-screen="module3" id="nav-module3">
         <span class="nav-num">3</span>
-        <span><span class="nav-title">Organizar información</span><span class="nav-sub">Jerarquía y navegación</span></span>
+        <span><span class="nav-title">Mi primera página HTML</span><span class="nav-sub">Escribir, probar y compartir</span></span>
       </button>
       <button class="nav-btn locked" data-screen="module4" disabled>
         <span class="nav-num">4</span>
@@ -391,7 +392,7 @@
       </button>
       <button class="nav-btn locked" data-screen="module5" disabled>
         <span class="nav-num">5</span>
-        <span><span class="nav-title">HTML</span><span class="nav-sub">Construir la estructura</span></span>
+        <span><span class="nav-title">Más HTML</span><span class="nav-sub">Ampliar la estructura</span></span>
       </button>
       <button class="nav-btn locked" data-screen="module6" disabled>
         <span class="nav-num">6</span>
@@ -978,6 +979,11 @@
         </div>
       </section>
 
+      <section class="screen" id="module3" aria-label="Módulo 3: Mi primera página HTML"></section>
+      <section class="screen" id="module3Workshop" aria-label="Módulo 3: Taller HTML"></section>
+      <section class="screen" id="module3Share" aria-label="Módulo 3: Probar y compartir"></section>
+      <section class="screen" id="module3Close" aria-label="Módulo 3: Cierre y entrega"></section>
+
       <section class="screen" id="delivery">
         <div class="card">
           <div class="icon">📥</div>
@@ -999,7 +1005,12 @@
 </div>
 
 <script>
-  const state = JSON.parse(localStorage.getItem('webCourseState') || '{"done":[]}');
+  const state = (()=>{
+    try{
+      const saved=JSON.parse(localStorage.getItem('webCourseState')||'{"done":[]}');
+      return saved && typeof saved==='object' && !Array.isArray(saved) ? saved : {done:[]};
+    }catch{return {done:[]};}
+  })();
   if(!Array.isArray(state.done)) state.done=[];
   const microSteps={one:0,two:0,three:0};
   let deliveryMode='class1';
@@ -1013,7 +1024,7 @@
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
     const activeScreen=document.getElementById(id);
     activeScreen.classList.add('active');
-    const navScreen={m1b:'m1',module2Close:'module2'}[id]||id;
+    const navScreen={m1b:'m1',module2Close:'module2',module3Workshop:'module3',module3Share:'module3',module3Close:'module3'}[id]||id;
     document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.screen===navScreen));
     requestAnimationFrame(()=>{
       if(window.matchMedia('(max-width: 850px)').matches){
@@ -1236,7 +1247,7 @@
   });
 
 // Shared, offline report view. Student text is inserted with textContent.
-function openWorkReport(title, text, status){
+function openWorkReport(title, text, status, workUrl){
   const report=window.open('', '_blank');
   if(!report){status.textContent='Permití abrir la ventana del informe y volvé a intentarlo.';return false;}
   report.opener=null;
@@ -1252,7 +1263,12 @@ function openWorkReport(title, text, status){
   const button=doc.createElement('button');button.type='button';button.textContent='Guardar como PDF';button.onclick=()=>{report.focus();report.print()};
   controls.append(instructions,button);
   const content=doc.createElement('pre');content.textContent=text;
-  doc.body.append(controls,content);
+  doc.body.append(controls);
+  if(workUrl){
+    const link=doc.createElement('a');link.href=workUrl;link.textContent='Ver la página HTML del estudiante: '+workUrl;
+    link.rel='noopener noreferrer';link.target='_blank';doc.body.append(link);
+  }
+  doc.body.append(content);
   status.textContent='Informe abierto. Guardalo como PDF y adjuntalo en Classroom.';
   return true;
 }
@@ -1389,11 +1405,11 @@ function openWorkReport(title, text, status){
   }
 
   function updateProgress(){
-    const done=state.done.filter(x=>['m0','m1','module2'].includes(x)).length;
-    const pct=Math.round(done/3*100);
+    const done=['m0','m1','module2','module3'].filter(x=>state.done.includes(x)).length;
+    const pct=Math.round(done/4*100);
     document.getElementById('progressText').textContent=pct+'%';
     document.getElementById('progressFill').style.width=pct+'%';
-    ['m0','m1','module2'].forEach(id=>{
+    ['m0','m1','module2','module3'].forEach(id=>{
       document.getElementById('nav-'+id)?.classList.toggle('done',state.done.includes(id));
     });
   }
@@ -1429,5 +1445,6 @@ function openWorkReport(title, text, status){
     updateProgress();
   });
 </script>
+<script src="modulo3.js"></script>
 </body>
 </html>

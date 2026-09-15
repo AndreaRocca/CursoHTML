@@ -5,7 +5,7 @@
 **Docente:** Andrea Rocca  
 **Grupo:** 4.º año, turno tarde  
 **Inicio documentado:** 19 de agosto de 2026  
-**Última actualización:** 22 de agosto de 2026  
+**Última actualización:** 15 de septiembre de 2026\
 **Estado:** reconstrucción inicial validada con conversaciones e historial de GitHub
 
 ## Propósito de esta bitácora
@@ -13,6 +13,10 @@
 Registrar el proceso real que comenzó con el diseño de un curso HTML interactivo, continuó con la identificación de una dificultad conceptual en el aula y derivó en el diseño del juego educativo «¡Publicá la web!».
 
 El registro servirá como base para analizar la experiencia y, eventualmente, elaborar una presentación para un concurso de prácticas docentes innovadoras, una ponencia, un documento de investigación o un artículo.
+
+El 15 de septiembre de 2026, la docente reafirma explícitamente que la bitácora debe mantenerse durante las siguientes iteraciones como fuente para un futuro paper o una presentación en un congreso. Este propósito orienta el registro, sin convertir las decisiones de diseño ni las pruebas técnicas en resultados de aprendizaje comprobados.
+
+Para cada aplicación en aula se procurará registrar fecha, grupo y cantidad de participantes, duración real, condiciones de trabajo, intervenciones docentes, dificultades, ajustes y ejemplos de producciones. Las evidencias que se utilicen fuera del aula deberán anonimizarse y contar con las autorizaciones correspondientes. No se incorporarán nombres de estudiantes ni sus enlaces identificables a este repositorio público.
 
 La bitácora distingue entre:
 
@@ -515,3 +519,43 @@ Se definió la licencia Creative Commons Atribución-NoComercial-CompartirIgual 
 ## Entrega para Classroom en PDF
 
 La docente comunica que probó CursoHTML con sus estudiantes y considera que funcionó; es una valoración docente, aún sin análisis sistemático. También observó edición del archivo de entrega. Solicita una barrera práctica, sin controles estrictos. Se sustituye la descarga TXT por un informe que se guarda como PDF mediante la impresión del navegador. Conserva nombre, ideas, actividades, juego y reflexiones; el avance local permanece. No se presenta el PDF como evidencia inalterable. La modificación local todavía debe publicarse para llegar al sitio de GitHub.
+
+## 15 de septiembre de 2026 — Módulo 3: comenzar a construir con HTML
+
+### Solicitud y decisiones de diseño
+
+La docente solicita salir de la predominancia teórica y comenzar HTML en una clase de 90 minutos, conservando explicación contextualizada, gamificación, guardado y entrega en PDF. Propone que la producción pueda realizarse en un editor y compartirse mediante enlace.
+
+La revisión de los ajustes previos lleva a mantener: Martina como personaje, explicación antes de aplicación, tareas sin pistas por posición, botones de avance al final del contenido, pantallas separadas para producción/prueba/cierre, adaptación móvil, preguntas metacognitivas y entregas independientes por clase. No se requiere estado del Módulo 2 en la computadora actual.
+
+Se adelanta HTML al Módulo 3, originalmente anunciado como «Organizar información». La jerarquía se aprende al construir h1/h2, párrafos y listas. El Módulo 5 pendiente pasa a anunciarse como «Más HTML». No se implementa todavía ese módulo ni se alteran las actividades de los módulos previos.
+
+### Recorrido propuesto
+
+Encargo narrativo (5 min), comparación de texto/HTML y microlección de cinco pasos (15), tres reparaciones mediante edición real de HTML (15), producción propia en tres rondas de diez minutos (30), prueba y publicación o preparación del archivo (10), cinco preguntas y semáforo (5), PDF y Classroom (10). La distribución es una propuesta para revisar con tiempos reales, no un resultado de aplicación.
+
+El juego introduce enlace, título y lista en orden distinto al de enseñanza. Permite intentos sin penalización, pistas y soluciones consultables; el informe registra los intentos y si se consultó una solución, sin confundir ayuda con aprendizaje demostrado. Una explicación abierta recupera la razón del cambio.
+
+### Producción y entrega
+
+Se incorpora un editor HTML en el curso con vista previa aislada y guardado automático. La plantilla es un documento completo con doctype, idioma, head, codificación, viewport, title y body. La producción mínima propone un título principal, dos secciones, dos párrafos, lista de tres propuestas y enlace con acción clara. El checklist de siete criterios es orientativo: no valida toda la sintaxis ni verifica destinos o calidad comunicativa.
+
+CodePen se ofrece solo con cuenta y autorización docente/institucional. Las instrucciones distinguen documento completo en el editor de archivos y contenido de body en la interfaz clásica; hay botones de copia separados. Se advierte sobre datos públicos, cierre de sesión y condiciones de licencia propias de los Pens públicos. No se crean cuentas ni se publican producciones desde el curso automáticamente. Como alternativa, se entrega index.html junto al PDF, sin cuenta externa. Compartir la URL del curso no comparte el contenido de su editor local.
+
+El informe incluye únicamente Módulo 3: respuestas, proyecto, reparaciones y códigos, intentos, consultas, revisión, prueba y mejora, modalidad de entrega, enlace clicable si corresponde, declaración de prueba de acceso, cinco reflexiones, semáforo y código completo. Se registra lo faltante sin bloquear por un puntaje o respuestas abiertas incompletas. Se exige identificación y modalidad de entrega; una entrega con enlace requiere URL de formato válido. No se certifica acceso público, autoría ni entrega efectiva en Classroom.
+
+La función «Empezar como otro estudiante» reinicia exclusivamente M3 tras confirmar. El guardado sigue siendo temporal en el navegador; Classroom y los archivos descargados permiten continuar en otra máquina. Se agrega recuperación ante JSON local inválido para evitar que un estado corrupto impida abrir el curso.
+
+### Evidencias y límites
+
+Archivos de implementación: index.html, modulo3.css y modulo3.js. La guía `investigacion/MODULO-3-GUIA-DOCENTE.md` documenta secuencia, intervenciones, planes alternativos y criterios formativos. `tests/modulo3.cjs` permite repetir las comprobaciones técnicas. Las pruebas técnicas no sustituyen una aplicación en aula ni demuestran mejora de motivación o comprensión.
+
+Pendientes de observar: tiempos reales por ronda, dificultad de las reparaciones, explicaciones de los estudiantes, diferencias entre producir con plantilla y transferir sin ella, cambios tras la prueba con compañeros y viabilidad del editor externo. El módulo queda como prototipo local para revisión docente; no se publica automáticamente en GitHub.
+
+### Resultado de la prueba técnica
+
+Las pruebas automatizadas en Chrome aprobaron sintaxis, unicidad de IDs, guardado y recarga, resolución de las tres reparaciones, detección de los siete criterios de la producción, descarga del HTML, informe independiente con código completo y enlace, aviso ante ventana bloqueada, aislamiento de scripts, navegación y ancho en 320/390 píxeles, reinicio exclusivo de M3 y recuperación de JSON inválido. Se comprobó también que las rutas de entrega de las clases anteriores siguen generando sus informes propios. No se publicó un Pen real ni se probó todavía con estudiantes. La preparación del informe se verificó en el navegador; guardar y entregar el PDF sigue requiriendo acción del estudiante.
+
+### Autorización para la prueba en aula
+
+La docente solicita publicar esta versión para probarla con estudiantes, aun cuando anticipa cambios que comunicará después por falta de tiempo para revisarlos ahora. Se conserva el prototipo como punto de partida identificable en el historial de Git. Esta autorización no implica validación pedagógica: los cambios pendientes y los resultados de la aplicación todavía no se conocen. Las observaciones posteriores deberán registrar tiempos reales, dificultades, respuestas y propuestas de mejora, distinguiendo lo observado de las interpretaciones.
