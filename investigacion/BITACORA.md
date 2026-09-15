@@ -583,3 +583,17 @@ La docente describe la interfaz de CodePen como demasiado cargada y pregunta por
 Estos ajustes son evidencia de revisión docente del prototipo. No se deduce de esta conversación que el Módulo 3 haya sido aplicado con estudiantes ni se inventan tiempos, participantes o resultados de aprendizaje.
 
 La nueva comprobación automatizada en Chrome aprobó las pruebas previas y agregó verificación de ausencia de tiempos en las pantallas, presencia del código de prueba, altura compacta de la misión del enlace y apertura del destino en otra pestaña conservando el curso. La navegación de prueba usó un destino simulado para no depender de Internet; no verificó el guardado real en una cuenta de CodePen. Se comprobaron también el bloqueo de URLs javascript y el mantenimiento de las entregas independientes. Los cambios quedan identificados en un commit separado de la versión inicial publicada.
+
+## 15 de septiembre de 2026 — Prueba exploratoria de YachayCodex
+
+La docente propone probar YachayCodex en lugar de CodePen. Se utiliza un ejemplo breve con títulos, párrafo, lista y enlace al curso. La docente comunica que el enlace externo inicialmente no funciona en la vista previa; tras agregar target="_blank" y rel="noopener noreferrer", confirma que sí abre el destino. Se registra como prueba técnica docente, no como resultado con estudiantes.
+
+La docente proporciona un enlace generado por la función de compartir. Al abrirlo en una pestaña nueva se observa el aviso de carga exitosa, el código HTML dentro de un panel editable y la página en la vista previa. Esto comprueba la recuperación del ejemplo compartido en el editor, no solamente una vista de lectura. No se modifica ni vuelve a publicar ese ejemplo durante la comprobación.
+
+Límites: la nueva pestaña pertenece al mismo navegador; no se probó desde otro dispositivo o una sesión independiente. Tampoco se verificó si los cambios editados actualizan el enlace original, si exigen generar uno nuevo, cuánto tiempo se conserva el trabajo o cuáles funciones requieren una cuenta. No se confunde el contenido codificado en una URL con una garantía de almacenamiento longitudinal. Antes de adaptar la práctica, las instrucciones deberán distinguir guardar/compartir la versión final y conservar una copia del código en el PDF y en index.html. El reemplazo todavía no se implementó en el curso.
+
+### Adaptación del Módulo 3 autorizada por la docente
+
+La docente pide cambiar el curso. Se reemplazan las instrucciones de CodePen por YachayCodex, manteniendo la secuencia prueba breve → página propia → prueba con otra persona → reflexión → PDF independiente de la clase. Se observa el menú Compartir, la opción Compartir Código y el formulario de título y descripción, sin enviar ni republicar el ejemplo de Andrea. No se necesita una captura docente para esta adaptación.
+
+El botón principal copia el contenido de body al panel HTML; el documento completo permanece disponible como respaldo. El ejemplo probado y la plantilla incorporan enlaces externos en otra pestaña. Se explicita volver a compartir y verificar la versión final, sincronizar el HTML con el PDF y probar el acceso sin la sesión del estudiante. Se conserva la alternativa HTML + PDF en Classroom y no se promete persistencia ni publicación sin cuenta. Se rechazan direcciones vacías del editor como entregas. La propuesta conserva las revisiones docentes anteriores y la planificación de 90 minutos solo en la guía. Estas decisiones son de diseño, no evidencia de aprendizaje en aula.

@@ -38,7 +38,10 @@ const server=http.createServer((req,res)=>{
     const studentContent=await page.locator('.screen').allTextContents();
     assert.ok(!studentContent.join(' ').match(/\b\d+\s*(?:[–+\-]\s*\d+\s*)?(?:min(?:utos)?|segundos)\b/i),'Sin tiempos en las pantallas de estudiantes');
     assert.equal(await page.locator('#m3CopyTrial').count(),1);
-    assert.match(await page.textContent('#m3TrialCode'),/Mi primera página en CodePen/);
+    assert.match(await page.textContent('#m3TrialCode'),/Mi primera página/);
+    assert.match(await page.textContent('#m3TrialCode'),/target="_blank"/);
+    assert.match(await page.textContent('#module3Share'),/YachayCodex/);
+    assert.ok(!(await page.textContent('#module3Share')).includes('CodePen'));
     assert.match(await page.textContent('#module3Workshop'),/Revisá y mejorá tu trabajo/);
     await page.fill('#m3Name','Estudiante Prueba');await page.fill('#m3Observe','Ahora se distingue el título.');
     await page.reload();await page.click('#nav-module3');assert.equal(await page.inputValue('#m3Name'),'Estudiante Prueba');
@@ -68,7 +71,9 @@ const server=http.createServer((req,res)=>{
     assert.equal(download.suggestedFilename(),'index.html');assert.equal(fs.readFileSync(await download.path(),'utf8'),code);
     await page.reload();await page.click('#nav-module3');await page.click('#m3ToWorkshop');assert.equal(await page.inputValue('#m3Code'),code);
     await page.click('#m3ToShare');await page.selectOption('#m3DeliveryType','link');await page.fill('#m3Url','file:///C:/mi-web/index.html');await page.click('#m3ToClose');await page.click('#m3Report');assert.match(await page.textContent('#m3ReportStatus'),/URL completa/);
-    await page.click('#m3BackShare');await page.fill('#m3Url','https://codepen.io/pen/');await page.click('#m3ToClose');await page.click('#m3Report');assert.match(await page.textContent('#m3ReportStatus'),/URL completa/);
+    for(const empty of ['https://codepen.io/pen/','https://app.yachaycodex.dev/','https://app.yachaycodex.dev/shared/']){
+      await page.click('#m3BackShare');await page.fill('#m3Url',empty);await page.click('#m3ToClose');await page.click('#m3Report');assert.match(await page.textContent('#m3ReportStatus'),/URL completa/);
+    }
     await page.click('#m3BackShare');await page.selectOption('#m3DeliveryType','file');await page.click('#m3ToClose');await page.fill('#m3Reflect1','h1 presenta el título y p un párrafo.');
     // Datos de clases anteriores no deben aparecer en este informe.
     await page.evaluate(()=>{state.projectIdea='NO-INCLUIR-CLASE1';state.moduleTwoProject={m2ProjectName:'NO-INCLUIR-CLASE2'};persist();});
@@ -76,8 +81,8 @@ const server=http.createServer((req,res)=>{
     const content=await report.textContent('pre');assert.ok(content.includes(code));assert.ok(content.includes('Estudiante Prueba'));assert.ok(content.includes('Intentos: 2'));assert.ok(content.includes('Consultó una solución: sí'));assert.ok(!content.includes('NO-INCLUIR'));
     assert.equal(await report.locator('button').textContent(),'Guardar como PDF');await report.close();
     // Enlace incluido como anchor seguro y solo si se elige ese modo.
-    await page.click('#m3BackShare');await page.selectOption('#m3DeliveryType','link');await page.fill('#m3Url','https://codepen.io/alumno/pen/abc123');await page.check('#m3LinkTested');await page.click('#m3ToClose');
-    const linkedPromise=page.waitForEvent('popup');await page.click('#m3Report');const linked=await linkedPromise;await linked.waitForLoadState();assert.equal(await linked.locator('a').getAttribute('href'),'https://codepen.io/alumno/pen/abc123');await linked.close();
+    await page.click('#m3BackShare');await page.selectOption('#m3DeliveryType','link');await page.fill('#m3Url','https://app.yachaycodex.dev/shared/8bd91167a1dec46a118c2fc5a0ee25d3');await page.check('#m3LinkTested');await page.click('#m3ToClose');
+    const linkedPromise=page.waitForEvent('popup');await page.click('#m3Report');const linked=await linkedPromise;await linked.waitForLoadState();assert.equal(await linked.locator('a').getAttribute('href'),'https://app.yachaycodex.dev/shared/8bd91167a1dec46a118c2fc5a0ee25d3');await linked.close();
     // Bloqueo de ventana: no pierde la producción y da una instrucción.
     await page.evaluate(()=>{window.open=()=>null;});await page.click('#m3Report');assert.match(await page.textContent('#m3ReportStatus'),/Permití abrir/);
     await page.reload();await page.click('#nav-module3');await page.click('#m3ToWorkshop');

@@ -23,7 +23,7 @@
   </ul>
   <h2>Participá</h2>
   <p>Explicá por qué vale la pena sumarse.</p>
-  <a href="https://andrearocca.github.io/CursoHTML/">Conocer el curso</a>
+  <a href="https://andrearocca.github.io/CursoHTML/" target="_blank" rel="noopener noreferrer">Conocer el curso</a>
 </body>
 </html>`;
   const demoText = 'Taller Verde\nAprendé a cuidar plantas en espacios pequeños.\nQué hacemos\nSembramos\nCompartimos semillas\nConocer el curso';
@@ -166,27 +166,27 @@
         <div class="actions"><button class="btn ghost" id="m3EditAgain">Volver al editor y mejorar</button></div>
       </article>
       <article class="card">
-        <div class="lesson-label">🔗 Editor HTML en línea · CodePen</div>
-        <p>Vamos a usar <strong>CodePen, un editor HTML en línea</strong>. Al guardar el trabajo en tu cuenta, vas a poder recuperarlo y continuar desde cualquier dispositivo con conexión a Internet.</p>
-        <p>Guardar un trabajo en CodePen requiere iniciar sesión. Sus trabajos públicos pueden ser vistos por cualquiera: usá un alias y contenido ficticio, sin datos del curso ni nombre completo en la página pública. No copies este curso allí; publicá solamente tu producción.</p>
+        <div class="lesson-label">🔗 Editor HTML en línea · YachayCodex</div>
+        <p>Vamos a usar <strong>YachayCodex</strong> para probar HTML y obtener un enlace que otra persona pueda abrir. El editor tiene paneles HTML, CSS y JS; hoy usamos solamente HTML.</p>
+        <p>Compartir no es lo mismo que conservar una carpeta personal: guardá también tu archivo HTML y el PDF. Usá un alias y contenido ficticio, sin datos del curso ni nombre completo en la página pública. No copies este curso allí; compartí solamente tu producción. Si la plataforma pide una cuenta o no permite compartir, consultá a la docente y usá el plan B.</p>
         <h3>Primero, probá cómo funciona el editor</h3>
         <p>Usá este ejemplo para aprender a pegar, modificar y guardar código antes de llevar tu propia página.</p>
         <pre class="m3-code" id="m3TrialCode"></pre>
         <div class="actions"><button class="btn" id="m3CopyTrial">Copiar código de prueba</button></div>
         <div class="mini-status" id="m3TrialStatus" role="status"></div>
-        <ol class="m3-mission-list"><li>Abrí <a href="https://codepen.io/pen/" target="_blank" rel="noopener noreferrer">el editor de CodePen</a> e iniciá sesión con tu propia cuenta.</li><li>Si ves los paneles HTML/CSS/JS, pegá el ejemplo en <strong>HTML</strong> y dejá CSS y JS vacíos. Si ves un archivo index.html, pegá el ejemplo dentro de su body.</li><li>Comprobá que aparezca la página. Cambiá el título visible y el párrafo para reconocer tu prueba.</li><li>Dale un nombre y guardala con <strong>Save</strong>. Volvé a la lista de tus trabajos y abrí la prueba desde tu cuenta. Si aparece lo que cambiaste, comprobaste que quedó guardado.</li></ol>
+        <ol class="m3-mission-list"><li>Abrí <a href="https://app.yachaycodex.dev/" target="_blank" rel="noopener noreferrer">el editor de YachayCodex</a>.</li><li>Pegá el ejemplo en <strong>HTML</strong> y dejá CSS y JS vacíos.</li><li>Cambiá el título visible y el párrafo para reconocer tu prueba. Probá “Volver al curso”: debe abrir otra pestaña.</li><li>Abrí el ícono <strong>Compartir</strong> y elegí <strong>Compartir Código</strong>. Escribí un título con un alias, pulsá <strong>Compartir Código</strong> y copiá el enlace que genere.</li><li>Abrí ese enlace en otra pestaña y comprobá que aparezcan tus cambios. Antes de entregar, probalo también en otra computadora o ventana privada.</li></ol>
         <h3>Ahora, llevá tu propia página</h3>
-        <ol class="m3-mission-list"><li>Abrí <a href="https://codepen.io/pen/" target="_blank" rel="noopener noreferrer">el editor de CodePen</a> e iniciá sesión con tu propia cuenta. No compartas contraseñas.</li><li>Si ves un archivo <code>index.html</code>, copiá <strong>el documento completo</strong> desde el botón de abajo y pegalo allí. Si ves los paneles clásicos HTML/CSS/JS, copiá <strong>solo el contenido de body</strong> al panel HTML. Dejamos CSS y JS vacíos.</li><li>Dale un nombre al trabajo y guardalo con <strong>Save</strong>. Copiá el enlace para compartir el trabajo guardado, no la dirección de un editor vacío o temporal.</li><li>Abrí el enlace en una ventana privada o en otra computadora. ¿Se ve sin iniciar sesión? ¿Funciona la llamada a la acción? Si no, revisá el enlace y la configuración.</li><li>Pegá el enlace más abajo. Si cambiás el código en CodePen, volvé a traer la versión final al editor del curso para que el PDF y la web coincidan. Al terminar, cerrá sesión en la computadora compartida.</li></ol>
-        <div class="actions"><button class="btn ghost" id="m3CopyFull">Copiar documento completo</button><button class="btn ghost" id="m3CopyBody">Copiar solo contenido de body</button></div>
+        <ol class="m3-mission-list"><li>Usá <strong>Copiar HTML para YachayCodex</strong> y pegalo en su panel HTML, reemplazando la prueba. Copiamos solo el contenido de body; CSS y JS quedan vacíos.</li><li>Probá la página y su enlace. Para abrir un enlace externo en otra pestaña, agregá <code>target="_blank"</code> y <code>rel="noopener noreferrer"</code> a la etiqueta a, como en el ejemplo.</li><li>Compartí el código final siguiendo los pasos de la prueba. Si lo modificás después, volvé a compartir y comprobá el enlace de la versión final: no supongas que el anterior se actualiza solo.</li><li>Abrí el enlace en una ventana privada o en otra computadora. ¿Se ve sin iniciar sesión? ¿Funciona la llamada a la acción? Si no, revisá el enlace o usá el plan B.</li><li>Pegá el enlace más abajo. Si cambiás el código en YachayCodex, traé el HTML final al editor del curso, reemplazando lo que está entre <code>&lt;body&gt;</code> y <code>&lt;/body&gt;</code>, para que el PDF y la web coincidan. Descargá el archivo actualizado. Si iniciaste sesión, cerrala al terminar.</li></ol>
+        <div class="actions"><button class="btn" id="m3CopyBody">Copiar HTML para YachayCodex</button><button class="btn ghost" id="m3CopyFull">Copiar documento completo (respaldo)</button></div>
         <div class="mini-status" id="m3CopyStatus" role="status"></div>
-        <p class="m3-source">Ayuda oficial: <a href="https://blog.codepen.io/docs/pens/" target="_blank" rel="noopener noreferrer">Pens, guardado y privacidad</a> · <a href="https://blog.codepen.io/documentation/editor-view/" target="_blank" rel="noopener noreferrer">Editor clásico y contenido de body</a>. La interfaz puede variar. Los Pens públicos tienen condiciones de licencia propias de CodePen; el curso conserva CC BY-NC-SA 4.0.</p>
+        <p class="m3-source">Sitio oficial: <a href="https://yachaycodex.dev/" target="_blank" rel="noopener noreferrer">YachayCodex</a>. La interfaz puede variar. El enlace no reemplaza el archivo HTML ni la entrega en Classroom.</p>
       </article>
       <article class="card">
-        <div class="lesson-label">📁 Plan B · Sin cuenta o sin conexión</div>
-        <p>Si no podés usar el editor en línea o guardar el trabajo en tu cuenta, descargá tu HTML y adjuntalo junto al PDF en Classroom. El PDF incluirá el código completo aunque no tengas un enlace. <strong>La dirección de esta página del curso no comparte lo que escribiste en su editor.</strong></p>
+        <div class="lesson-label">📁 Plan B · Si no podés compartir en línea</div>
+        <p>Si no podés usar el editor en línea o generar el enlace, descargá tu HTML y adjuntalo junto al PDF en Classroom. El PDF incluirá el código completo aunque no tengas un enlace. <strong>La dirección de esta página del curso no comparte lo que escribiste en su editor.</strong></p>
         <div class="actions"><button class="btn ghost" id="m3DownloadBackup">Descargar mi archivo HTML</button></div>
         <label for="m3DeliveryType">¿Cómo entregás tu producción?</label><select data-m3-field id="m3DeliveryType"><option value="">Elegí una opción</option><option value="link">Con enlace público a mi trabajo</option><option value="file">Sin enlace: adjunto HTML y PDF en Classroom</option></select>
-        <label for="m3Url">Enlace al trabajo guardado (si elegiste entregar con enlace)</label><input data-m3-field id="m3Url" class="student-name" type="url" placeholder="https://codepen.io/tu-alias/pen/...">
+        <label for="m3Url">Enlace a la versión final compartida (si elegiste entregar con enlace)</label><input data-m3-field id="m3Url" class="student-name" type="url" placeholder="https://app.yachaycodex.dev/shared/...">
         <label class="inline-check"><input type="checkbox" data-m3-field id="m3LinkTested"><span>Probé el enlace en una ventana privada u otra computadora y se puede ver sin mi cuenta.</span></label>
         <div class="actions"><button class="btn ghost" id="m3OpenLink">Abrir mi enlace para revisarlo</button></div><div class="mini-status" id="m3UrlStatus" role="status"></div>
         ${textField('m3ShareProblem','Si no pudiste publicar o probar el enlace, ¿qué dificultad apareció? (opcional)')}
@@ -305,13 +305,13 @@
   }
   async function copy(bodyOnly){
     collect();save();const value=bodyOnly?parse(work.code).body.innerHTML:work.code;
-    try{await navigator.clipboard.writeText(value);$('m3CopyStatus').textContent=bodyOnly?'✓ Copiado solo el contenido de body para el panel HTML clásico.':'✓ Copiado el archivo completo para index.html.';}
-    catch{$('m3CopyStatus').textContent='No se pudo copiar automáticamente. Volvé al editor, seleccioná el código y copiá con Ctrl+C. Para el editor clásico, seleccioná solo lo que está entre <body> y </body>.';}
+    try{await navigator.clipboard.writeText(value);$('m3CopyStatus').textContent=bodyOnly?'✓ Copiado el contenido de body para el panel HTML de YachayCodex.':'✓ Copiado el archivo completo para index.html.';}
+    catch{$('m3CopyStatus').textContent='No se pudo copiar automáticamente. Volvé al editor y copiá con Ctrl+C. Para YachayCodex, seleccioná solo lo que está entre <body> y </body>.';}
   }
-  const trialCode='<h1>Mi primera página en CodePen</h1>\n<p>Estoy probando un editor HTML en línea.</p>\n<a href="https://andrearocca.github.io/CursoHTML/">Volver al curso</a>';
+  const trialCode='<h1>Mi primera página</h1>\n<p>Estoy aprendiendo a crear una página con HTML.</p>\n<h2>Lo que quiero aprender</h2>\n<ul>\n  <li>Organizar información</li>\n  <li>Crear enlaces</li>\n  <li>Publicar mi página</li>\n</ul>\n<a href="https://andrearocca.github.io/CursoHTML/"\n   target="_blank"\n   rel="noopener noreferrer">\n  Volver al curso de HTML\n</a>';
   $('m3TrialCode').textContent=trialCode;
   async function copyTrial(){
-    try{await navigator.clipboard.writeText(trialCode);$('m3TrialStatus').textContent='✓ Código de prueba copiado. Pegalo en HTML o dentro del body de index.html.';}
+    try{await navigator.clipboard.writeText(trialCode);$('m3TrialStatus').textContent='✓ Código de prueba copiado. Pegalo en el panel HTML de YachayCodex.';}
     catch{$('m3TrialStatus').textContent='Seleccioná el ejemplo de arriba y copialo con Ctrl+C; después pegalo en el editor.';}
   }
   function publicWorkUrl(){
@@ -319,6 +319,8 @@
     if(!url)return null;
     if(url.hostname==='andrearocca.github.io'&&url.pathname.replace(/\/$/,'')==='/CursoHTML')return null;
     if(url.hostname==='codepen.io'&&!/\/(?:pen|full|details)\/[^/]+/.test(url.pathname))return null;
+    if(url.hostname==='yachaycodex.dev')return null;
+    if(url.hostname==='app.yachaycodex.dev'&&(!url.pathname.replace(/\//g,'')||/^\/shared\/?$/.test(url.pathname)))return null;
     if(['localhost','127.0.0.1','0.0.0.0'].includes(url.hostname))return null;
     return url.href;
   }
