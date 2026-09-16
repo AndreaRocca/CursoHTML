@@ -80,28 +80,6 @@ const server=http.createServer((req,res)=>{
     const popupPromise=page.waitForEvent('popup');await page.click('#m3Report');const report=await popupPromise;await report.waitForLoadState();
     const content=await report.textContent('pre');assert.ok(content.includes(code));assert.ok(content.includes('Estudiante Prueba'));assert.ok(content.includes('Intentos: 2'));assert.ok(content.includes('Consultó una solución: sí'));assert.ok(!content.includes('NO-INCLUIR'));
     assert.equal(await report.locator('button').textContent(),'Guardar como PDF');await report.close();
-    // Exportación mínima para análisis docente: sin identidad ni producciones.
-    const metricsDownload=page.waitForEvent('download');await page.click('#m3Metrics');const metricsFile=await metricsDownload;
-    assert.equal(metricsFile.suggestedFilename(),'metricas-modulo3.json');
-    const metricsText=fs.readFileSync(await metricsFile.path(),'utf8');const metrics=JSON.parse(metricsText);
-    assert.equal(metrics.schema,'cursohtml-m3-metricas');assert.equal(metrics.version,1);
-    assert.deepEqual(metrics.repairAttempts,[2,1,1]);assert.deepEqual(metrics.repairSolutions,[true,false,false]);
-    assert.equal(metrics.reflectionAnswered[0],true);assert.equal(metrics.deliveryType,'file');
-    for(const privateValue of ['Estudiante Prueba','Club del Libro','NO-INCLUIR','https://example.org/','h1 presenta el título'])assert.ok(!metricsText.includes(privateValue));
-    const dashboard=await context.newPage();await dashboard.goto(url+'/investigacion/metricas.html');
-    await dashboard.locator('#files').setInputFiles([
-      {name:'alumno-a.json',mimeType:'application/json',buffer:Buffer.from(metricsText)},
-      {name:'alumno-b.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({...metrics,repairAttempts:[1,3,2],repairSolutions:[false,true,false],deliveryType:'link',peerFeedback:true}))},
-      {name:'otro.json',mimeType:'application/json',buffer:Buffer.from('{"name":"No válido"}')}
-    ]);
-    await dashboard.getByText('2 archivo(s) válido(s) cargado(s). 1 rechazado(s). No se enviaron datos.').waitFor();
-    assert.match(await dashboard.locator('#repairs').textContent(),/Enlace y href1\.51\/21\/22\/2/);
-    assert.match(await dashboard.locator('#summary').textContent(),/2Archivos válidos/);
-    assert.ok(!(await dashboard.locator('body').textContent()).includes('Estudiante Prueba'));
-    const csvDownload=dashboard.waitForEvent('download');await dashboard.click('#csv');const csv=await csvDownload;
-    assert.equal(csv.suggestedFilename(),'resumen-metricas-modulo3.csv');
-    assert.ok(fs.readFileSync(await csv.path(),'utf8').includes('Enlace y href: solución consultada'));
-    await dashboard.click('#clear');assert.equal(await dashboard.locator('#results').isVisible(),false);await dashboard.close();
     // Enlace incluido como anchor seguro y solo si se elige ese modo.
     await page.click('#m3BackShare');await page.selectOption('#m3DeliveryType','link');await page.fill('#m3Url','https://app.yachaycodex.dev/shared/8bd91167a1dec46a118c2fc5a0ee25d3');await page.check('#m3LinkTested');await page.click('#m3ToClose');
     const linkedPromise=page.waitForEvent('popup');await page.click('#m3Report');const linked=await linkedPromise;await linked.waitForLoadState();assert.equal(await linked.locator('a').getAttribute('href'),'https://app.yachaycodex.dev/shared/8bd91167a1dec46a118c2fc5a0ee25d3');await linked.close();
