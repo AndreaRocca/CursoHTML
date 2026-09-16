@@ -210,10 +210,9 @@
         <div class="lesson-label">📥 Entrega independiente · Módulo 3 / Clase 3</div>
         <h3>Tu proceso y tu página en un PDF</h3>
         <p>Incluye tus respuestas de <strong>esta clase</strong>, reparaciones, intentos, uso de soluciones, revisión de la página, enlace si lo tenés, devolución y código HTML completo. No depende de las respuestas de los módulos anteriores.</p>
-        <p><strong>Antes de irte:</strong> prepará el informe, elegí “Guardar como PDF” en la impresión y adjuntalo en Classroom. Descargá también el archivo de métricas y adjuntalo en la misma entrega. Si no publicaste, adjuntá además index.html. El archivo de métricas no incluye tu nombre, respuestas, código ni enlace; sirve para saber qué actividades necesitaron más ayuda. Conservá una copia para continuar en otra computadora. El PDF documenta lo que hiciste: no es una prueba inalterable ni una calificación automática.</p>
-        <div class="actions"><button class="btn ghost" id="m3BackShare">← Revisar entrega y enlace</button><button class="btn ok" id="m3Report">Preparar PDF del Módulo 3</button><button class="btn ghost" id="m3Metrics">Descargar métricas de esta clase</button></div>
+        <p><strong>Antes de irte:</strong> prepará el informe, elegí “Guardar como PDF” en la impresión y adjuntalo en Classroom. Si no publicaste, adjuntá además index.html. Conservá una copia para continuar en otra computadora. El PDF documenta lo que hiciste: no es una prueba inalterable ni una calificación automática.</p>
+        <div class="actions"><button class="btn ghost" id="m3BackShare">← Revisar entrega y enlace</button><button class="btn ok" id="m3Report">Preparar PDF del Módulo 3</button></div>
         <div class="mini-status" id="m3ReportStatus" role="status"></div>
-        <div class="mini-status" id="m3MetricsStatus" role="status"></div>
       </article>
     </div>`;
 
@@ -325,30 +324,6 @@
     if(['localhost','127.0.0.1','0.0.0.0'].includes(url.hostname))return null;
     return url.href;
   }
-  function metrics(){
-    collect();save();
-    const f=work.fields;
-    const snapshot={
-      schema:'cursohtml-m3-metricas',version:1,
-      exportedOn:new Date().toISOString().slice(0,10),
-      repairAttempts:work.repairAttempts.map(n=>Math.min(999,Math.max(0,Math.trunc(Number(n)||0)))),
-      repairSolved:work.repairSolved.map(Boolean),
-      repairSolutions:work.repairSolutions.map(Boolean),
-      checklist:inspect(work.code).rows.map(([ok])=>Boolean(ok)),
-      observed:!!String(f.m3Observe||'').trim(),
-      repairExplained:!!String(f.m3RepairExplain||'').trim(),
-      revisionDescribed:!!String(f.m3Extra||'').trim(),
-      peerFeedback:!!String(f.m3Peer||'').trim(),
-      changeDescribed:!!String(f.m3Change||'').trim(),
-      reflectionAnswered:[1,2,3,4,5].map(i=>!!String(f['m3Reflect'+i]||'').trim()),
-      confidence:['🟢','🟡','🔴'].find(color=>String(f.m3Confidence||'').startsWith(color))||'',
-      deliveryType:['link','file'].includes(f.m3DeliveryType)?f.m3DeliveryType:'',
-      linkTested:!!f.m3LinkTested
-    };
-    const url=URL.createObjectURL(new Blob([JSON.stringify(snapshot,null,2)],{type:'application/json'}));
-    const a=document.createElement('a');a.href=url;a.download='metricas-modulo3.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
-    $('m3MetricsStatus').textContent='Archivo descargado. Adjuntalo con el PDF en Classroom. El curso no lo envía automáticamente.';
-  }
   function report(){
     collect();save();const f=work.fields,st=$('m3ReportStatus'),name=(f.m3Name||'').trim();
     if(!name){st.textContent='Escribí tu nombre al comienzo del módulo antes de preparar el PDF.';go('module3');$('m3Name').focus();return;}
@@ -434,7 +409,7 @@
     collect();save();const url=publicWorkUrl();if(!url){$('m3UrlStatus').textContent='Pegá una URL completa del trabajo guardado, no una ruta local ni el editor vacío.';return;}
     window.open(url,'_blank','noopener,noreferrer');$('m3UrlStatus').textContent='Probalo también en una ventana privada. Abrirlo acá no verifica que sea público.';
   });
-  bind('m3ToClose',()=>move('module3Close'));bind('m3BackShare',()=>move('module3Share'));bind('m3Report',report);bind('m3Metrics',metrics);
+  bind('m3ToClose',()=>move('module3Close'));bind('m3BackShare',()=>move('module3Share'));bind('m3Report',report);
   // Recuperación de un HTML de Classroom: pegarlo aquí recupera la producción,
   // no el estado de actividades de otra clase.
   showDemo(true);renderLesson();score();preview('m3Preview',work.code);
