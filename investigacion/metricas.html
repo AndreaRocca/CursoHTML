@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tablero docente · CursoHTML y CursoContable</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#172444;background:#f4f7ff}
+    *{box-sizing:border-box}body{margin:0}main{max-width:1040px;margin:auto;padding:32px 18px 70px}
+    h1{font-size:clamp(1.8rem,4vw,2.6rem);margin:0 0 8px}h2{font-size:1.3rem;margin:0 0 12px}
+    p{line-height:1.55}a{color:#244bad}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #f4a300;outline-offset:3px}
+    .lead{max-width:72ch;color:#34486e}.card{background:white;border:1px solid #dce5f5;border-radius:18px;padding:24px;margin:20px 0;box-shadow:0 4px 20px #162d5710}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.button,button{border:0;border-radius:10px;background:#2450b5;color:white;font:inherit;font-weight:700;padding:12px 17px;cursor:pointer}
+    button.secondary{background:#e8efff;color:#173c95}button:disabled{opacity:.45;cursor:not-allowed}
+    input[type=file]{max-width:100%;font:inherit}.status{min-height:1.5em;font-weight:600}.muted{color:#536480}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px}.stat{border:1px solid #dce5f5;border-radius:12px;padding:16px}.stat strong{display:block;font-size:2rem;color:#17449e}
+    .table-scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:570px}th,td{text-align:left;border-bottom:1px solid #e4eaf5;padding:10px}th{background:#eef3ff}td.num{text-align:right;font-variant-numeric:tabular-nums}
+    .bar{display:block;height:9px;background:#dce5f5;border-radius:9px;overflow:hidden;min-width:70px}.bar span{display:block;height:100%;background:#315fcb}
+    [hidden]{display:none!important}small{color:#536480}
+  </style>
+</head>
+<body>
+<main>
+  <p><a href="../index.html">← Volver al curso</a></p>
+  <h1>Tablero docente · dos cursos</h1>
+  <p class="lead">Seleccioná juntos los archivos de métricas recibidos en Classroom: <code>metricas-modulo3.json</code> y <code>metricas-contable.json</code>. Los cursos se resumen por separado. El cálculo ocurre en tu navegador: no sube archivos ni muestra nombres, respuestas, código o enlaces.</p>
+  <section class="card" aria-labelledby="import-title">
+    <h2 id="import-title">Reunir entregas</h2>
+    <div class="actions"><input id="files" type="file" accept=".json,application/json" multiple aria-label="Elegir archivos JSON de métricas"><button id="clear" class="secondary" type="button">Limpiar tablero</button></div>
+    <p id="status" class="status" role="status">Todavía no se eligieron archivos.</p>
+    <p class="muted">Elegí todos los archivos de la clase de una sola vez. Una nueva selección reemplaza la anterior. No combines distintas cohortes si querés comparar clases. Los archivos repetidos cuentan como entregas distintas: revisá los nombres en Classroom antes de importarlos.</p>
+  </section>
+  <section id="results" hidden>
+    <h2>HTML · Módulo 3</h2>
+    <div id="htmlResults" hidden>
+    <div class="stats" id="summary" aria-label="Resumen de entregas"></div>
+    <section class="card" aria-labelledby="repairs-title"><h2 id="repairs-title">¿Qué reparación costó más?</h2><div class="table-scroll"><table><thead><tr><th>Reparación</th><th>Intentos promedio</th><th>Más de un intento</th><th>Pidieron solución</th><th>Resuelta</th></tr></thead><tbody id="repairs"></tbody></table></div></section>
+    <section class="card" aria-labelledby="check-title"><h2 id="check-title">Página HTML: criterios detectados</h2><p class="muted">Una comprobación automática orientativa, no una nota ni una validación completa.</p><div class="table-scroll"><table><thead><tr><th>Criterio</th><th>Detectado</th><th>Proporción</th></tr></thead><tbody id="checks"></tbody></table></div></section>
+    <section class="card" aria-labelledby="process-title"><h2 id="process-title">Proceso y entrega</h2><div class="table-scroll"><table><thead><tr><th>Indicador</th><th>Entregas</th><th>Proporción</th></tr></thead><tbody id="process"></tbody></table></div></section>
+    </div>
+    <p id="noHtml" class="muted">No hay archivos del curso HTML en esta selección.</p>
+    <h2>Contabilidad en juego · ocho misiones</h2>
+    <div id="contableResults" hidden>
+      <div class="stats" id="contableSummary" aria-label="Resumen de entregas de Contable"></div>
+      <section class="card" aria-labelledby="contable-title"><h2 id="contable-title">Misiones que necesitaron más apoyo</h2><div class="table-scroll"><table><thead><tr><th>Misión</th><th>Intentos promedio</th><th>Más de un intento</th><th>Pistas usadas</th><th>Resuelta</th><th>Primera idea correcta</th></tr></thead><tbody id="contableMissions"></tbody></table></div></section>
+      <section class="card" aria-labelledby="contable-process-title"><h2 id="contable-process-title">Comprensión y reflexión</h2><div class="table-scroll"><table><thead><tr><th>Indicador</th><th>Entregas</th><th>Proporción</th></tr></thead><tbody id="contableProcess"></tbody></table></div></section>
+    </div>
+    <p id="noContable" class="muted">No hay archivos de Contable en esta selección.</p>
+    <section class="card" aria-labelledby="export-title"><h2 id="export-title">Guardar un resumen</h2><p>Podés descargar los totales agregados de ambos cursos como CSV para tu bitácora. No contiene producciones individuales.</p><button id="csv" type="button">Descargar resumen CSV</button></section>
+  </section>
+  <section class="card" aria-labelledby="limits-title"><h2 id="limits-title">Cómo interpretar estos números</h2><p>Cada archivo válido representa una entrega, no una persona única ni una visita al sitio. Los intentos registran pulsaciones de “Comprobar” o “Probar reparación”; una cifra alta puede indicar exploración, dificultad u otra dinámica. Una pista o solución consultada no prueba falta de aprendizaje. Los criterios de HTML reflejan el estado al descargar el archivo. En Contable, “primera idea correcta” se calcula solo entre quienes la comprobaron; el tablero también muestra cuántos fueron.</p><p>Para estudiar aprendizaje, cruzá estos indicadores con los PDF, observaciones de clase y preguntas pendientes, sin publicar identificaciones. Este tablero no registra navegación ni envía datos a un servidor.</p></section>
+</main>
+<script>
+(() => {
+  'use strict';
+  const $=id=>document.getElementById(id);
+  const repairNames=['Enlace y href','Título h1','Lista ul/li'];
+  const checkNames=['Estructura del documento','Título de pestaña','Título principal h1','Dos párrafos propios','Dos secciones h2','Lista de propuestas','Enlace útil'];
+  const ratio=(n,total)=>total?Math.round(100*n/total)+' %':'0 %';
+  const contableNames=['Patrimonio','Cuentas','Apertura','Compra a crédito','Venta y resultado','Pago de deuda','Diario y Mayor','Balance'];
+  let rows=[];
+  let contableRows=[];
+  let csvRows=[];
+  function valid(d){
+    const bools=a=>Array.isArray(a)&&a.every(v=>typeof v==='boolean');
+    return d&&d.schema==='cursohtml-m3-metricas'&&d.version===1&&
+      Array.isArray(d.repairAttempts)&&d.repairAttempts.length===3&&d.repairAttempts.every(v=>Number.isInteger(v)&&v>=0&&v<=999)&&
+      bools(d.repairSolved)&&d.repairSolved.length===3&&bools(d.repairSolutions)&&d.repairSolutions.length===3&&
+      bools(d.checklist)&&d.checklist.length===7&&bools(d.reflectionAnswered)&&d.reflectionAnswered.length===5&&
+      ['observed','repairExplained','revisionDescribed','peerFeedback','changeDescribed','linkTested'].every(k=>typeof d[k]==='boolean')&&
+      ['','🟢','🟡','🔴'].includes(d.confidence)&&['','link','file'].includes(d.deliveryType);
+  }
+  function validContable(d){
+    const counts=a=>Array.isArray(a)&&a.length===8&&a.every(v=>Number.isInteger(v)&&v>=0&&v<=999);
+    const bools=a=>Array.isArray(a)&&a.length===8&&a.every(v=>typeof v==='boolean');
+    const optional=a=>Array.isArray(a)&&a.length===8&&a.every(v=>v===null||typeof v==='boolean');
+    return d&&d.schema==='cursocontable-metricas'&&d.version===1&&
+      counts(d.missionAttempts)&&counts(d.missionHints)&&counts(d.conceptAttempts)&&
+      bools(d.missionSolved)&&bools(d.reflectionPresent)&&bools(d.conceptReasonPresent)&&
+      optional(d.conceptFirstCorrect)&&optional(d.conceptLastCorrect)&&
+      Array.isArray(d.confidence)&&d.confidence.length===8&&d.confidence.every(v=>['','Puedo explicarla','Tengo dudas','Necesito otro ejemplo'].includes(v));
+  }
+  const sum=fn=>rows.reduce((n,r)=>n+(fn(r)?1:0),0);
+  function cell(tr,value,cls=''){
+    const td=document.createElement('td');td.textContent=String(value);if(cls)td.className=cls;tr.append(td);
+  }
+  function bar(tr,n,total){
+    const td=document.createElement('td');const b=document.createElement('span');b.className='bar';
+    const fill=document.createElement('span');fill.style.width=ratio(n,total);b.append(fill);
+    td.append(b);td.setAttribute('aria-label',ratio(n,total));tr.append(td);
+  }
+  function tableRow(target,label,count,total,course='HTML'){
+    const tr=document.createElement('tr');cell(tr,label);cell(tr,count,'num');cell(tr,ratio(count,total),'num');target.append(tr);
+    csvRows.push([course,label,count,total]);
+  }
+  function stat(target,label,count){const div=document.createElement('div');div.className='stat';const strong=document.createElement('strong');strong.textContent=String(count);const span=document.createElement('span');span.textContent=label;div.append(strong,span);target.append(div);}
+  function render(){
+    $('results').hidden=!(rows.length||contableRows.length);
+    $('htmlResults').hidden=!rows.length;$('noHtml').hidden=!!rows.length;
+    $('contableResults').hidden=!contableRows.length;$('noContable').hidden=!!contableRows.length;
+    for(const id of ['summary','repairs','checks','process','contableSummary','contableMissions','contableProcess'])$(id).replaceChildren();
+    csvRows=[];
+    if(rows.length)renderHtml();
+    if(contableRows.length)renderContable();
+  }
+  function renderHtml(){
+    const total=rows.length;
+    stat($('summary'),'Archivos válidos',total);
+    stat($('summary'),'Con enlace declarado',sum(r=>r.deliveryType==='link'));
+    stat($('summary'),'Con archivo HTML declarado',sum(r=>r.deliveryType==='file'));
+    stat($('summary'),'Con prueba entre pares registrada',sum(r=>r.peerFeedback));
+    repairNames.forEach((name,i)=>{
+      const attempts=rows.reduce((n,r)=>n+r.repairAttempts[i],0);
+      const repeat=sum(r=>r.repairAttempts[i]>1),solution=sum(r=>r.repairSolutions[i]),solved=sum(r=>r.repairSolved[i]);
+      const tr=document.createElement('tr');cell(tr,name);cell(tr,(attempts/total).toFixed(1),'num');cell(tr,`${repeat}/${total}`,'num');cell(tr,`${solution}/${total}`,'num');cell(tr,`${solved}/${total}`,'num');$('repairs').append(tr);
+      csvRows.push(['HTML',`${name}: intentos totales`,attempts,total],['HTML',`${name}: más de un intento`,repeat,total],['HTML',`${name}: solución consultada`,solution,total],['HTML',`${name}: resuelta`,solved,total]);
+    });
+    checkNames.forEach((name,i)=>tableRow($('checks'),name,sum(r=>r.checklist[i]),total));
+    const process=[
+      ['Observación respondida',r=>r.observed],['Reparación explicada',r=>r.repairExplained],
+      ['Revisión de la página descrita',r=>r.revisionDescribed],['Prueba entre pares registrada',r=>r.peerFeedback],
+      ['Cambio posterior descrito',r=>r.changeDescribed],['Enlace entregado',r=>r.deliveryType==='link'],
+      ['Enlace declarado como probado',r=>r.deliveryType==='link'&&r.linkTested],['Entrega por archivo declarada',r=>r.deliveryType==='file'],
+      ...[1,2,3,4,5].map((n,i)=>[`Pregunta de salida ${n} respondida`,r=>r.reflectionAnswered[i]]),
+      ['Semáforo verde',r=>r.confidence==='🟢'],['Semáforo amarillo',r=>r.confidence==='🟡'],['Semáforo rojo',r=>r.confidence==='🔴']
+    ];
+    process.forEach(([label,fn])=>tableRow($('process'),label,sum(fn),total));
+  }
+  function renderContable(){
+    const total=contableRows.length;
+    const sumC=fn=>contableRows.reduce((n,r)=>n+(fn(r)?1:0),0);
+    stat($('contableSummary'),'Archivos válidos',total);
+    stat($('contableSummary'),'Ocho misiones resueltas',sumC(r=>r.missionSolved.every(Boolean)));
+    stat($('contableSummary'),'Alguna pista utilizada',sumC(r=>r.missionHints.some(n=>n>0)));
+    contableNames.forEach((name,i)=>{
+      const attempts=contableRows.reduce((n,r)=>n+r.missionAttempts[i],0);
+      const repeat=sumC(r=>r.missionAttempts[i]>1),hints=sumC(r=>r.missionHints[i]>0),solved=sumC(r=>r.missionSolved[i]);
+      const checked=sumC(r=>r.conceptFirstCorrect[i]!==null),first=sumC(r=>r.conceptFirstCorrect[i]===true);
+      const tr=document.createElement('tr');cell(tr,`${i+1}. ${name}`);cell(tr,(attempts/total).toFixed(1),'num');cell(tr,`${repeat}/${total}`,'num');cell(tr,`${hints}/${total}`,'num');cell(tr,`${solved}/${total}`,'num');cell(tr,`${first}/${checked} comprobadas`,'num');$('contableMissions').append(tr);
+      csvRows.push(['Contable',`${i+1}. ${name}: intentos totales`,attempts,total],['Contable',`${i+1}. ${name}: más de un intento`,repeat,total],['Contable',`${i+1}. ${name}: pista utilizada`,hints,total],['Contable',`${i+1}. ${name}: resuelta`,solved,total],['Contable',`${i+1}. ${name}: primera idea correcta`,first,checked]);
+    });
+    const indicators=[
+      ['Al menos una reflexión escrita',r=>r.reflectionPresent.some(Boolean)],
+      ['Reflexiones en las ocho misiones',r=>r.reflectionPresent.every(Boolean)],
+      ['Al menos una explicación conceptual',r=>r.conceptReasonPresent.some(Boolean)],
+      ['Alguna autovaloración “Tengo dudas”',r=>r.confidence.includes('Tengo dudas')],
+      ['Algún pedido “Necesito otro ejemplo”',r=>r.confidence.includes('Necesito otro ejemplo')]
+    ];
+    indicators.forEach(([label,fn])=>tableRow($('contableProcess'),label,sumC(fn),total,'Contable'));
+  }
+  $('files').addEventListener('change',async e=>{
+    rows=[];contableRows=[];render();const files=[...e.target.files];
+    if(files.length>500){$('status').textContent='Seleccioná hasta 500 archivos por vez.';return;}
+    let rejected=0;
+    for(const file of files){
+      if(file.size>100000){rejected++;continue;}
+      try{const data=JSON.parse(await file.text());if(valid(data))rows.push(data);else if(validContable(data))contableRows.push(data);else rejected++;}catch{rejected++;}
+    }
+    render();$('status').textContent=`HTML: ${rows.length}. Contable: ${contableRows.length}. Rechazados: ${rejected}. No se enviaron datos.`;
+  });
+  $('clear').addEventListener('click',()=>{rows=[];contableRows=[];$('files').value='';render();$('status').textContent='Tablero limpio. No se guardaron datos en esta página.';});
+  $('csv').addEventListener('click',()=>{
+    const records=[['Curso','Indicador','Cantidad','Total de entregas'],...csvRows];
+    const value='\ufeff'+records.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(';')).join('\r\n');
+    const url=URL.createObjectURL(new Blob([value],{type:'text/csv;charset=utf-8'}));
+    const a=document.createElement('a');a.href=url;a.download='resumen-metricas-cursos.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+})();
+</script>
+</body>
+</html>
