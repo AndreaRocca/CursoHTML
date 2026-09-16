@@ -330,7 +330,7 @@
     const f=work.fields;
     const snapshot={
       schema:'cursohtml-m3-metricas',version:1,
-      exportedAt:new Date().toISOString(),
+      exportedOn:new Date().toISOString().slice(0,10),
       repairAttempts:work.repairAttempts.map(n=>Math.min(999,Math.max(0,Math.trunc(Number(n)||0)))),
       repairSolved:work.repairSolved.map(Boolean),
       repairSolutions:work.repairSolutions.map(Boolean),
