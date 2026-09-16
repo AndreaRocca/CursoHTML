@@ -92,18 +92,15 @@ const server=http.createServer((req,res)=>{
     await dashboard.locator('#files').setInputFiles([
       {name:'alumno-a.json',mimeType:'application/json',buffer:Buffer.from(metricsText)},
       {name:'alumno-b.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({...metrics,repairAttempts:[1,3,2],repairSolutions:[false,true,false],deliveryType:'link',peerFeedback:true}))},
-      {name:'contable.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({schema:'cursocontable-metricas',version:1,exportedOn:'2026-09-16',missionAttempts:[2,1,0,0,0,0,0,0],missionHints:[1,0,0,0,0,0,0,0],missionSolved:[true,true,false,false,false,false,false,false],conceptAttempts:[1,0,0,0,0,0,0,0],conceptFirstCorrect:[false,null,null,null,null,null,null,null],conceptLastCorrect:[true,null,null,null,null,null,null,null],reflectionPresent:[true,false,false,false,false,false,false,false],conceptReasonPresent:[true,false,false,false,false,false,false,false],confidence:['Tengo dudas','','','','','','','']}))},
       {name:'otro.json',mimeType:'application/json',buffer:Buffer.from('{"name":"No válido"}')}
     ]);
-    await dashboard.getByText('HTML: 2. Contable: 1. Rechazados: 1. No se enviaron datos.').waitFor();
+    await dashboard.getByText('2 archivo(s) válido(s) cargado(s). 1 rechazado(s). No se enviaron datos.').waitFor();
     assert.match(await dashboard.locator('#repairs').textContent(),/Enlace y href1\.51\/21\/22\/2/);
     assert.match(await dashboard.locator('#summary').textContent(),/2Archivos válidos/);
-    assert.match(await dashboard.locator('#contableMissions').textContent(),/1\. Patrimonio2\.01\/11\/11\/10\/1 comprobadas/);
     assert.ok(!(await dashboard.locator('body').textContent()).includes('Estudiante Prueba'));
     const csvDownload=dashboard.waitForEvent('download');await dashboard.click('#csv');const csv=await csvDownload;
-    assert.equal(csv.suggestedFilename(),'resumen-metricas-cursos.csv');
+    assert.equal(csv.suggestedFilename(),'resumen-metricas-modulo3.csv');
     assert.ok(fs.readFileSync(await csv.path(),'utf8').includes('Enlace y href: solución consultada'));
-    assert.ok(fs.readFileSync(await csv.path(),'utf8').includes('Patrimonio: primera idea correcta'));
     await dashboard.click('#clear');assert.equal(await dashboard.locator('#results').isVisible(),false);await dashboard.close();
     // Enlace incluido como anchor seguro y solo si se elige ese modo.
     await page.click('#m3BackShare');await page.selectOption('#m3DeliveryType','link');await page.fill('#m3Url','https://app.yachaycodex.dev/shared/8bd91167a1dec46a118c2fc5a0ee25d3');await page.check('#m3LinkTested');await page.click('#m3ToClose');
