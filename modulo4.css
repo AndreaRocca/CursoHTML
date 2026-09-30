@@ -1,0 +1,18 @@
+/* M4 reutiliza la identidad y el taller del curso. */
+[id^="module4"]{scroll-margin-top:16px}
+[id^="module4"] label{display:block;font-weight:700;margin:12px 0 7px}
+[id^="module4"] code{overflow-wrap:anywhere}
+[id^="module4"] .m3-editor{min-width:0;width:100%}
+[id^="module4"] details summary{cursor:pointer;font-weight:700}
+[id^="module4"] .feedback{white-space:pre-wrap;font-weight:500}
+.m4-note{border-left:4px solid var(--accent);padding:14px 18px;background:#fff5e8;border-radius:10px}
+.m4-meter{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.m4-meter input{max-width:280px}
+.delivery-card{margin:18px 0;border-left:4px solid var(--primary)}
+.delivery-card summary{cursor:pointer;margin-top:14px}
+.delivery-card .btn:disabled{opacity:.55;cursor:not-allowed}
+.delivery-sidebar{font-size:13px;line-height:1.5;margin:14px 0}
+#deliveryGuard{max-width:620px;width:calc(100% - 32px);border:1px solid var(--line);border-radius:18px;padding:24px;color:var(--text);box-shadow:var(--shadow)}
+#deliveryGuard::backdrop{background:rgba(15,25,45,.55)}
+[id^="module4"] :is(button,a,input,textarea,select,summary):focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:850px){[id^="module4"] .m3-editor,[id^="module4"] .m3-preview{height:320px;min-height:320px}[id^="module4"] .m3-repair{height:130px;min-height:130px}[id^="module4"] .m3-mini-preview{height:240px;min-height:240px}}

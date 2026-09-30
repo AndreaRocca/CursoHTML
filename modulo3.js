@@ -369,6 +369,7 @@
     ];
     if(openWorkReport('Curso HTML - Modulo 3 - '+name,lines.join('\n'),st,link)){
       if(!state.done.includes('module3'))state.done.push('module3');save();
+      window.courseDelivery?.prepared(3);
       st.textContent='Informe abierto. Guardalo como PDF y adjuntalo en Classroom. Abrir el informe no lo entrega automáticamente.';
     }
   }
@@ -394,6 +395,7 @@
   }));
   bind('m3New',()=>{
     if(!confirm('¿Empezar un trabajo nuevo del Módulo 3? Se borrarán solo sus respuestas y su código en este navegador. Descargá antes el PDF/HTML que quieras conservar.'))return;
+    if(state.moduleDeliveries)delete state.moduleDeliveries[3];
     state.moduleThree=fresh();state.done=state.done.filter(id=>id!=='module3');work=state.moduleThree;save();location.reload();
   });
   bind('m3Plain',()=>showDemo(false));bind('m3Marked',()=>showDemo(true));

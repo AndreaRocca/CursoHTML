@@ -6,6 +6,7 @@
   <title>Diseñar para la Web · Tecnología 4.º año</title>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="31a74ef8-99b9-4f74-a8eb-fa13425e250c" data-domains="andrearocca.github.io" data-exclude-search="true" data-exclude-hash="true" data-do-not-track="true"></script>
   <link rel="stylesheet" href="modulo3.css">
+  <link rel="stylesheet" href="modulo4.css">
   <style>
     :root{
       --bg:#f4f7fb;
@@ -362,43 +363,16 @@
       <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
     </div>
 
-    <nav id="nav">
-      <button class="nav-btn active" data-screen="home">
-        <span class="nav-num">★</span>
-        <span><span class="nav-title">Inicio</span><span class="nav-sub">El desafío del cuatrimestre</span></span>
-      </button>
-      <button class="nav-btn" data-screen="m0" id="nav-m0">
-        <span class="nav-num">0</span>
-        <span><span class="nav-title">Comunicar en la web</span><span class="nav-sub">Mirar antes de diseñar</span></span>
-      </button>
-      <button class="nav-btn" data-screen="m1" id="nav-m1">
-        <span class="nav-num">1</span>
-        <span><span class="nav-title">La web por dentro</span><span class="nav-sub">Página, sitio, landing...</span></span>
-      </button>
-      <button class="nav-btn" data-screen="soon" id="nav-soon">
-        <span class="nav-num">✓</span>
-        <span><span class="nav-title">Cierre de la clase</span><span class="nav-sub">Juego, devolución y entrega</span></span>
-      </button>
-      <button class="nav-btn" data-screen="module2" id="nav-module2">
-        <span class="nav-num">2</span>
-        <span><span class="nav-title">Propósito y destinatarios</span><span class="nav-sub">Qué comunicar y para quién</span></span>
-      </button>
-      <button class="nav-btn" data-screen="module3" id="nav-module3">
-        <span class="nav-num">3</span>
-        <span><span class="nav-title">Mi primera página HTML</span><span class="nav-sub">Escribir, probar y compartir</span></span>
-      </button>
-      <button class="nav-btn locked" data-screen="module4" disabled>
-        <span class="nav-num">4</span>
-        <span><span class="nav-title">Identidad visual</span><span class="nav-sub">Color, tipografía e imágenes</span></span>
-      </button>
-      <button class="nav-btn locked" data-screen="module5" disabled>
-        <span class="nav-num">5</span>
-        <span><span class="nav-title">Más HTML</span><span class="nav-sub">Ampliar la estructura</span></span>
-      </button>
-      <button class="nav-btn locked" data-screen="module6" disabled>
-        <span class="nav-num">6</span>
-        <span><span class="nav-title">CSS</span><span class="nav-sub">Dar estilo</span></span>
-      </button>
+    <p class="delivery-sidebar">Un módulo = un PDF. Tres módulos juntos = tres PDF.</p>
+    <nav id="nav" aria-label="Módulos y sus entregas">
+      <button class="nav-btn" data-screen="m0" id="nav-m1"><span class="nav-num">1</span><span><span class="nav-title">Módulo 1 · Comunicar y comprender la web</span><span class="nav-sub">Introducción y La web por dentro</span></span></button>
+      <button class="nav-btn" data-screen="soon" id="nav-close1"><span class="nav-num">✓</span><span><span class="nav-title">Módulo 1 · Cierre y PDF</span><span class="nav-sub">Reflexión y entrega de este módulo</span></span></button>
+      <button class="nav-btn" data-screen="module2" id="nav-module2"><span class="nav-num">2</span><span><span class="nav-title">Módulo 2 · Propósito y destinatarios</span><span class="nav-sub">Qué comunicar y para quién</span></span></button>
+      <button class="nav-btn" data-screen="module2Close" id="nav-close2"><span class="nav-num">✓</span><span><span class="nav-title">Módulo 2 · Cierre y PDF</span><span class="nav-sub">Reflexión y entrega de este módulo</span></span></button>
+      <button class="nav-btn" data-screen="module3" id="nav-module3"><span class="nav-num">3</span><span><span class="nav-title">Módulo 3 · Mi primera página HTML</span><span class="nav-sub">Escribir, probar y compartir</span></span></button>
+      <button class="nav-btn" data-screen="module3Close" id="nav-close3"><span class="nav-num">✓</span><span><span class="nav-title">Módulo 3 · Cierre y PDF</span><span class="nav-sub">Reflexión y entrega de este módulo</span></span></button>
+      <button class="nav-btn" data-screen="module4" id="nav-module4"><span class="nav-num">4</span><span><span class="nav-title">Módulo 4 · Mejoramos nuestra página</span><span class="nav-sub">Imágenes, etiquetas y primeros estilos</span></span></button>
+      <button class="nav-btn" data-screen="module4Close" id="nav-close4"><span class="nav-num">✓</span><span><span class="nav-title">Módulo 4 · Cierre y PDF</span><span class="nav-sub">Reflexión y entrega de este módulo</span></span></button>
     </nav>
     <div class="license-note">
       <strong>Creado por Andrea Rocca</strong>
@@ -410,7 +384,7 @@
   <main>
     <div class="topbar">
       <strong>¿Cómo puede una organización comunicar su propuesta en la web?</strong>
-      <span class="pill">Prototipo v1</span>
+      <a href="#home" onclick="go('home');return false">Inicio</a>
     </div>
 
     <div class="content">
@@ -453,7 +427,7 @@
       <section class="screen" id="m0">
         <div class="section-head">
           <div>
-            <div class="eyebrow" style="color:var(--primary)">Módulo 0</div>
+            <div class="eyebrow" style="color:var(--primary)">Módulo 1 · Introducción</div>
             <h2>Comunicar en la web</h2>
             <p>Diseñar un sitio no es solamente elegir colores. Primero necesitamos saber qué queremos comunicar, a quién y para qué.</p>
           </div>
@@ -510,7 +484,7 @@
           </article>
 
           <div class="actions">
-            <button class="btn ok" onclick="completeModule('m0','m1')">Terminé el módulo 0 →</button>
+            <button class="btn ok" onclick="completeModule('m0','m1')">Continuar el módulo 1 →</button>
           </div>
         </div>
       </section>
@@ -755,7 +729,7 @@
 
           <div class="actions">
             <button class="btn ghost" onclick="go('m1')">← Volver a la lección 1</button>
-            <button class="btn ok" onclick="completeModule('m1','soon')">Terminé el módulo 1 →</button>
+            <button class="btn ok" onclick="completeModule('m1','soon')">Ir al cierre y la entrega del módulo 1 →</button>
           </div>
         </div>
       </section>
@@ -801,10 +775,10 @@
 
         <div class="card" style="margin-top:18px">
           <div class="icon">➡️</div>
-          <h2>¿Cómo querés continuar?</h2>
-          <p>Podés preparar la entrega de esta clase o comenzar el módulo siguiente.</p>
+          <h2>Entrega del Módulo 1</h2>
+          <p>Antes de pasar al módulo 2, prepará y guardá el PDF del módulo 1 y adjuntalo en su tarea de Classroom. Si hacés los módulos 1, 2 y 3 juntos, entregás tres PDF separados.</p>
           <div class="actions">
-            <button class="btn ok" onclick="openDelivery('class1')">Ir a la entrega →</button>
+            <button class="btn ok" onclick="openDelivery('class1')">Preparar el PDF del módulo 1 →</button>
             <button class="btn ghost" onclick="go('module2')">Comenzar el módulo 2 →</button>
           </div>
         </div>
@@ -980,6 +954,10 @@
       <section class="screen" id="module3Share" aria-label="Módulo 3: Probar y compartir"></section>
       <section class="screen" id="module3Close" aria-label="Módulo 3: Cierre y entrega"></section>
 
+      <section class="screen" id="module4" aria-label="Módulo 4: Mejoramos nuestra página"></section>
+      <section class="screen" id="module4Workshop" aria-label="Módulo 4: Taller"></section>
+      <section class="screen" id="module4Close" aria-label="Módulo 4: Cierre y PDF"></section>
+      <section class="screen" id="deliveries" aria-label="Mis entregas"></section>
       <section class="screen" id="delivery">
         <div class="card">
           <div class="icon">📥</div>
@@ -1020,7 +998,7 @@
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
     const activeScreen=document.getElementById(id);
     activeScreen.classList.add('active');
-    const navScreen={m1b:'m1',module2Close:'module2',module3Workshop:'module3',module3Share:'module3',module3Close:'module3'}[id]||id;
+    const navScreen=id==='delivery'?(deliveryMode==='module2'?'module2Close':'soon'):({m1:'m0',m1b:'m0',module3Workshop:'module3',module3Share:'module3',module4Workshop:'module4'}[id]||id);
     document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.screen===navScreen));
     requestAnimationFrame(()=>{
       if(window.matchMedia('(max-width: 850px)').matches){
@@ -1203,7 +1181,7 @@
     const isModuleTwo=mode==='module2';
     document.getElementById('deliveryTitle').textContent=isModuleTwo
       ? 'Entrega del Módulo 2'
-      : 'Entrega de la primera clase';
+      : 'Entrega del Módulo 1';
     document.getElementById('deliveryDescription').textContent=isModuleTwo
       ? 'El informe incluirá la comparación, el minijuego, la ficha del proyecto y el semáforo de aprendizaje de este módulo.'
       : 'El informe incluirá las actividades, el juego integrador y la devolución de la primera clase.';
@@ -1347,7 +1325,7 @@ function openWorkReport(title, text, status, workUrl){
       state.siteDecision=document.getElementById('siteDecision').value;
       collectReflection();
       lines=[
-        'DISEÑAR PARA LA WEB — ENTREGA DE LA PRIMERA CLASE',
+        'DISEÑAR PARA LA WEB — ENTREGA DEL MÓDULO 1',
         'Tecnología · 4.º año',
         '',
         `Estudiante: ${name}`,
@@ -1387,11 +1365,11 @@ function openWorkReport(title, text, status, workUrl){
         `Minijuego 2: ${state.quizTwoDone ? 'Sí' : 'No'}`,
         ''
       ];
-      reportTitle='Curso HTML - Clase 1 - '+name;
+      reportTitle='Curso HTML - Modulo 1 - '+name;
     }
 
     persist();
-    openWorkReport(reportTitle,lines.join('\n'),status);
+    if(openWorkReport(reportTitle,lines.join('\n'),status)){window.courseDelivery?.prepared(deliveryMode==='module2'?2:1);}
   }
 
   function completeModule(module,next){
@@ -1401,11 +1379,11 @@ function openWorkReport(title, text, status, workUrl){
   }
 
   function updateProgress(){
-    const done=['m0','m1','module2','module3'].filter(x=>state.done.includes(x)).length;
+    const done=['m1','module2','module3','module4'].filter(x=>state.done.includes(x)).length;
     const pct=Math.round(done/4*100);
     document.getElementById('progressText').textContent=pct+'%';
     document.getElementById('progressFill').style.width=pct+'%';
-    ['m0','m1','module2','module3'].forEach(id=>{
+    ['m0','m1','module2','module3','module4'].forEach(id=>{
       document.getElementById('nav-'+id)?.classList.toggle('done',state.done.includes(id));
     });
   }
@@ -1442,5 +1420,7 @@ function openWorkReport(title, text, status, workUrl){
   });
 </script>
 <script src="modulo3.js"></script>
+<script src="modulo4.js"></script>
+<script src="entregas.js"></script>
 </body>
 </html>
