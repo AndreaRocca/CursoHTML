@@ -115,12 +115,13 @@ const server=http.createServer((req,res)=>{
     await page.setViewportSize({width:1366,height:900});await page.click('#nav-module3');
     // Las entregas anteriores continúan por su propia ruta.
     for(const mode of ['module2','class1']){
+      await page.evaluate(()=>go('home'));
       await page.evaluate(mode=>openDelivery(mode),mode);await page.fill('#studentName','Prueba previa');
       const oldPromise=page.waitForEvent('popup');await page.click('button[onclick="downloadWork()"]');const oldReport=await oldPromise;await oldReport.waitForLoadState();
       const oldText=await oldReport.textContent('pre');assert.ok(!oldText.includes('CÓDIGO HTML COMPLETO'));
       assert.ok(oldText.includes(mode==='module2'?'NO-INCLUIR-CLASE2':'NO-INCLUIR-CLASE1'));await oldReport.close();
     }
-    await page.click('#nav-module3');
+    await page.evaluate(()=>go('home'));await page.click('#nav-module3');
     // Reinicio de un estudiante nuevo: solo M3, sin tocar otras clases.
     page.once('dialog',dialog=>dialog.accept());await page.click('#m3New');await page.waitForLoadState();await page.click('#nav-module3');assert.equal(await page.inputValue('#m3Name'),'');
     const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('webCourseState')));assert.equal(saved.moduleTwoProject.m2ProjectName,'NO-INCLUIR-CLASE2');assert.ok(!saved.done.includes('module3'));
@@ -129,5 +130,5 @@ const server=http.createServer((req,res)=>{
     await context.close();
     const broken=await browser.newContext();const brokenPage=await broken.newPage();await brokenPage.goto(url);await brokenPage.evaluate(()=>localStorage.setItem('webCourseState','{inválido'));await brokenPage.reload();await brokenPage.click('#nav-module3');assert.equal(await brokenPage.locator('#m3Name').count(),1);await broken.close();
     console.log('OK: recuperación ante estado JSON inválido.');
-  }finally{if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));}
+  }catch(error){console.error(error);throw error;}finally{if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));}
 })().catch(error=>{console.error(error);process.exitCode=1;});
