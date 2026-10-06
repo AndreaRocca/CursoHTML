@@ -32,7 +32,7 @@ const server=http.createServer((req,res)=>{
     });
     const page=await context.newPage();const errors=[];
     page.on('pageerror',error=>errors.push(error.message));
-    await page.goto(url);await page.click('#nav-module3');
+    await page.goto(url);await page.click('#nav-module3');if(await page.locator('#deliveryGuard').isVisible())await page.getByRole('button',{name:'Sí, continuar',exact:true}).click();
     assert.equal(await page.locator('#module3').isVisible(),true);
     const ids=await page.locator('[id]').evaluateAll(nodes=>nodes.map(n=>n.id));assert.equal(ids.length,new Set(ids).size);
     const studentContent=await page.locator('.screen').allTextContents();
@@ -44,7 +44,7 @@ const server=http.createServer((req,res)=>{
     assert.ok(!(await page.textContent('#module3Share')).includes('CodePen'));
     assert.match(await page.textContent('#module3Workshop'),/Revisá y mejorá tu trabajo/);
     await page.fill('#m3Name','Estudiante Prueba');await page.fill('#m3Observe','Ahora se distingue el título.');
-    await page.reload();await page.click('#nav-module3');assert.equal(await page.inputValue('#m3Name'),'Estudiante Prueba');
+    await page.reload();await page.click('#nav-module3');if(await page.locator('#deliveryGuard').isVisible())await page.getByRole('button',{name:'Sí, continuar',exact:true}).click();assert.equal(await page.inputValue('#m3Name'),'Estudiante Prueba');
     // Error, solución consultada y tres reparaciones auténticas.
     await page.click('[data-repair="0"]');assert.match(await page.textContent('#m3RepairFeedback0'),/Todavía/);
     await page.click('[data-solution="0"]');
@@ -69,7 +69,7 @@ const server=http.createServer((req,res)=>{
     await page.click('#m3Check');assert.equal(await page.locator('#m3Checks li.ok').count(),7);
     const downloaded=page.waitForEvent('download');await page.click('#m3Download');const download=await downloaded;
     assert.equal(download.suggestedFilename(),'index.html');assert.equal(fs.readFileSync(await download.path(),'utf8'),code);
-    await page.reload();await page.click('#nav-module3');await page.click('#m3ToWorkshop');assert.equal(await page.inputValue('#m3Code'),code);
+    await page.reload();await page.click('#nav-module3');if(await page.locator('#deliveryGuard').isVisible())await page.getByRole('button',{name:'Sí, continuar',exact:true}).click();await page.click('#m3ToWorkshop');assert.equal(await page.inputValue('#m3Code'),code);
     await page.click('#m3ToShare');await page.selectOption('#m3DeliveryType','link');await page.fill('#m3Url','file:///C:/mi-web/index.html');await page.click('#m3ToClose');await page.click('#m3Report');assert.match(await page.textContent('#m3ReportStatus'),/URL completa/);
     for(const empty of ['https://codepen.io/pen/','https://app.yachaycodex.dev/','https://app.yachaycodex.dev/shared/']){
       await page.click('#m3BackShare');await page.fill('#m3Url',empty);await page.click('#m3ToClose');await page.click('#m3Report');assert.match(await page.textContent('#m3ReportStatus'),/URL completa/);
@@ -85,7 +85,7 @@ const server=http.createServer((req,res)=>{
     const linkedPromise=page.waitForEvent('popup');await page.click('#m3Report');const linked=await linkedPromise;await linked.waitForLoadState();assert.equal(await linked.locator('a').getAttribute('href'),'https://app.yachaycodex.dev/shared/8bd91167a1dec46a118c2fc5a0ee25d3');await linked.close();
     // Bloqueo de ventana: no pierde la producción y da una instrucción.
     await page.evaluate(()=>{window.open=()=>null;});await page.click('#m3Report');assert.match(await page.textContent('#m3ReportStatus'),/Permití abrir/);
-    await page.reload();await page.click('#nav-module3');await page.click('#m3ToWorkshop');
+    await page.reload();await page.click('#nav-module3');if(await page.locator('#deliveryGuard').isVisible())await page.getByRole('button',{name:'Sí, continuar',exact:true}).click();await page.click('#m3ToWorkshop');
     // Código activo no puede ejecutar scripts en la vista ni acceder al curso.
     await page.fill('#m3Code','<h1>Prueba segura</h1><script>parent.document.body.innerHTML="ATAQUE"</script><img src="https://example.org/imagen.png" onerror="alert(1)"><a href="javascript:alert(1)">Enlace riesgoso</a>');
     await page.waitForTimeout(100);assert.equal(await page.locator('#nav-module3').count(),1);
@@ -121,14 +121,14 @@ const server=http.createServer((req,res)=>{
       const oldText=await oldReport.textContent('pre');assert.ok(!oldText.includes('CÓDIGO HTML COMPLETO'));
       assert.ok(oldText.includes(mode==='module2'?'NO-INCLUIR-CLASE2':'NO-INCLUIR-CLASE1'));await oldReport.close();
     }
-    await page.evaluate(()=>go('home'));await page.click('#nav-module3');
+    await page.evaluate(()=>go('home'));await page.click('#nav-module3');if(await page.locator('#deliveryGuard').isVisible())await page.getByRole('button',{name:'Sí, continuar',exact:true}).click();
     // Reinicio de un estudiante nuevo: solo M3, sin tocar otras clases.
-    page.once('dialog',dialog=>dialog.accept());await page.click('#m3New');await page.waitForLoadState();await page.click('#nav-module3');assert.equal(await page.inputValue('#m3Name'),'');
+    page.once('dialog',dialog=>dialog.accept());await page.click('#m3New');await page.waitForLoadState();await page.click('#nav-module3');if(await page.locator('#deliveryGuard').isVisible())await page.getByRole('button',{name:'Sí, continuar',exact:true}).click();assert.equal(await page.inputValue('#m3Name'),'');
     const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('webCourseState')));assert.equal(saved.moduleTwoProject.m2ProjectName,'NO-INCLUIR-CLASE2');assert.ok(!saved.done.includes('module3'));
     assert.deepEqual(errors,[]);
     console.log('OK: JS, IDs únicos, guardado/recarga, 3 reparaciones, 7 misiones, descarga HTML, PDF independiente, enlace seguro, popup bloqueado, aislamiento, móvil 390/320 y reinicio de M3.');
     await context.close();
-    const broken=await browser.newContext();const brokenPage=await broken.newPage();await brokenPage.goto(url);await brokenPage.evaluate(()=>localStorage.setItem('webCourseState','{inválido'));await brokenPage.reload();await brokenPage.click('#nav-module3');assert.equal(await brokenPage.locator('#m3Name').count(),1);await broken.close();
+    const broken=await browser.newContext();const brokenPage=await broken.newPage();await brokenPage.goto(url);await brokenPage.evaluate(()=>localStorage.setItem('webCourseState','{inválido'));await brokenPage.reload();await brokenPage.click('#nav-module3');if(await brokenPage.locator('#deliveryGuard').isVisible())await brokenPage.getByRole('button',{name:'Sí, continuar',exact:true}).click();assert.equal(await brokenPage.locator('#m3Name').count(),1);await broken.close();
     console.log('OK: recuperación ante estado JSON inválido.');
   }catch(error){console.error(error);throw error;}finally{if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));}
 })().catch(error=>{console.error(error);process.exitCode=1;});

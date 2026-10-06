@@ -10,11 +10,11 @@ const server=http.createServer((req,res)=>{const target=path.resolve(root,'.'+de
  const context=await browser.newContext({viewport:{width:1366,height:900},acceptDownloads:true});
  await context.route('**/*',r=>r.request().url().startsWith(base)?r.continue():r.abort());
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(base);
- assert.equal(await page.locator('#nav button').count(),8);
+ assert.equal(await page.locator('#nav button').count(),10);
  const ids=await page.locator('[id]').evaluateAll(es=>es.map(e=>e.id));assert.equal(ids.length,new Set(ids).size);
  assert.match(await page.textContent('#nav-m1'),/Módulo 1/);assert.ok(!(await page.textContent('#m0')).includes('Módulo 0'));
  // Recuperación de progreso antiguo: m0 continúa conservado; ya no es una entrega.
- await page.evaluate(()=>{state.done=['m0','m1'];state.projectIdea='SOLO-MODULO-1';state.moduleTwoProject={m2ProjectName:'SOLO-MODULO-2'};persist();});await page.reload();assert.equal(await page.evaluate(()=>state.done.includes('m0')),true);assert.equal(await page.textContent('#progressText'),'25%');
+ await page.evaluate(()=>{state.done=['m0','m1'];state.projectIdea='SOLO-MODULO-1';state.moduleTwoProject={m2ProjectName:'SOLO-MODULO-2'};persist();});await page.reload();assert.equal(await page.evaluate(()=>state.done.includes('m0')),true);assert.equal(await page.textContent('#progressText'),'20%');
  // Un informe por módulo y no se confunde abrirlo con descargarlo.
  for(const n of [1,2]){
    await page.evaluate(()=>go('home'));await page.evaluate(n=>openDelivery(n===1?'class1':'module2'),n);await page.fill('#studentName','Estudiante QA');
@@ -26,6 +26,8 @@ const server=http.createServer((req,res)=>{const target=path.resolve(root,'.'+de
  // Cambiar la respuesta de M2 vuelve a exigir una versión actualizada.
  await page.evaluate(()=>go('module2'));await page.fill('#m2ProjectName','SOLO-MODULO-2-EDITADO');await page.evaluate(()=>saveModuleTwoProject());await page.click('#nav-module3');assert.equal(await page.locator('#deliveryGuard').isVisible(),true);await page.getByRole('button',{name:'Revisar el cierre y PDF',exact:true}).click();assert.match(await page.locator('#delivery [data-delivery-status="2"]').textContent(),/actualizado/);assert.equal(await page.locator('#delivery [data-delivery-confirm="2"]').isDisabled(),true);
  await page.click('#nav-module3');await page.getByRole('button',{name:'Continuar; lo revisaré en Classroom',exact:true}).click();assert.equal(await page.locator('#module3').isVisible(),true);
+ await page.evaluate(()=>go('module3Workshop'));const m3Layout=await page.evaluate(()=>{const editor=document.getElementById('m3Code').getBoundingClientRect(),preview=document.getElementById('m3Preview').getBoundingClientRect();return{editorWidth:editor.width,containerWidth:document.querySelector('#module3Workshop .m3-split').getBoundingClientRect().width,previewTop:preview.top,editorBottom:editor.bottom};});assert.ok(m3Layout.editorWidth>=m3Layout.containerWidth-2);assert.ok(m3Layout.previewTop>=m3Layout.editorBottom);
+ await page.evaluate(()=>go('module3'));
  // M3 conserva informe propio y su declaración de guardado.
  await page.fill('#m3Name','Estudiante QA');await page.evaluate(()=>{document.getElementById('m3DeliveryType').value='file';document.getElementById('m3DeliveryType').dispatchEvent(new Event('change'));go('module3Close');});
  const p3=page.waitForEvent('popup');await page.click('#m3Report');const report3=await p3;await report3.waitForLoadState();assert.match(await report3.textContent('pre'),/MÓDULO 3/);assert.ok(!(await report3.textContent('pre')).includes('SOLO-MODULO-2'));await report3.close();await page.locator('#module3Close [data-delivery-confirm="3"]').click();
@@ -35,6 +37,7 @@ const server=http.createServer((req,res)=>{const target=path.resolve(root,'.'+de
  for(let i=0;i<5;i++){await page.fill('#m4Repair'+i,solutions[i]);await page.click('[data-m4-check="'+i+'"]');}
  assert.match(await page.textContent('#m4RepairScore'),/5\/5/);await page.fill('#m4Repair0','<p>Roto</p>');assert.match(await page.textContent('#m4RepairScore'),/4\/5/);await page.fill('#m4Repair0',solutions[0]);await page.click('[data-m4-check="0"]');
  await page.click('#m4ToWorkshop');const before=await page.evaluate(()=>state.moduleThree.code);await page.click('#m4Import');assert.equal(await page.inputValue('#m4Code'),before);
+ const m4Layout=await page.evaluate(()=>{const editor=document.getElementById('m4Code').getBoundingClientRect(),preview=document.getElementById('m4Preview').getBoundingClientRect();return{editorWidth:editor.width,containerWidth:document.querySelector('#module4Workshop .m3-split').getBoundingClientRect().width,previewTop:preview.top,editorBottom:editor.bottom};});assert.ok(m4Layout.editorWidth>=m4Layout.containerWidth-2);assert.ok(m4Layout.previewTop>=m4Layout.editorBottom);
  const code='<h1 style="color:purple;font-family:Georgia,serif;">SOLO-MODULO-4</h1><p>Inscripción <strong>gratuita</strong>.</p>'+sample+'<ol><li>Elegir</li><li>Confirmar</li></ol>';
  await page.fill('#m4Code',code);await page.click('#m4Check');assert.equal(await page.locator('#m4Checks .ok').count(),6);assert.equal(await page.evaluate(()=>state.moduleThree.code),before);
  await page.reload();await page.click('#nav-module4');if(await page.locator('#deliveryGuard').isVisible())await page.getByRole('button',{name:'Sí, continuar',exact:true}).click();await page.click('#m4ToWorkshop');assert.equal(await page.inputValue('#m4Code'),code);assert.match(await page.textContent('#m4RepairScore'),/5\/5/);
