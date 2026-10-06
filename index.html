@@ -7,6 +7,7 @@
   <script defer src="https://cloud.umami.is/script.js" data-website-id="31a74ef8-99b9-4f74-a8eb-fa13425e250c" data-domains="andrearocca.github.io" data-exclude-search="true" data-exclude-hash="true" data-do-not-track="true"></script>
   <link rel="stylesheet" href="modulo3.css">
   <link rel="stylesheet" href="modulo4.css">
+  <link rel="stylesheet" href="modulo5.css">
   <style>
     :root{
       --bg:#f4f7fb;
@@ -363,7 +364,7 @@
       <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
     </div>
 
-    <p class="delivery-sidebar">Un módulo = un PDF. Tres módulos juntos = tres PDF.</p>
+    <p class="delivery-sidebar">Un módulo = un PDF. Podés hacer cada clase desde una notebook diferente.</p>
     <nav id="nav" aria-label="Módulos y sus entregas">
       <button class="nav-btn" data-screen="m0" id="nav-m1"><span class="nav-num">1</span><span><span class="nav-title">Módulo 1 · Comunicar y comprender la web</span><span class="nav-sub">Introducción y La web por dentro</span></span></button>
       <button class="nav-btn" data-screen="soon" id="nav-close1"><span class="nav-num">✓</span><span><span class="nav-title">Módulo 1 · Cierre y PDF</span><span class="nav-sub">Reflexión y entrega de este módulo</span></span></button>
@@ -373,6 +374,8 @@
       <button class="nav-btn" data-screen="module3Close" id="nav-close3"><span class="nav-num">✓</span><span><span class="nav-title">Módulo 3 · Cierre y PDF</span><span class="nav-sub">Reflexión y entrega de este módulo</span></span></button>
       <button class="nav-btn" data-screen="module4" id="nav-module4"><span class="nav-num">4</span><span><span class="nav-title">Módulo 4 · Mejoramos nuestra página</span><span class="nav-sub">Imágenes, etiquetas y primeros estilos</span></span></button>
       <button class="nav-btn" data-screen="module4Close" id="nav-close4"><span class="nav-num">✓</span><span><span class="nav-title">Módulo 4 · Cierre y PDF</span><span class="nav-sub">Reflexión y entrega de este módulo</span></span></button>
+      <button class="nav-btn" data-screen="module5" id="nav-module5"><span class="nav-num">5</span><span><span class="nav-title">Módulo 5 · HTML con sentido</span><span class="nav-sub">Estructura, video y accesibilidad</span></span></button>
+      <button class="nav-btn" data-screen="module5Close" id="nav-close5"><span class="nav-num">✓</span><span><span class="nav-title">Módulo 5 · Cierre y PDF</span><span class="nav-sub">Reflexión y entrega de este módulo</span></span></button>
     </nav>
     <div class="license-note">
       <strong>Creado por Andrea Rocca</strong>
@@ -957,6 +960,9 @@
       <section class="screen" id="module4" aria-label="Módulo 4: Mejoramos nuestra página"></section>
       <section class="screen" id="module4Workshop" aria-label="Módulo 4: Taller"></section>
       <section class="screen" id="module4Close" aria-label="Módulo 4: Cierre y PDF"></section>
+      <section class="screen" id="module5" aria-label="Módulo 5: HTML con sentido"></section>
+      <section class="screen" id="module5Workshop" aria-label="Módulo 5: Taller HTML"></section>
+      <section class="screen" id="module5Close" aria-label="Módulo 5: Cierre y PDF"></section>
       <section class="screen" id="deliveries" aria-label="Mis entregas"></section>
       <section class="screen" id="delivery">
         <div class="card">
@@ -998,7 +1004,7 @@
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
     const activeScreen=document.getElementById(id);
     activeScreen.classList.add('active');
-    const navScreen=id==='delivery'?(deliveryMode==='module2'?'module2Close':'soon'):({m1:'m0',m1b:'m0',module3Workshop:'module3',module3Share:'module3',module4Workshop:'module4'}[id]||id);
+    const navScreen=id==='delivery'?(deliveryMode==='module2'?'module2Close':'soon'):({m1:'m0',m1b:'m0',module3Workshop:'module3',module3Share:'module3',module4Workshop:'module4',module5Workshop:'module5'}[id]||id);
     document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.screen===navScreen));
     requestAnimationFrame(()=>{
       if(window.matchMedia('(max-width: 850px)').matches){
@@ -1379,11 +1385,11 @@ function openWorkReport(title, text, status, workUrl){
   }
 
   function updateProgress(){
-    const done=['m1','module2','module3','module4'].filter(x=>state.done.includes(x)).length;
-    const pct=Math.round(done/4*100);
+    const done=['m1','module2','module3','module4','module5'].filter(x=>state.done.includes(x)).length;
+    const pct=Math.round(done/5*100);
     document.getElementById('progressText').textContent=pct+'%';
     document.getElementById('progressFill').style.width=pct+'%';
-    ['m0','m1','module2','module3','module4'].forEach(id=>{
+    ['m0','m1','module2','module3','module4','module5'].forEach(id=>{
       document.getElementById('nav-'+id)?.classList.toggle('done',state.done.includes(id));
     });
   }
@@ -1421,6 +1427,7 @@ function openWorkReport(title, text, status, workUrl){
 </script>
 <script src="modulo3.js"></script>
 <script src="modulo4.js"></script>
+<script src="modulo5.js"></script>
 <script src="entregas.js"></script>
 </body>
 </html>
