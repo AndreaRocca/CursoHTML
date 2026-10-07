@@ -16,7 +16,7 @@ Se propone una última clase centrada en HTML antes de comenzar CSS como tema pr
 ## Recorrido estimado para 90 minutos
 
 1. **Entrada, mapa visual y cuatro conceptos — 15 minutos.** Comparar cajas genéricas `div` con zonas que tienen significado. Recorrer en el esquema `header`, `nav`, `main`, `section` y `footer`, y mostrar la diferencia entre la URL para mirar un video y la URL `/embed/` para insertarlo.
-2. **Mapa semántico y cuatro desafíos — 20 minutos.** Se diferencia entre hacer funcionar, hacer accesible, organizar y dar control. Los reintentos, pistas y soluciones forman parte del proceso y no descuentan puntos.
+2. **Mapa semántico, misión autocorregible y cuatro desafíos — 20 minutos.** Se profundiza el uso de `div` como agrupación genérica para tratar un conjunto como unidad, sin presentarlo como una alternativa incorrecta. La misión pide asignar `header`, `nav`, `main`, `section` y `footer` a seis bloques coherentes de la página de Taller Verde. Después se diferencia entre hacer funcionar, hacer accesible, organizar y dar control. Los reintentos, pistas y soluciones forman parte del proceso y no descuentan puntos.
 3. **Producción en el editor — 35 minutos.** El estudiante recupera M4, pega una copia externa o usa la plantilla autónoma. El editor ocupa todo el ancho y la vista previa queda debajo.
 4. **Prueba con otra persona — 10 minutos.** Se comprueba comprensión sin reproducir el video, control del reproductor y ausencia de reproducción automática.
 5. **Reflexión y PDF — 10 minutos.** El informe es exclusivo del módulo 5.
