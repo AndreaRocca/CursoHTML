@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="titulo descripcion">
+  <title id="titulo">Planta en una maceta</title>
+  <desc id="descripcion">Ilustración de una planta de hojas verdes en una maceta, con un sol al fondo.</desc>
+  <rect width="640" height="360" fill="#e8f3e8"/>
+  <circle cx="510" cy="80" r="40" fill="#f4ba5a"/>
+  <path d="M265 230h110l-20 95h-70z" fill="#b86b46"/>
+  <path d="M320 235V90" stroke="#28633d" stroke-width="12"/>
+  <ellipse cx="282" cy="155" rx="45" ry="22" fill="#4f945a" transform="rotate(25 282 155)"/>
+  <ellipse cx="357" cy="120" rx="45" ry="22" fill="#28633d" transform="rotate(-25 357 120)"/>
+</svg>
