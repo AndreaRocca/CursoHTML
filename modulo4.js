@@ -27,6 +27,11 @@
   for(const [key,value] of Object.entries(defaults)){if(Array.isArray(value)){if(!Array.isArray(work[key]))work[key]=value;work[key]=value.map((v,i)=>work[key][i]??v);}else if(typeof work[key]!==typeof value||work[key]===null)work[key]=value;}
   if(Array.isArray(work.fields))work.fields={};
   work.attempts=work.attempts.map(a=>Array.isArray(a)?a:[]);
+  // Migra únicamente la imagen de práctica guardada por versiones anteriores.
+  // Conserva el alt que el estudiante pudiera haber escrito y no modifica otros trabajos.
+  if(typeof work.repairCode[1]==='string'&&/src=(["'])data:image\/svg\+xml/i.test(work.repairCode[1])){
+    work.repairCode[1]=work.repairCode[1].replace(/src=(["'])data:image\/svg\+xml[^"']*\1/i,'src="'+sample+'"');
+  }
   work.lesson=Math.max(0,Math.min(4,Number(work.lesson)||0));
   function save(){try{persist();document.querySelectorAll('.m4-save').forEach(e=>e.textContent='✓ Guardado en este navegador. Entregá el PDF del módulo 4 en Classroom.');}catch{document.querySelectorAll('.m4-save').forEach(e=>e.textContent='No pudimos guardar. Conservá el HTML y el PDF antes de salir.');}}
   const status='<p class="mini-status m4-save" role="status"></p>';
