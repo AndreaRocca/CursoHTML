@@ -8,6 +8,16 @@
 .m4-note{border-left:4px solid var(--accent);padding:14px 18px;background:#fff5e8;border-radius:10px}
 .m4-meter{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .m4-meter input{max-width:280px}
+.m4-style-help{border-left:5px solid var(--primary);background:linear-gradient(180deg,#f7f9ff,#fff)}
+.m4-help-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.m4-help-heading .lesson-label{margin:0 0 8px}
+.m4-style-parts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.m4-style-parts>div{display:grid;gap:4px;padding:14px;border:1px solid #cdd8f6;border-radius:12px;background:#fff}
+.m4-style-parts span,.m4-reference span{color:var(--muted)}
+.m4-reference{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.m4-reference>div{display:grid;grid-template-columns:max-content 1fr;gap:9px 12px;align-items:start;padding:14px;border-radius:12px;background:#eef3ff}
+.m4-reference h4{grid-column:1/-1;margin:0 0 4px}
+.m4-reference code{font-weight:800;color:var(--primary)}
 .delivery-card{margin:18px 0;border-left:4px solid var(--primary)}
 .delivery-card summary{cursor:pointer;margin-top:14px}
 .delivery-card .btn:disabled{opacity:.55;cursor:not-allowed}
@@ -15,4 +25,4 @@
 #deliveryGuard{max-width:620px;width:calc(100% - 32px);border:1px solid var(--line);border-radius:18px;padding:24px;color:var(--text);box-shadow:var(--shadow)}
 #deliveryGuard::backdrop{background:rgba(15,25,45,.55)}
 [id^="module4"] :is(button,a,input,textarea,select,summary):focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-@media(max-width:850px){[id^="module4"] .m3-editor,[id^="module4"] .m3-preview{height:320px;min-height:320px}[id^="module4"] .m3-repair{height:130px;min-height:130px}[id^="module4"] .m3-mini-preview{height:240px;min-height:240px}}
+@media(max-width:850px){[id^="module4"] .m3-editor,[id^="module4"] .m3-preview{height:320px;min-height:320px}[id^="module4"] .m3-repair{height:130px;min-height:130px}[id^="module4"] .m3-mini-preview{height:240px;min-height:240px}.m4-style-parts,.m4-reference{grid-template-columns:1fr}}
