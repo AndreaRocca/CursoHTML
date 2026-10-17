@@ -1,0 +1,717 @@
+# Bitácora de diseño e investigación
+
+## Curso HTML y juego «¡Publicá la web!»
+
+**Docente:** Andrea Rocca  
+**Grupo:** 4.º año, turno tarde  
+**Inicio documentado:** 19 de agosto de 2026  
+**Última actualización:** 15 de septiembre de 2026\
+**Estado:** reconstrucción inicial validada con conversaciones e historial de GitHub
+
+## Propósito de esta bitácora
+
+Registrar el proceso real que comenzó con el diseño de un curso HTML interactivo, continuó con la identificación de una dificultad conceptual en el aula y derivó en el diseño del juego educativo «¡Publicá la web!».
+
+El registro servirá como base para analizar la experiencia y, eventualmente, elaborar una presentación para un concurso de prácticas docentes innovadoras, una ponencia, un documento de investigación o un artículo.
+
+El 15 de septiembre de 2026, la docente reafirma explícitamente que la bitácora debe mantenerse durante las siguientes iteraciones como fuente para un futuro paper o una presentación en un congreso. Este propósito orienta el registro, sin convertir las decisiones de diseño ni las pruebas técnicas en resultados de aprendizaje comprobados.
+
+Para cada aplicación en aula se procurará registrar fecha, grupo y cantidad de participantes, duración real, condiciones de trabajo, intervenciones docentes, dificultades, ajustes y ejemplos de producciones. Las evidencias que se utilicen fuera del aula deberán anonimizarse y contar con las autorizaciones correspondientes. No se incorporarán nombres de estudiantes ni sus enlaces identificables a este repositorio público.
+
+La bitácora distingue entre:
+
+- **evidencias comprobadas:** archivos, historial de GitHub, capturas y registros fechados;
+- **observaciones docentes:** situaciones registradas durante las clases;
+- **recuerdos por verificar:** datos que todavía necesitan contrastarse con otras evidencias;
+- **interpretaciones e hipótesis:** explicaciones provisorias que orientan el diseño y la investigación.
+
+---
+
+## 19 de agosto de 2026 — Diseño y publicación del curso inicial
+
+### Evidencia comprobada
+
+La experiencia comenzó con el pedido de construir un curso HTML interactivo para estudiantes de 4.º año, de acuerdo con el plan de trabajo presentado por la docente.
+
+El historial del repositorio registra:
+
+- **17:46:** incorporación de `curso_web_4to_prototipo.html`;
+- **19:39:** cambio de nombre del archivo a `index.html`, dejándolo preparado como página principal del repositorio y para su publicación mediante GitHub Pages.
+
+Commits asociados:
+
+- `7128ca4` — *Add files via upload*;
+- `733b01b` — *Rename curso_web_4to_prototipo.html to index.html*.
+
+El prototipo quedó constituido como un único archivo HTML responsive, sin registro de usuarios ni base de datos. Incluía portada, barra de progreso, almacenamiento local de respuestas, Módulo 0, Módulo 1 y actividades con retroalimentación automática.
+
+### Intención pedagógica inicial
+
+El curso no fue pensado solamente para enseñar etiquetas HTML. Su recorrido general vinculaba:
+
+1. análisis de la comunicación web;
+2. planificación y organización de la información;
+3. identidad visual;
+4. producción con HTML y CSS;
+5. comprensión básica de Internet y la arquitectura cliente-servidor;
+6. publicación, prueba, accesibilidad y mejora;
+7. presentación de un producto final.
+
+El producto final propuesto era un sitio sencillo para una organización, emprendimiento o proyecto escolar. Debía incluir identidad visual, información clara, secciones organizadas, enlaces funcionales, imágenes adecuadas, criterios de accesibilidad y registro de fuentes.
+
+---
+
+## Módulo 0 — «Comunicar en la web»
+
+### Evidencia comprobada
+
+El módulo planteaba que diseñar un sitio no consiste únicamente en elegir colores, sino en definir qué se quiere comunicar, a quién y con qué propósito.
+
+Incluía una web ficticia deliberadamente confusa. Los estudiantes debían identificar tres problemas relevantes:
+
+- no quedaba claro qué ofrecía la organización;
+- no existía una jerarquía clara de la información;
+- los llamados a la acción eran confusos.
+
+La consigna indicaba expresamente que no debían buscar solamente qué estaba «feo», sino qué impedía comprender la propuesta.
+
+Una segunda actividad pedía imaginar una organización o emprendimiento que pudiera convertirse en tema del proyecto final. La respuesta quedaba almacenada localmente en el navegador.
+
+### Idea central presentada
+
+Una página comunica antes de que se lea todo: la organización, los títulos, las imágenes y los botones indican qué es importante y qué acciones se pueden realizar.
+
+---
+
+## Módulo 1 — «La web por dentro»
+
+### Corrección de la reconstrucción inicial
+
+En las conversaciones posteriores se recordaba que el cuestionario podía haber estado en el Módulo 2. La revisión del archivo original permite establecer que estaba en el **Módulo 1**.
+
+Este dato deja de considerarse un recuerdo pendiente y pasa a ser evidencia comprobada.
+
+### Conceptos presentados antes de la actividad
+
+El curso incluía seis tarjetas con definiciones breves:
+
+- **Página web:** documento individual que se muestra en el navegador.
+- **Sitio web:** conjunto organizado de páginas y recursos relacionados.
+- **Landing page:** página pensada para presentar una propuesta y orientar a una acción concreta.
+- **Dominio:** nombre o dirección que se utiliza para encontrar un sitio.
+- **Alojamiento:** servicio donde se guardan los archivos para que estén disponibles en Internet.
+- **Navegador:** programa que solicita, interpreta y muestra el contenido web.
+
+### Mini juego «¿Quién es quién?»
+
+Después de las definiciones aparecían cuatro situaciones autocorregibles:
+
+1. «chimeleta.com.ar» es un **dominio**.
+2. Una página destinada a presentar un único producto y llevar al visitante al botón «Comprar» es una **landing page**.
+3. Chrome, Firefox y Edge son **navegadores**.
+4. Un conjunto formado por Inicio, Quiénes somos, Productos y Contacto es un **sitio web**.
+
+Para completar la actividad era necesario obtener cuatro respuestas correctas. Si había errores, el sistema recomendaba prestar atención a la diferencia entre la dirección, el conjunto de páginas y el programa que las muestra.
+
+### Recorrido técnico presentado
+
+El módulo mostraba también esta secuencia:
+
+1. la persona escribe una URL;
+2. el navegador busca dónde está el sitio;
+3. solicita los archivos al servidor;
+4. interpreta y muestra la página.
+
+Se anunciaba que cliente-servidor, protocolos y publicación serían profundizados más adelante.
+
+### Aplicación al proyecto del estudiante
+
+El cierre preguntaba si el proyecto necesitaba un sitio con varias secciones o si podía resolverse mediante una única landing page, y solicitaba justificar la decisión.
+
+---
+
+## Observación docente que cambia el proyecto
+
+### Observación registrada
+
+Durante la utilización del curso, la docente advirtió que los estudiantes no comprendían adecuadamente varios de los conceptos presentados, en particular:
+
+- página web;
+- sitio web;
+- hosting o alojamiento;
+- dominio;
+- landing page.
+
+Fue necesario detener el recorrido y explicar los conceptos uno por uno. Aun después de esa explicación, resultó difícil para varios estudiantes diferenciarlos y relacionarlos.
+
+### Interpretación inicial
+
+La dificultad no parecía limitarse a memorizar vocabulario. La explicación breve y el mini juego permitían reconocer definiciones, pero no necesariamente construir un modelo mental integrado del funcionamiento de la web.
+
+El problema pedagógico comenzó a formularse así:
+
+> Es posible enseñar a escribir etiquetas HTML sin que los estudiantes comprendan el ecosistema en el que ese HTML se guarda, se publica y se vuelve accesible para otras personas.
+
+Esta observación llevó a evitar una solución basada únicamente en ampliar definiciones o agregar más preguntas.
+
+---
+
+## 22 de agosto de 2026 — Nacimiento de «¡Publicá la web!»
+
+### Decisión de diseño
+
+La docente propuso crear un juego de estrategia, una aventura de decisiones o una experiencia visual narrativa que permitiera afianzar los conceptos.
+
+Se decidió que los estudiantes debían **utilizar los conceptos para resolver problemas**, en vez de volver a leer sus definiciones.
+
+Se incorporaron dos términos que ayudaban a completar la relación entre los componentes:
+
+- servidor;
+- URL.
+
+El sistema conceptual quedó planteado inicialmente como:
+
+**página web → sitio web → landing page → dominio → URL → hosting → servidor**
+
+### Historia del juego
+
+Un emprendimiento tiene una web terminada, pero nadie puede verla. El estudiante debe tomar decisiones para conseguir que quede publicada y accesible.
+
+El recorrido visual propuesto fue:
+
+**archivos → servidor/hosting → dominio → URL → visitante**
+
+Cada decisión correcta debía permitir obtener o colocar una pieza de la arquitectura:
+
+- página;
+- sitio;
+- servidor;
+- hosting;
+- dominio;
+- URL;
+- landing page.
+
+El cierre debía reconstruir visualmente el recorrido completo y mostrar el mensaje «¡Tu sitio está online!».
+
+### Situaciones consideradas
+
+1. Una estudiante guarda `index.html` en su notebook y envía a una amiga la ruta local del archivo. La amiga no puede abrirla. La decisión necesaria es publicar los archivos en un hosting.
+2. El sitio ya está alojado, pero se desea una dirección propia y fácil de recordar. Es necesario registrar o asociar un dominio.
+3. Inicio, Productos, Galería y Contacto son cuatro páginas que, en conjunto, forman un sitio web.
+4. Una campaña de redes sociales que busca exclusivamente inscripciones puede dirigir a una landing page.
+5. Si se deja de pagar el dominio, la dirección puede dejar de conducir al sitio, aunque eso no implica que los archivos HTML se borren automáticamente.
+6. Si el servidor deja de responder, el visitante no puede acceder normalmente al sitio.
+
+También se propuso cerrar con una explicación abierta:
+
+> ¿Cómo hace una persona, desde su celular, para llegar hasta tu página?
+
+Esta explicación funcionaría como evidencia de comprensión de la relación entre dominio, hosting o servidor, sitio y página.
+
+---
+
+## Decisión tecnológica
+
+Se comparó la creación de una APK con una aplicación web en HTML, CSS y JavaScript.
+
+Se eligió una aplicación web publicada en GitHub Pages porque:
+
+- puede abrirse mediante un enlace o código QR;
+- funciona en celulares, tabletas y computadoras;
+- no requiere habilitar la instalación de APK;
+- puede actualizarse sin redistribuir instaladores;
+- constituye un ejemplo real de los contenidos que enseña.
+
+Se consideró incorporar posteriormente características de PWA para permitir instalación y uso sin conexión después de la primera carga.
+
+La PWA se postergó hasta validar el funcionamiento pedagógico. La primera versión debía concentrarse en que el juego fuera comprensible, atractivo y funcional tanto en celulares como en computadoras.
+
+---
+
+## Versión 0.1 recuperada
+
+### Evidencia comprobada
+
+El 22 de agosto de 2026 se recuperó el archivo `publica_la_web_MVP.zip`. El ZIP conservaba cuatro archivos con fecha interna del mismo día a las 13:21:
+
+- `index.html`;
+- `style.css`;
+- `game.js`;
+- `README.md`.
+
+Se incorporó una copia intacta en `juego/v0.1-original/`. Esta carpeta funciona como evidencia de la primera versión y no deberá modificarse. Las iteraciones posteriores se realizarán en otra ubicación o mediante copias claramente identificadas.
+
+La revisión confirmó que el juego presenta a **Martina** y propone ayudarla a llevar su emprendimiento desde una notebook hasta Internet. El nombre se unificó con el utilizado en los videos para mantener la continuidad narrativa del curso.
+
+### Características registradas
+
+- HTML, CSS y JavaScript;
+- siete misiones, una por cada concepto;
+- página web, sitio web, hosting, servidor, dominio, URL y landing page;
+- mapa de progreso;
+- puntaje;
+- retroalimentación inmediata;
+- diseño responsive;
+- cierre visual del recorrido;
+- ausencia de librerías y recursos externos.
+
+La secuencia visual final recuperada es:
+
+**visitante → URL/dominio → hosting → servidor → sitio → página**
+
+El archivo `README.md` confirma que el MVP fue pensado para abrirse localmente o publicarse en GitHub Pages y que la ausencia de recursos externos buscaba facilitar una futura conversión a PWA con funcionamiento sin conexión.
+
+### Primera valoración
+
+El MVP fue considerado funcional, pero todavía estaba más cerca de un cuestionario visualmente atractivo que del juego narrativo y estratégico imaginado.
+
+Para una segunda versión se propuso:
+
+- aumentar la narrativa;
+- introducir decisiones con consecuencias;
+- incorporar acontecimientos inesperados;
+- disminuir la sensación de preguntas con opciones;
+- fortalecer la construcción visual del sistema;
+- explorar recorridos o finales diferentes.
+
+---
+
+## Reflexión sobre programación e inteligencia artificial
+
+La experiencia abrió una pregunta más amplia:
+
+> ¿Cómo acompañar a estudiantes que pueden pedir a una inteligencia artificial que produzca una página o un videojuego, pero todavía no comprenden los conceptos necesarios para diseñarlo, evaluarlo y publicarlo?
+
+Inicialmente se distinguieron tres capas:
+
+1. **Artefacto:** la página, aplicación o juego que se desea crear.
+2. **Software:** archivos, HTML, CSS, JavaScript, imágenes, enlaces, estructura y ejecución en el navegador.
+3. **Infraestructura:** dispositivo local, servidor, hosting, dominio, URL, Internet, nube, almacenamiento y transferencia de datos.
+
+La IA puede facilitar la creación del artefacto y producir gran parte del software. Sin embargo, si la infraestructura continúa siendo una caja negra, el estudiante puede obtener un producto funcional sin comprender qué construyó, dónde se encuentra ni cómo llega a otras personas.
+
+Un ejemplo surgido en clase fue la pregunta:
+
+> Tenés un correo de Google. ¿Dónde está físicamente ese correo?
+
+La dificultad para explicar qué es «la nube» y dónde se almacenan físicamente los datos reforzó la idea de que publicar no debe tratarse como un paso meramente técnico, sino como parte del aprendizaje de programación.
+
+### Hallazgos provisorios
+
+> Saber pedir código no equivale a saber diseñar software.
+
+> La inteligencia artificial reduce algunas barreras de producción, pero no reemplaza la construcción de modelos conceptuales sobre el software y su infraestructura.
+
+> La IA puede generar el artefacto sin que el estudiante haya construido el modelo mental que permite comprender cómo existe y funciona ese artefacto.
+
+---
+
+## Pregunta inicial de investigación
+
+> ¿De qué manera una experiencia lúdica y narrativa basada en la resolución de problemas favorece la construcción de modelos mentales sobre la arquitectura y la publicación de sitios web en estudiantes de 4.º año que comienzan a desarrollar software con apoyo de inteligencia artificial?
+
+Esta formulación es provisoria. Deberá revisarse después de las primeras aplicaciones del juego.
+
+## Hipótesis iniciales
+
+1. Las definiciones aisladas no son suficientes para construir relaciones entre página, sitio, servidor, hosting, dominio y URL.
+2. Una narrativa basada en problemas concretos puede favorecer una comprensión más integrada.
+3. La construcción visual de la arquitectura puede resultar más significativa que la memorización de términos separados.
+4. Las situaciones nuevas de transferencia permiten observar mejor la comprensión que la repetición de las preguntas del juego.
+5. Publicar el propio juego puede transformar conceptos abstractos en una experiencia observable.
+6. En un contexto de programación asistida por IA, los modelos conceptuales sobre software e infraestructura adquieren mayor importancia, aunque disminuya la necesidad inicial de dominar toda la sintaxis.
+
+---
+
+## Evidencias que se deberán reunir
+
+- capturas del curso original;
+- capturas del Módulo 1 y del mini juego;
+- registro más detallado de lo ocurrido durante la primera clase;
+- respuestas o errores frecuentes de los estudiantes;
+- código original o reconstrucción identificada de la versión 0.1;
+- capturas y registro de cambios de cada versión del juego;
+- diagnóstico previo a la intervención;
+- actividad posterior con situaciones nuevas;
+- observaciones durante el uso en celular y computadora;
+- comentarios espontáneos de los estudiantes;
+- problemas técnicos durante la publicación o aplicación;
+- decisiones de diseño y sus fundamentos.
+
+Las capturas deberán tener fecha, número, epígrafe y una explicación de qué evidencia aportan.
+
+---
+
+## Próximos pasos registrados
+
+1. Preservar `index.html` como línea de base del curso utilizado el 19 de agosto.
+2. Conservar `juego/v0.1-original/` como copia inalterada del MVP recuperado.
+3. Crear una copia de trabajo separada para las próximas iteraciones.
+4. Publicar y probar la versión 0.1 en computadora y celular.
+5. Registrar qué se comprende, qué resulta confuso y qué se siente demasiado parecido a un cuestionario.
+6. Diseñar la versión 0.2 a partir de esas observaciones.
+7. Preparar un diagnóstico y una actividad posterior de transferencia.
+
+---
+
+## 22 de agosto de 2026 — Exportación de las producciones
+
+### Situación observada
+
+Las ideas y respuestas abiertas quedaban almacenadas solamente en el navegador mediante `localStorage`. Ese mecanismo permitía continuar el recorrido en el mismo dispositivo, pero no ofrecía a los estudiantes una forma directa de entregar sus producciones en Classroom.
+
+### Decisión tomada
+
+Se agregó al final del recorrido una sección «Descargá tu trabajo». El estudiante debe escribir su nombre y puede generar un archivo de texto que contiene:
+
+- nombre y apellido;
+- fecha y hora de descarga;
+- porcentaje de avance;
+- idea para el proyecto final;
+- decisión fundamentada entre sitio web y landing page;
+- estado de las actividades y módulos completados.
+
+La descarga recupera también el contenido que permanezca escrito en los campos, aunque el estudiante no haya presionado previamente el botón «Guardar». El nombre se utiliza para generar un archivo identificable, por ejemplo `curso-html-martina-perez.txt`, que puede entregarse directamente mediante Classroom.
+
+### Fundamento
+
+La modificación convierte las producciones locales en una evidencia portable y entregable sin incorporar cuentas, base de datos ni recolección centralizada de información personal.
+
+---
+
+## 22 de agosto de 2026 — Microlección «¿Dónde vive una página web?»
+
+### Situación observada
+
+Se identificó un salto conceptual entre la definición breve «Una página web es un documento individual que se muestra en el navegador» y las situaciones del mini juego. Antes de resolver las misiones, los estudiantes necesitaban comprender qué es materialmente una página web y distinguir entre verla localmente y publicarla.
+
+### Cambio realizado
+
+Se incorporó al comienzo del Módulo 1 una microlección interactiva de cinco pasos:
+
+1. una página comienza como un archivo con extensión `.html`;
+2. el archivo puede guardarse en una carpeta junto con otras páginas e imágenes;
+3. el navegador interpreta el HTML y puede mostrarlo localmente;
+4. cada archivo HTML puede representar una página y varias páginas relacionadas forman un sitio;
+5. abrir un archivo local no equivale a publicarlo: para hacerlo accesible hay que alojarlo en un servidor conectado a Internet.
+
+El recorrido termina con una pregunta puente sobre una estudiante que puede ver `index.html` en su notebook. Para continuar debe reconocer que la página todavía no está publicada porque el archivo permanece únicamente en su computadora.
+
+### Decisión multimedia
+
+La explicación interactiva será el contenido principal, de modo que no dependa de un servicio externo. Se proyecta incorporar como complemento un audio o video breve con el mismo guion, manteniendo una transcripción visible por razones de accesibilidad.
+
+---
+
+## 22 de agosto de 2026 — Reorganización del Módulo 1
+
+### Situación observada
+
+La incorporación del video y de la microlección mostró que presentar página, sitio, navegador, hosting, servidor, dominio, URL y landing page en una única secuencia podía volver a producir una acumulación de conceptos.
+
+### Decisión tomada
+
+El Módulo 1 se dividió en dos lecciones internas dentro del mismo archivo del curso:
+
+**Lección 1 — Archivos, páginas y navegador**
+
+1. video «¿Qué es una página web?» alojado en YouTube;
+2. microlección «¿Dónde vive una página web?»;
+3. tarjetas de página web, sitio web y navegador;
+4. mini juego de tres situaciones.
+
+**Lección 2 — Publicar y encontrar una web**
+
+1. video introductorio «¿Cómo llega una página web a Internet?»;
+2. explicación interactiva en un recorrido deslizante con íconos;
+3. tarjetas conceptuales de hosting, servidor, dominio, URL y landing page;
+4. síntesis visual «¿Qué ocurre cuando escribimos una dirección?» como puente entre los conceptos y su aplicación;
+5. mini juego de cinco situaciones;
+6. aplicación al proyecto del estudiante.
+
+Se mantuvo un único `index.html`, pero cada lección funciona como una pantalla separada. Esto reduce la extensión visible de cada recorrido sin fragmentar el almacenamiento, el progreso ni la descarga de evidencias.
+
+El video se incorporó mediante el reproductor de YouTube con privacidad mejorada (`youtube-nocookie.com`). Esta decisión evita agregar al repositorio un archivo MP4 de aproximadamente 92 MB y permite que YouTube adapte la reproducción a distintas conexiones y dispositivos. La microlección escrita permanece disponible debajo del video como contenido principal y alternativa accesible.
+
+Durante la prueba local apareció el error 153 del reproductor de YouTube. La causa fue que el curso se había abierto directamente como archivo (`file://`), sin una dirección web que el reproductor pudiera utilizar como referencia. Se agregó una detección automática: en modo local se muestra una explicación y un enlace para abrir el video en YouTube; cuando el curso se accede mediante `http://` o `https://`, se muestra el reproductor incrustado.
+
+### Precisión conceptual incorporada
+
+Se aclaró que `.com` es un dominio genérico internacional y no un dominio exclusivo de Estados Unidos; el dominio territorial de ese país es `.us`. También se incorporó que NIC Argentina es el registro oficial de los dominios `.ar` y que `.com.ar` es una de sus zonas de registro.
+
+Durante la revisión se detectó que URL aparecía en las tarjetas y en la evaluación, pero todavía no tenía una explicación propia. Se agregó un paso que distingue dominio de URL mediante el ejemplo `https://chimeleta.com.ar/productos.html`: `chimeleta.com.ar` es el dominio, `/productos.html` es la ruta y el conjunto constituye la URL completa. La microlección pasó de cinco a seis pasos. También se decidió producir un segundo video integrador sobre hosting, servidor, dominio, URL y landing page.
+
+El segundo video fue producido con una herramienta de IA gratuita, mediante un único prompt y sin iteraciones de corrección. La explicación conceptual, el audio y los textos descriptivos son correctos; los problemas aparecen en algunas imágenes generadas, por ejemplo una notebook cuya pantalla está del lado equivocado o palabras inexistentes integradas en la escena. Inicialmente se lo presentó como «Repasemos con mirada crítica», pero al revisar la secuencia se advirtió que aparece antes de la explicación. Por eso se reformuló como «Primera aproximación»: el video introduce los conceptos, la explicación interactiva con íconos los desarrolla paso a paso y el minijuego permite aplicarlos. La observación de objetos imposibles, partes invertidas o texto inventado se mantiene como consigna secundaria de alfabetización mediática, sin poner en duda el contenido conceptual.
+
+### Cierre de la primera clase de 90 minutos
+
+El aviso genérico «Próximo módulo» se reemplazó por un cierre completo para la primera jornada. Después de las dos lecciones, los estudiantes realizan el juego integrador «¡Publicá la web!», compuesto por siete misiones sobre página, sitio, hosting, servidor, dominio, URL y landing page. El juego quedó incorporado dentro del curso y comunica su puntaje al recorrido principal para incluirlo en la evidencia final.
+
+Después del juego se incorporó una devolución escrita con cinco preguntas:
+
+1. ¿Qué aprendiste hoy que antes no sabías?
+2. ¿Qué ocurre desde que una persona escribe una dirección hasta que ve una página web?
+3. ¿Qué concepto resultó más claro y por qué?
+4. ¿Qué preguntas quedaron sin responder?
+5. ¿Qué aspecto no se entendió o requiere más explicación?
+
+Las preguntas cumplen una doble función. Si la clase alcanza los 90 minutos, funcionan como cierre metacognitivo y evaluación de salida. Si no hay tiempo suficiente, quedan disponibles para abrir la clase siguiente y recuperar dudas. Las cinco respuestas, incluso cuando alguna quede sin completar, se agregan al archivo TXT junto con la idea de proyecto, la decisión entre sitio y landing page, el resultado del juego y el registro de actividades. De este modo se genera una única evidencia descargable para entregar mediante Classroom.
+
+### Corrección de navegación en celulares
+
+Durante una prueba desde un teléfono se observó que, al seleccionar una opción del menú, cambiaba la sección activa pero la página se desplazaba hacia el inicio general. Como en la disposición móvil el menú se encuentra encima del contenido, el estudiante permanecía visualmente en el menú y podía interpretar que la opción no había funcionado. Se modificó la navegación para que, en pantallas de hasta 850 píxeles, el desplazamiento termine directamente en el comienzo de la sección seleccionada. En pantallas grandes se mantiene el desplazamiento habitual hacia la parte superior.
+
+En una segunda prueba móvil, el paso 4 de «De la carpeta a Internet» se extendía fuera de la pantalla al mostrar la URL completa en orientación vertical. Las direcciones web son cadenas largas sin espacios y algunos navegadores evitan dividirlas automáticamente. Se ajustaron los ejemplos para que puedan repartirse visualmente entre varias líneas y se limitó el ancho mínimo de los elementos de la lección. La URL conserva todos sus caracteres y su significado, pero ya no debería generar desplazamiento horizontal.
+
+## 6 de septiembre de 2026 - Incorporación del plan de aprendizaje original
+
+Se incorporó como fuente primaria el documento `investigacion/fuentes/plan-aprendizaje-taller-4to.pdf`, titulado «¿Cómo puede una organización comunicar su propuesta en la web de manera clara, atractiva y responsable?». Es un plan cuatrimestral de Tecnología para 4.º año, organizado en las etapas Punto de partida, Indagación y Producción, con dos instancias de evaluación.
+
+La revisión confirma que el CursoHTML responde a contenidos expresamente incluidos en el plan: diferencias entre página web, sitio web, landing page, dominio, alojamiento y publicación; Internet y arquitectura cliente-servidor; introducción a HTML y CSS; uso crítico de inteligencia artificial; documentación del proceso y entrega de evidencias mediante Classroom.
+
+El curso interactivo actual no reproduce literalmente el orden de las clases del documento. Anticipa nociones de publicación, hosting, servidor, dominio y URL -ubicadas en la clase 10 del plan- para construir un modelo mental básico antes de comenzar a escribir HTML. Esta reorganización se considera una decisión didáctica consciente: busca que los estudiantes comprendan qué es y dónde funciona una página web antes de aprender sus etiquetas. La futura secuencia de etiquetas HTML deberá vincularse especialmente con las clases 5 y 6 del plan, que proponen estructura básica, títulos, párrafos, listas, imágenes, enlaces y estilos CSS.
+
+También se detectó una inconsistencia en la página 22 del documento: dentro de la Evaluación 2 sobre presentación del sitio web aparece un párrafo referido a un «Arcade de aula», videojuegos, programación y afiches. El resto de las páginas 22 a 24 vuelve a referirse al sitio final en Google Sites y a la producción HTML/CSS. Por su contenido y falta de continuidad, se interpreta como un fragmento residual de otro plan que convendría corregir en la próxima versión del documento original.
+
+## 6 de septiembre de 2026 - Prototipo del Módulo 2
+
+Se construyó el Módulo 2 «Propósito y destinatarios» como propuesta para una segunda clase de 90 minutos. El módulo articula las clases 1 y 2 del plan de aprendizaje con la experiencia interactiva ya desarrollada. En lugar de comenzar con un video, propone observar dos sitios simulados: «Vivero Raíz Urbana», con una comunicación específica, y «Todo Mix», con mensajes genéricos y acciones ambiguas. La comparación permite discutir claridad, destinatarios y acción esperada sin depender de sitios externos que podrían cambiar o dejar de estar disponibles.
+
+Después de la observación se incorporó un recorrido interactivo de cuatro pasos sobre propósito, destinatarios, propuesta de valor y llamada a la acción; cuatro tarjetas conceptuales; un minijuego de aplicación; y una ficha inicial de nueve campos para definir la organización o emprendimiento del estudiante. La ficha recupera preguntas del plan original: nombre, actividad, oferta, destinatarios, necesidad, diferencia, acción principal, tono e información necesaria.
+
+El estado del módulo se conserva localmente. La comparación, el minijuego, la ficha del proyecto y la finalización se incorporan al informe acumulativo para Classroom. El progreso general pasó a considerar tres componentes completables: Módulo 0, Módulo 1 y Módulo 2. La versión queda abierta a revisión docente antes de su uso con estudiantes.
+
+Durante la revisión docente se observó que las cuatro situaciones del minijuego repetían el mismo orden de la explicación y de las tarjetas. Ese orden podía funcionar como pista involuntaria y permitir responder por posición en lugar de interpretar cada caso. Se mezclaron las situaciones -llamada a la acción, propósito, propuesta de valor y destinatarios- conservando el orden de las opciones en los desplegables.
+
+También se detectó que el botón de entrega del Módulo 2 llevaba al cierre de la primera clase y obligaba a volver a pasar por el juego «¡Publicá la web!». Se separó la preparación del informe en una pantalla común de entrega y se creó un cierre propio para el Módulo 2. Este cierre utiliza un semáforo metacognitivo: cada estudiante marca en verde, amarillo o rojo su nivel de comprensión de los cuatro conceptos, explica uno que considera aprendido y registra una duda o aspecto para revisar. El semáforo y las respuestas se guardan localmente y se incorporan al informe acumulativo.
+
+Una nueva revisión explicitó una condición material del aula: los estudiantes reciben una computadora al azar en cada clase. Por lo tanto, el almacenamiento local de un dispositivo no puede utilizarse como registro longitudinal y un informe acumulativo podría omitir el trabajo realizado en otra máquina. Se reemplazó ese supuesto por entregas independientes: la primera clase genera un informe con sus actividades, juego y devolución; el Módulo 2 genera otro informe con su comparación, minijuego, ficha de proyecto y semáforo metacognitivo. Classroom pasa a ser el espacio donde se conserva y acumula la trayectoria del estudiante. El almacenamiento del navegador queda limitado a la recuperación temporal durante la clase en curso.
+
+Se definió la licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0) para CursoHTML y CursoContable. La identificación «Creado por Andrea Rocca» y el enlace a la licencia se incorporaron de forma visible en los menús laterales. El juego «¡Publicá la web!» incluye también la atribución en su pie, para conservarla cuando se abre de manera independiente. La licencia permite compartir y adaptar los materiales con atribución, indicación de cambios y la misma licencia, pero no autoriza usos comerciales.
+
+---
+
+## Plantilla para próximas entradas
+
+### Fecha y versión
+
+### Objetivo
+
+### Situación observada
+
+### Evidencia disponible
+
+### Decisión tomada
+
+### Fundamento pedagógico
+
+### Cambio realizado
+
+### Resultado de la prueba
+
+### Interpretación o hipótesis
+
+### Preguntas abiertas
+
+### Siguiente paso
+
+
+## Entrega para Classroom en PDF
+
+La docente comunica que probó CursoHTML con sus estudiantes y considera que funcionó; es una valoración docente, aún sin análisis sistemático. También observó edición del archivo de entrega. Solicita una barrera práctica, sin controles estrictos. Se sustituye la descarga TXT por un informe que se guarda como PDF mediante la impresión del navegador. Conserva nombre, ideas, actividades, juego y reflexiones; el avance local permanece. No se presenta el PDF como evidencia inalterable. La modificación local todavía debe publicarse para llegar al sitio de GitHub.
+
+## 15 de septiembre de 2026 — Módulo 3: comenzar a construir con HTML
+
+### Solicitud y decisiones de diseño
+
+La docente solicita salir de la predominancia teórica y comenzar HTML en una clase de 90 minutos, conservando explicación contextualizada, gamificación, guardado y entrega en PDF. Propone que la producción pueda realizarse en un editor y compartirse mediante enlace.
+
+La revisión de los ajustes previos lleva a mantener: Martina como personaje, explicación antes de aplicación, tareas sin pistas por posición, botones de avance al final del contenido, pantallas separadas para producción/prueba/cierre, adaptación móvil, preguntas metacognitivas y entregas independientes por clase. No se requiere estado del Módulo 2 en la computadora actual.
+
+Se adelanta HTML al Módulo 3, originalmente anunciado como «Organizar información». La jerarquía se aprende al construir h1/h2, párrafos y listas. El Módulo 5 pendiente pasa a anunciarse como «Más HTML». No se implementa todavía ese módulo ni se alteran las actividades de los módulos previos.
+
+### Recorrido propuesto
+
+Encargo narrativo (5 min), comparación de texto/HTML y microlección de cinco pasos (15), tres reparaciones mediante edición real de HTML (15), producción propia en tres rondas de diez minutos (30), prueba y publicación o preparación del archivo (10), cinco preguntas y semáforo (5), PDF y Classroom (10). La distribución es una propuesta para revisar con tiempos reales, no un resultado de aplicación.
+
+El juego introduce enlace, título y lista en orden distinto al de enseñanza. Permite intentos sin penalización, pistas y soluciones consultables; el informe registra los intentos y si se consultó una solución, sin confundir ayuda con aprendizaje demostrado. Una explicación abierta recupera la razón del cambio.
+
+### Producción y entrega
+
+Se incorpora un editor HTML en el curso con vista previa aislada y guardado automático. La plantilla es un documento completo con doctype, idioma, head, codificación, viewport, title y body. La producción mínima propone un título principal, dos secciones, dos párrafos, lista de tres propuestas y enlace con acción clara. El checklist de siete criterios es orientativo: no valida toda la sintaxis ni verifica destinos o calidad comunicativa.
+
+CodePen se ofrece solo con cuenta y autorización docente/institucional. Las instrucciones distinguen documento completo en el editor de archivos y contenido de body en la interfaz clásica; hay botones de copia separados. Se advierte sobre datos públicos, cierre de sesión y condiciones de licencia propias de los Pens públicos. No se crean cuentas ni se publican producciones desde el curso automáticamente. Como alternativa, se entrega index.html junto al PDF, sin cuenta externa. Compartir la URL del curso no comparte el contenido de su editor local.
+
+El informe incluye únicamente Módulo 3: respuestas, proyecto, reparaciones y códigos, intentos, consultas, revisión, prueba y mejora, modalidad de entrega, enlace clicable si corresponde, declaración de prueba de acceso, cinco reflexiones, semáforo y código completo. Se registra lo faltante sin bloquear por un puntaje o respuestas abiertas incompletas. Se exige identificación y modalidad de entrega; una entrega con enlace requiere URL de formato válido. No se certifica acceso público, autoría ni entrega efectiva en Classroom.
+
+La función «Empezar como otro estudiante» reinicia exclusivamente M3 tras confirmar. El guardado sigue siendo temporal en el navegador; Classroom y los archivos descargados permiten continuar en otra máquina. Se agrega recuperación ante JSON local inválido para evitar que un estado corrupto impida abrir el curso.
+
+### Evidencias y límites
+
+Archivos de implementación: index.html, modulo3.css y modulo3.js. La guía `investigacion/MODULO-3-GUIA-DOCENTE.md` documenta secuencia, intervenciones, planes alternativos y criterios formativos. `tests/modulo3.cjs` permite repetir las comprobaciones técnicas. Las pruebas técnicas no sustituyen una aplicación en aula ni demuestran mejora de motivación o comprensión.
+
+Pendientes de observar: tiempos reales por ronda, dificultad de las reparaciones, explicaciones de los estudiantes, diferencias entre producir con plantilla y transferir sin ella, cambios tras la prueba con compañeros y viabilidad del editor externo. El módulo queda como prototipo local para revisión docente; no se publica automáticamente en GitHub.
+
+### Resultado de la prueba técnica
+
+Las pruebas automatizadas en Chrome aprobaron sintaxis, unicidad de IDs, guardado y recarga, resolución de las tres reparaciones, detección de los siete criterios de la producción, descarga del HTML, informe independiente con código completo y enlace, aviso ante ventana bloqueada, aislamiento de scripts, navegación y ancho en 320/390 píxeles, reinicio exclusivo de M3 y recuperación de JSON inválido. Se comprobó también que las rutas de entrega de las clases anteriores siguen generando sus informes propios. No se publicó un Pen real ni se probó todavía con estudiantes. La preparación del informe se verificó en el navegador; guardar y entregar el PDF sigue requiriendo acción del estudiante.
+
+### Autorización para la prueba en aula
+
+La docente solicita publicar esta versión para probarla con estudiantes, aun cuando anticipa cambios que comunicará después por falta de tiempo para revisarlos ahora. Se conserva el prototipo como punto de partida identificable en el historial de Git. Esta autorización no implica validación pedagógica: los cambios pendientes y los resultados de la aplicación todavía no se conocen. Las observaciones posteriores deberán registrar tiempos reales, dificultades, respuestas y propuestas de mejora, distinguiendo lo observado de las interpretaciones.
+
+### Publicación comprobada
+
+Se subió a main el commit `1d288f9` («Agregar modulo 3 HTML y documentar prueba en aula») desde GitHub Desktop, después de que la terminal no pudiera autenticarse. GitHub Pages completó correctamente el [despliegue 34967913169](https://github.com/AndreaRocca/CursoHTML/actions/runs/34967913169). La comprobación HTTP posterior confirmó que el sitio público sirve el index actualizado y modulo3.js con código 200. Los archivos temporales de tmp no se incorporaron a la publicación. Esta versión publicada constituye la referencia para contrastar las observaciones y ajustes posteriores al uso en aula.
+
+## 15 de septiembre de 2026 — Recuperación de ajustes realizados desde la escuela
+
+La docente solicita recuperar el trabajo de la tarde, realizado desde otro dispositivo. Se consultó la conversación «Pasar proyecto CursoHTML». La comparación de la referencia remota con Git local confirmó que esos pedidos no habían llegado al repositorio: GitHub seguía en `4bd378a`. Las respuestas de aquella conversación afirmaban haber preparado modificaciones, pero no se encontró una versión publicada; por eso se reconstruyen los cambios desde los pedidos explícitos y se verifica nuevamente la implementación.
+
+### Ajustes confirmados recuperados
+
+- Identificar las vistas previas de las reparaciones y reducir el espacio vacío, especialmente en la misión del enlace. Los enlaces HTTP(S) válidos se abren en otra pestaña; JavaScript y elementos activos siguen bloqueados en la vista.
+- Quitar indicadores temporales de las pantallas de estudiantes de los módulos 0 a 3. La docente expresa que pueden generar ansiedad; se registra como fundamento de diseño, no como resultado medido. La planificación de 90 minutos permanece en la guía docente, sin pruebas cronometradas para el estudiante.
+- Quitar «No necesitás leerla para completar la clase» de la referencia MDN, «No es una carrera», «no inventará un resultado perfecto» y la alternativa de prueba individual que había sido presentada en lugar de trabajar con un compañero.
+- Convertir el desafío extra en una tarea del recorrido: agregar un elemento a la lista sin copiar y revisar/mejorar la claridad. La respuesta se conserva en el PDF como revisión y mejora, no como producción opcional. Se mantienen los identificadores de los campos para no perder respuestas locales previas.
+- Presentar CodePen como editor en línea para guardar en la cuenta y recuperar el código desde otra computadora. Agregar primero una práctica con un ejemplo breve: copiar, pegar, modificar, guardar y volver a abrir; después llevar la producción propia. Se conserva la alternativa de HTML más PDF ante dificultades de acceso.
+
+### Decisión que quedó pendiente
+
+La docente describe la interfaz de CodePen como demasiado cargada y pregunta por un editor con HTML, CSS y JS y resultado en tiempo real. En la conversación se propone Liveweave, pero no hay confirmación posterior de reemplazo. No se interpreta esa sugerencia como una decisión acordada: se consulta nuevamente y, mientras tanto, se mantiene CodePen con las mejoras confirmadas. Las instrucciones de un eventual reemplazo deberán verificarse en el servicio elegido antes de publicarse.
+
+Estos ajustes son evidencia de revisión docente del prototipo. No se deduce de esta conversación que el Módulo 3 haya sido aplicado con estudiantes ni se inventan tiempos, participantes o resultados de aprendizaje.
+
+La nueva comprobación automatizada en Chrome aprobó las pruebas previas y agregó verificación de ausencia de tiempos en las pantallas, presencia del código de prueba, altura compacta de la misión del enlace y apertura del destino en otra pestaña conservando el curso. La navegación de prueba usó un destino simulado para no depender de Internet; no verificó el guardado real en una cuenta de CodePen. Se comprobaron también el bloqueo de URLs javascript y el mantenimiento de las entregas independientes. Los cambios quedan identificados en un commit separado de la versión inicial publicada.
+
+## 15 de septiembre de 2026 — Prueba exploratoria de YachayCodex
+
+La docente propone probar YachayCodex en lugar de CodePen. Se utiliza un ejemplo breve con títulos, párrafo, lista y enlace al curso. La docente comunica que el enlace externo inicialmente no funciona en la vista previa; tras agregar target="_blank" y rel="noopener noreferrer", confirma que sí abre el destino. Se registra como prueba técnica docente, no como resultado con estudiantes.
+
+La docente proporciona un enlace generado por la función de compartir. Al abrirlo en una pestaña nueva se observa el aviso de carga exitosa, el código HTML dentro de un panel editable y la página en la vista previa. Esto comprueba la recuperación del ejemplo compartido en el editor, no solamente una vista de lectura. No se modifica ni vuelve a publicar ese ejemplo durante la comprobación.
+
+Límites: la nueva pestaña pertenece al mismo navegador; no se probó desde otro dispositivo o una sesión independiente. Tampoco se verificó si los cambios editados actualizan el enlace original, si exigen generar uno nuevo, cuánto tiempo se conserva el trabajo o cuáles funciones requieren una cuenta. No se confunde el contenido codificado en una URL con una garantía de almacenamiento longitudinal. Antes de adaptar la práctica, las instrucciones deberán distinguir guardar/compartir la versión final y conservar una copia del código en el PDF y en index.html. El reemplazo todavía no se implementó en el curso.
+
+### Adaptación del Módulo 3 autorizada por la docente
+
+La docente pide cambiar el curso. Se reemplazan las instrucciones de CodePen por YachayCodex, manteniendo la secuencia prueba breve → página propia → prueba con otra persona → reflexión → PDF independiente de la clase. Se observa el menú Compartir, la opción Compartir Código y el formulario de título y descripción, sin enviar ni republicar el ejemplo de Andrea. No se necesita una captura docente para esta adaptación.
+
+El botón principal copia el contenido de body al panel HTML; el documento completo permanece disponible como respaldo. El ejemplo probado y la plantilla incorporan enlaces externos en otra pestaña. Se explicita volver a compartir y verificar la versión final, sincronizar el HTML con el PDF y probar el acceso sin la sesión del estudiante. Se conserva la alternativa HTML + PDF en Classroom y no se promete persistencia ni publicación sin cuenta. Se rechazan direcciones vacías del editor como entregas. La propuesta conserva las revisiones docentes anteriores y la planificación de 90 minutos solo en la guía. Estas decisiones son de diseño, no evidencia de aprendizaje en aula.
+
+## 16 de septiembre de 2026 — Prueba de visitas con Umami
+
+La docente quiere saber si se visitan sus dos cursos, también fuera de sus clases, sin identificar estudiantes ni depender de los PDF de entrega. Se descartó un tablero público dentro del curso y se revirtieron los cambios de métricas locales ensayados ese día; esta prueba nueva no los recupera. Umami Cloud, en el plan gratuito de un solo sitio, recibirá visitas de CursoHTML y CursoContable bajo el mismo dominio `andrearocca.github.io`. El informe docente deberá separarlas por las rutas `/CursoHTML/` y `/CursoContable/`; el total sin filtro combina ambos cursos.
+
+Se incorpora el mismo código de seguimiento facilitado por la docente en el `head` de ambos cursos. Solo se instala el seguimiento de página: no se envían respuestas, nombres, contenido del editor, identificadores de estudiante ni eventos propios del juego. El script se limita al dominio público para excluir pruebas locales y se configura para omitir búsqueda y fragmento de URL y respetar Do Not Track. El tablero permanece en la cuenta de Umami, sin enlace desde el menú estudiantil. La IP se procesa por Umami para sesiones y geolocalización aproximada, pero la documentación del servicio indica que no la almacena. Las visitas comenzarán a contarse a partir de la publicación, no en forma retroactiva; bloqueadores y Do Not Track pueden reducir el conteo. La procedencia del enlace o la ubicación no demuestran que una visita corresponda a un colega docente. Esta es una decisión de instrumentación, no evidencia de uso ni de aprendizaje.
+
+
+## 30 de septiembre de 2026 — Numeración, entregas independientes y módulo 4
+
+**Pedido docente.** Andrea informa que hay tres entregas y que la denominación módulo 0 confunde. Describe estudiantes que completan varios módulos seguidos y no distinguen que deben entregar un PDF por módulo. Son observaciones comunicadas por la docente, sin recuentos ni evaluación de impacto. Aporta el PDF «Etiquetas HTML.pdf» para ampliar la página en el módulo 4 y solicita mantener la metodología y la bitácora.
+
+**Decisiones consultadas y confirmadas.** Integrar el antiguo módulo 0 como introducción del módulo 1, sin eliminar sus actividades ni borrar claves del progreso previo. Mantener módulos 2 y 3 con sus entregas propias y sumar una cuarta entrega para el módulo 4. Corregir los porcentajes de imagen mediante CSS, por ejemplo style="width:50%;height:auto", y presentar Drive como alternativa que requiere prueba, sin prometer que su enlace compartido funciona como src. Andrea acepta ambas propuestas. El documento fuente permanece intacto.
+
+**Control de entregas.** El menú y el inicio explicitan «Un módulo = un PDF» y ofrecen una pantalla de entregas separadas. Se distingue informe abierto, confirmación del estudiante de haber guardado el PDF y declaración de entrega desde otra computadora. El sitio no puede confirmar que la impresión se guardó ni que Classroom recibió el archivo. Al cambiar directamente a otro módulo con el PDF pendiente aparece un aviso: preparar el informe o continuar dejando la entrega pendiente. No se impone repetir actividades de otra computadora ni se bloquea por una nota. Cambiar respuestas después del informe invalida su confirmación de guardado y solicita una versión actualizada. Se mantienen las claves m0, m1 y webCourseState para conservar respuestas anteriores; el progreso cuenta módulos 1 a 4, no una quinta unidad 0.
+
+**Módulo 4.** Continúa el encargo de Martina: observar, comprender cinco recursos, reparar código, mejorar la página propia, probar con otra persona, reflexionar y entregar. Se incorporan img con src y alt, ol/li, strong, color y font-family; se diferencia HTML de las declaraciones de CSS dentro de style. Incluye cinco reparaciones con intentos, pistas y soluciones registradas; un control de ancho para observar proporciones; un editor y vista previa; seis criterios orientativos; recuperación explícita de una copia de M3 sin modificarla; descarga HTML y copia de body para continuar el circuito conocido de YachayCodex. Se incluye una ilustración original de práctica dentro del código, utilizable sin conexión. Se solicita fuente de la imagen y comprobación visual; no se supone que encontrar un elemento img demuestra que la imagen cargó.
+
+**Informe y evaluación.** PDF exclusivo del módulo 4 con identificación, respuestas, reparaciones y sus intentos, ayudas, revisión orientativa, prueba con un compañero, mejoras, reflexiones, modalidad de entrega, enlace si corresponde y versiones de código recuperada y final. Los pendientes se indican sin fabricar respuestas; los intentos no descuentan puntos. Se exige nombre y modalidad de entrega, como en M3. La interpretación semántica del alt, la calidad comunicativa y la legibilidad requieren revisión docente. El informe no certifica autoría ni entrega efectiva.
+
+**Fuentes técnicas.** Se contrastó el uso de width de img (entero en píxeles) y width de CSS (admite porcentajes) con MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img y https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/width. La documentación de descargas de Drive describe enlaces de descarga, no garantiza alojamiento para insertar imágenes: https://developers.google.com/workspace/drive/api/guides/manage-downloads. No se comprobó una imagen real de la cuenta de Andrea ni se modificaron permisos de Drive.
+
+**Pruebas.** En Chrome se verificaron los cuatro informes por separado, migración del progreso anterior, aviso de cambio, confirmación explícita, invalidación tras editar, cinco reparaciones, seis criterios de página, recuperación de M3 sin sobrescritura, persistencia, descarga HTML, PDF con errores y pendientes, ventana bloqueada, eliminación de scripts/eventos de la vista, ancho móvil de 320/390 píxeles y reinicio exclusivo de M4. Se inspeccionaron visualmente taller, móvil e informe de prueba. Son verificaciones técnicas, no resultados de aplicación en aula.
+
+**Estado de integración.** Versión completa preparada en una copia de trabajo y comprobada. El entorno permitió primero editar index.html y modulo3.js del proyecto, pero luego rechazó la creación de archivos nuevos y dejó de iniciar comandos con «setup refresh had errors». La aplicación completa requiere copiar los archivos preparados mediante el instalador; no se considera terminada ni publicada por preparar el paquete. Los originales docentes y los temporales preexistentes se conservan. La publicación en GitHub no fue realizada en esta intervención.
+
+
+**Límite adicional de verificación.** La suite histórica completa tests/modulo3.cjs no terminó dentro de las esperas de esta sesión. No se registra como aprobada. La nueva suite tests/modulo4.cjs sí terminó correctamente y cubre, entre otros casos, la generación independiente del informe de M3 y la conservación de su producción. Las rutas de esa prueba histórica se adaptan para entrar desde Inicio, ya que el aviso nuevo de entrega pendiente cambia la navegación directa entre módulos.
+
+
+### Aclaración docente sobre Classroom
+
+Andrea precisa que la revisión de la entrega en Classroom la realiza ella. Se elimina del control la declaración del estudiante de haber entregado en Classroom. El sitio solo recuerda preparar y guardar un PDF por módulo; permite indicar que el PDF ya fue guardado en otra computadora. La indicación de adjuntarlo en la tarea correspondiente permanece, sin registrar ni verificar el envío.
+
+
+## 30 de septiembre de 2026 — Notebooks compartidas y ocho accesos
+
+Andrea precisa que los módulos se realizan en distintas notebooks de la sala y que no siempre se puede recuperar el mismo equipo para continuar. Se elimina del aviso la afirmación de PDF pendiente basada en el estado local. Al entrar a un módulo posterior se pregunta si ya se entregó el PDF del módulo anterior en Classroom y se aclara que pudo hacerse desde otra notebook. Se permite continuar o revisar el cierre; la respuesta no se guarda como constancia de entrega ni modifica la evaluación docente. El estado vacío del navegador tampoco se presenta como prueba de falta de entrega.
+
+El menú lateral queda con exactamente ocho botones: contenido y cierre/PDF para cada módulo del 1 al 4. La introducción y las dos lecciones de M1 mantienen su navegación interna. Se retiran del menú los módulos futuros 5/6, sin eliminar contenido existente. Inicio queda como enlace fuera del menú y el recordatorio general de PDF sigue accesible desde Inicio. Se conservan respuestas y claves de almacenamiento.
+
+**Verificación del ajuste.** La suite tests/modulo4.cjs pasó en Chrome tras adaptar sus pasos a los nuevos botones del aviso. Comprueba ocho botones laterales, conservación del estado, informes independientes, edición de respuestas, recorrido de M4 y adaptación móvil. La entrada directa a un PDF no dispara un aviso sobre otro módulo; se puede revisar el cierre elegido sin quedar en un ciclo de recordatorios. Aplicado a los archivos del proyecto local, sin publicar en GitHub.
+
+## 3 de octubre de 2026 — Más espacio para escribir HTML
+
+La docente informa, a partir del uso del curso, que el editor HTML destinado a estudiantes queda demasiado angosto. Se prioriza la escritura: en los talleres de los módulos 3 y 4 el editor pasa a ocupar todo el ancho disponible y la vista previa se ubica debajo. Se descarta por ahora una ventana flotante o una vista oculta detrás de un botón, porque obligarían a superponer contenido o a alternar sin ver simultáneamente el resultado. La comparación inicial y las reparaciones breves conservan su disposición previa. El cambio es de presentación; no modifica el código guardado, la generación de informes ni las consignas. Quedan pendientes las modificaciones específicas que la docente quiera solicitar para el documento de entrega.
+
+## 5 de octubre de 2026 — Diseño del módulo 5 y cierre de HTML básico
+
+**Pregunta docente.** Andrea consulta si corresponde comenzar CSS o continuar una clase más con HTML. Identifica como contenido pendiente la inserción de video y pide conservar el formato gamificado, una entrega PDF propia, independencia frente al cambio de notebook y un espacio mayor para programar. Solicita adoptar la perspectiva de una docente de secundaria para jóvenes de 16 años que comenzaron sin conocimientos previos.
+
+**Decisión didáctica.** Se reserva CSS como contenido principal del módulo 6. El módulo 5 cierra HTML básico y funciona como puente: insertar un video no ocupa aisladamente los 90 minutos, sino que se integra con `header`, `main`, `section` y `footer`, la diferencia entre `video` e `iframe`, el uso de una URL `/embed/`, control del reproductor, ausencia de reproducción automática, resumen textual y registro de fuente. La separación busca que el grupo pueda distinguir con claridad estructura HTML de presentación CSS. Es una decisión de diseño pendiente de validación en aula.
+
+**Recorrido.** Continúa el hilo de Martina mediante cuatro conceptos navegables, un mapa de estructura, cuatro desafíos con reintentos sin penalización, producción propia, revisión orientativa, prueba entre pares, cinco preguntas metacognitivas y PDF independiente. La inserción de YouTube utiliza como ejemplo el video del curso y el dominio de privacidad mejorada; también se explica `video controls` para archivos directos. No se induce la descarga ni republicación de videos ajenos.
+
+**Continuidad entre equipos.** M5 puede copiar el código de M4 si existe localmente, recibir código recuperado de Classroom o YachayCodex, o comenzar con una plantilla autónoma. La recuperación crea una copia y no modifica módulos anteriores. Se amplía el editor a todo el ancho con una altura de 640 píxeles en escritorio y se coloca la vista previa debajo. Se mantienen descarga de HTML, copia de `body`, guardado local como ayuda temporal y entrega en Classroom como respaldo entre notebooks.
+
+**Informe y límites.** El PDF reúne exclusivamente identificación, explicaciones, intentos y ayudas, ocho verificaciones orientativas, fuente, prueba con otra persona, mejoras, reflexión, modalidad de entrega, código final y punto de partida. Los pendientes se informan sin inventar respuestas ni convertir la detección automática en calificación. El sitio no puede demostrar autoría, entrega, accesibilidad completa ni disponibilidad futura de un video externo. Si YouTube está bloqueado por la red escolar, el código y la explicación permiten continuar la evaluación formativa.
+
+**Hipótesis para observar.** La guía propone 15 minutos de conceptos, 20 de misiones, 35 de producción, 10 de prueba y 10 de reflexión/entrega. Estos tiempos no son resultados. Deberán registrarse confusiones entre URL para mirar e insertar, bloqueos de red, uso de la plantilla autónoma, comprensión de `video` frente a `iframe`, calidad del resumen y señales de preparación para comenzar CSS.
+
+**Ajuste de precisión conceptual.** La revisión docente detecta que no todas las actividades presentadas inicialmente como «reparaciones» representan código roto. La URL corta de YouTube sí debe transformarse en una URL `/embed/` para funcionar como reproductor; `title`, la estructura semántica y los controles corresponden respectivamente a accesibilidad, organización y control del usuario. Se renombran como desafíos y se explicita su propósito. También se simplifica el ejemplo de `iframe`: se elimina `autoplay` de la lista de permisos porque, aunque conceder ese permiso no activa por sí solo la reproducción automática, introduce una distinción innecesariamente confusa en esta etapa.
+
+**Mayor explicitud visual de la semántica.** Andrea observa que la explicación resulta demasiado textual y solicita una imagen que muestre también `header` y `nav`. Se incorpora un diagrama adaptable construido con HTML y CSS, no una imagen rasterizada: representa la página como zonas anidadas y acompaña cada etiqueta con su función. Se agrega una comparación visual entre cajas `div` genéricas y etiquetas que expresan significado. `nav` pasa a formar parte de la plantilla, la consigna y la revisión orientativa. La intención es hacer visible que la semántica describe la función y no la apariencia; su eficacia deberá observarse con estudiantes.
+
+**Apertura, cierre y uso de `div`.** Andrea señala que el mapa debe mostrar las parejas completas, por ejemplo `<nav> ... </nav>`, y que comparar con `div` sin explicar cuándo corresponde usarlo puede presentarlo injustamente como un error. Se actualizan todas las cajas del diagrama con apertura y cierre. Se explica `div` como contenedor genérico apropiado cuando ningún elemento semántico describe mejor el grupo, especialmente para reunir elementos que compartirán una clase, un estilo o una distribución. No se enseña como sustituto incorrecto ni como elemento exclusivamente visual.
+
+### Pendiente acordado para la próxima revisión del módulo 5
+
+Agregar una explicación explícita de navegación antes de publicar la versión definitiva. Debe diferenciar: enlace a otra sección de la misma página mediante `href="#video"` y un destino con `id="video"`; enlace a otra página del mismo sitio mediante un archivo como `contacto.html`; y enlace hacia otro sitio mediante una URL completa. El enlace externo se presenta como recuperación de un contenido anterior. Para la producción del módulo 5 se exigirá solamente una navegación interna válida, porque el proyecto todavía consiste en una página única; enlazar otro archivo se explica y prueba, pero no se convierte en requisito.
+
+La revisión automática deberá comprobar que al menos un enlace dentro de `nav` apunta mediante `#` a un `id` realmente existente en la página. La secuencia prevista para dos bloques de 40 minutos es: primer bloque, introducción docente, mapa semántico, navegación y desafíos; segundo bloque, recuperación o plantilla, producción, prueba entre pares, reflexión y PDF. Para mantener la propuesta dentro de 80 minutos no se agregará otra actividad extensa: `video` para archivos propios quedará como comparación informativa y el trabajo multimedia principal utilizará un `iframe` de YouTube.
+
+## 7 de octubre de 2026 — Profundización de `div` y práctica semántica autocorregible
+
+Andrea revisa la comparación visual y observa que la expresión «no está mal usarlo» puede sugerir que `div` es una práctica cuestionable, cuando se trata de una etiqueta habitual y necesaria. Se reemplaza esa formulación por una explicación funcional: `div` crea una agrupación genérica cuando el conjunto no tiene una función semántica específica y necesita tratarse como una unidad, por ejemplo para distribuir tarjetas o aplicar un fondo común. Se aclara que CSS también puede estilizar directamente etiquetas semánticas; no se agrega un `div` automáticamente cada vez que se quiere aplicar estilo.
+
+Entre la explicación visual y la respuesta abierta se incorpora una misión autocorregible situada en la página de Taller Verde. El estudiante asigna `header`, `nav`, `main`, dos `section` y `footer` a seis bloques descriptos por su función. Se incluye `div` como opción para exigir una decisión conceptual, no como respuesta correcta en un bloque con función semántica reconocible. La actividad conserva elecciones, cantidad de intentos y estado de resolución; sus resultados se incorporan al PDF del módulo 5. Los errores se señalan por bloque y permiten nuevos intentos sin penalización.
+
+## 13 de octubre de 2026 — Imagen de práctica del módulo 4 como archivo público
+
+Andrea observa que la ilustración de la planta estaba incorporada como una dirección `data:image` extensa, difícil de leer, copiar y reproducir. Se conserva la misma ilustración SVG original, pero se extrae a `imagenes/planta.svg` y el ejemplo pasa a utilizar `https://andrearocca.github.io/CursoHTML/imagenes/planta.svg`. La dirección permite reconocer con mayor claridad el papel de `src` y volver a escribir el ejemplo. Como contrapartida, la imagen ahora necesita conexión y solo estará disponible en esa URL después de publicar el archivo en GitHub Pages. El texto estudiantil se actualiza para no prometer funcionamiento sin conexión. La fuente sigue siendo una ilustración de práctica creada para el curso.
+
+## 14 de octubre de 2026 — Migración del ejercicio de imagen ya guardado
+
+La docente comprueba que la misión 2 del módulo 4 todavía muestra la antigua dirección `data:image` después del cambio. La causa es la persistencia intencional de `moduleFour.repairCode` en `localStorage`: el curso conservaba el fragmento que esa notebook había abierto antes de la actualización. Se agrega una migración limitada al atributo `src` de la imagen SVG antigua. Al cargar la nueva versión, reemplaza esa dirección por el archivo público y conserva cualquier atributo `alt` que el estudiante hubiera escrito; no borra respuestas, intentos ni producciones de otros módulos. Los intentos históricos permanecen intactos como evidencia del proceso.
+
+## 2026-10-15 · Retroalimentación de aula: andamiaje para los primeros estilos
+
+**Observación situada.** Después de trabajar el curso con sus estudiantes, Andrea detecta que en el tramo «Cinco recursos para tu proyecto» del módulo 4 cuesta transferir lo aprendido sobre `style` a la producción propia. Es la primera aproximación del grupo a CSS: las explicaciones y reparaciones anteriores no funcionan todavía como referencia disponible durante la escritura, y volver atrás no resulta evidente.
+
+**Interpretación didáctica.** La dificultad no se toma como falta de atención ni como motivo para revelar la respuesta. Se reconoce un salto de demanda entre identificar una declaración en un ejemplo y construirla dentro de una etiqueta elegida por el estudiante. Se decide incorporar andamiaje de consulta en el lugar exacto de aplicación.
+
+**Cambio realizado.** Se agrega, inmediatamente antes del editor, una guía visible con el molde `&lt;ETIQUETA style="PROPIEDAD:VALOR; ..."&gt;`, la ubicación del atributo en la apertura, la relación propiedad–valor, los signos necesarios y valores conocidos presentados por separado. Los marcadores obligan a decidir etiqueta, contenido y estilo, por lo que la guía orienta sin resolver la producción. Se suma un botón para volver a los cinco recursos y regresar al taller conservando automáticamente el código. La ayuda se adapta a pantallas angostas.
+
+**Hipótesis para la próxima aplicación.** La referencia contigua debería reducir errores de sintaxis elemental y pedidos de ayuda mecánica, liberando tiempo docente para conversar sobre legibilidad y decisiones de diseño. Conviene observar si los estudiantes consultan el molde, si pueden regresar sin temor a perder el trabajo y qué errores persisten después del cambio.
+
+## 17 de octubre de 2026 — Módulo 6: transición de HTML a CSS
+
+**Pedido y punto de partida.** Andrea solicita construir el módulo 6 con la estética y la dinámica de los anteriores, para una clase de 90 minutos y con un PDF final destinado a Classroom. La decisión retoma una dificultad observada en aula: durante el módulo 4, los primeros usos de `style` exigieron más andamiaje del previsto. También se revisó una infografía HTML independiente aportada por la docente. Se tomó como insumo conceptual, pero no se incorporó directamente porque dependía de servicios externos, mostraba respuestas antes de resolver, ofrecía una corrección frágil y no seguía el sistema de persistencia, seguridad ni entrega del curso.
+
+**Recorte didáctico.** El módulo presenta a CSS como la capa de presentación que trabaja junto al HTML, sin sugerir que HTML «deja de servir». Se limita a reglas internas dentro de `<style>`, selectores de etiqueta y cuatro propiedades visibles: `color`, `background-color`, `font-family` y `text-align`. Se introduce la anatomía selector–propiedad–valor. El estilo en línea se explica como válido para una intervención puntual, aunque menos escalable cuando una decisión debe repetirse. Las clases, las hojas externas, el modelo de caja y la maquetación compleja quedan fuera de esta clase para evitar sobrecarga.
+
+**Secuencia y gamificación.** El recorrido mantiene el hilo de Martina: comparación visual, cuatro microexplicaciones, una regla armable, cuatro reparaciones autocorregibles, decisión entre repetir estilos en línea o reunirlos en `<style>`, producción propia, prueba entre pares, reflexión y cierre. Hay reintentos sin penalización, pistas y soluciones registradas. Las actividades no bloquean definitivamente al estudiante después de un error. Se estiman 10 minutos de apertura, 15 de microlección, 15 de misiones, 28 de producción, 10 de revisión entre pares y 12 de reflexión y entrega. Son tiempos de planificación y deberán contrastarse en aula.
+
+**Editor y continuidad.** El editor ocupa el ancho completo y la vista previa aparece debajo, respondiendo a la dificultad docente previa sobre el espacio de escritura. El estudiante puede recuperar una copia local del módulo anterior o comenzar con una plantilla autónoma, porque la notebook asignada puede cambiar entre clases. Se incluye una referencia persistente junto al editor, descarga del HTML y guardado local como ayuda temporal; nada de ello se presenta como sincronización entre equipos.
+
+**Seguridad y corrección orientativa.** La vista previa elimina scripts, eventos y direcciones no admitidas, usa un documento aislado y acepta solamente selectores simples y las propiedades trabajadas. Las reparaciones revisan estructura, signos, ubicación de `<style>` y contraste mínimo orientativo. Las comprobaciones automáticas no evalúan gusto, creatividad, autoría ni accesibilidad completa. El informe preserva código inicial y final, respuestas, intentos, pistas, soluciones consultadas, revisión entre pares y metacognición para permitir una lectura docente del proceso.
+
+**Entrega.** El cierre genera un informe exclusivo del módulo 6 para imprimir o guardar como PDF y enviar mediante Classroom. El sitio no puede confirmar que el estudiante guardó o adjuntó el archivo. La entrega sigue siendo independiente de los módulos anteriores y el estado se guarda bajo `moduleSix`, sin borrar producciones previas.
+
+**Hipótesis de observación.** Conviene registrar si el grupo distingue selector, propiedad y valor; si ubica `<style>` en `head`; si comprende por qué una regla evita repetir estilos en varias etiquetas; qué ayudas consulta; qué errores persisten; y si puede justificar una elección por legibilidad o jerarquía, no solo por preferencia estética. Esas observaciones podrán orientar el módulo 7 y constituir evidencia del proceso de diseño, pero esta implementación por sí sola no demuestra aprendizaje.
+
+**Ajuste de explicitud sobre la ubicación de CSS.** La revisión docente detecta que la primera tarjeta «HTML y CSS trabajan juntos» mostraba una regla aislada y recién en el tercer concepto indicaba que, durante este módulo, el CSS se escribe dentro de `<style>` en `head`. Se adelanta esa información y se muestra desde el inicio el contexto completo `head`–`style`–`body`. La tercera tarjeta recupera la idea y distingue con claridad qué fragmento es CSS y cuál sigue siendo HTML. Se anticipa, sin enseñarlo todavía como procedimiento, que en proyectos mayores el CSS podrá guardarse en un archivo `.css` separado y vincularse con el documento.
+
+**Postergación de clases CSS.** Andrea advierte que la decisión «etiqueta o clase» aparecía antes de que el concepto de clase estuviera suficientemente construido. Para mantener una sola novedad central, se retiran del módulo 6 la explicación, la exigencia, la autocorrección y las preguntas sobre clases. La decisión pasa a comparar dos formas que el grupo ya puede comprender: repetir un atributo `style` dentro de cada etiqueta o escribir una única regla para el selector `p` dentro del bloque `<style>`. Se reconoce que ambas funcionan, pero se orienta hacia el bloque cuando la misma decisión se aplica a varios elementos. Las clases quedan reservadas para un módulo posterior.
+
+**Una sola modalidad de entrega.** La revisión docente detecta que «¿Cómo entregás la página?» podía interpretarse como una contradicción con la consigna de generar un único PDF del módulo. Esa pregunta provenía de los módulos que admiten, además del informe, un HTML adjunto o un enlace compartido. En el módulo 6 se elimina la selección de modalidad, el campo de enlace y su comprobación. La entrega indicada es solamente el PDF generado con todo el proceso y el código final. La descarga de `modulo6.html` permanece como respaldo opcional para continuar desde otra computadora, no como requisito de Classroom.

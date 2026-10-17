@@ -1,0 +1,33 @@
+/* Módulo 6: primeras reglas CSS, integrado a la identidad del curso. */
+[id^="module6"]{scroll-margin-top:16px}
+[id^="module6"] label{display:block;font-weight:700;margin:12px 0 7px}
+[id^="module6"] code{overflow-wrap:anywhere}
+[id^="module6"] .feedback{white-space:pre-wrap;font-weight:500}
+[id^="module6"] .m3-editor{min-width:0;width:100%}
+[id^="module6"] :is(button,a,input,textarea,select,summary):focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.m6-concept{border-left:4px solid var(--accent);padding:14px 18px;background:#fff5e8;border-radius:10px}
+.m6-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.m6-browser{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#f4f6fa}
+.m6-browser>strong{display:block;padding:9px 12px;background:#e8edf5;font-size:13px;color:var(--muted)}
+.m6-page{min-height:230px;padding:20px;background:white}
+.m6-page h4{font-size:24px;margin:0 0 10px}.m6-page p{margin:8px 0}
+.m6-page.styled{background:#f5fbf6;font-family:Arial,sans-serif;color:#24352b}
+.m6-page.styled h4{color:#3157d5;border-bottom:3px solid #ef8354;padding-bottom:6px}
+.m6-page.styled .m6-highlight{background:#fff1c7;color:#704d00;padding:10px;border-radius:8px}
+.m6-anatomy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+.m6-anatomy>div{padding:14px;border:1px solid #b9c8f4;border-radius:12px;background:#f7f9ff}
+.m6-anatomy strong{display:block;color:var(--primary);font-family:Consolas,monospace;margin-bottom:4px}
+.m6-puzzle-zone{min-height:78px;display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:14px;border:2px dashed #9fb2ea;border-radius:14px;background:#f7f9ff}
+.m6-piece{border:1px solid #9fb2ea;border-radius:10px;padding:9px 12px;background:white;color:var(--primary);font:700 15px/1 Consolas,monospace}
+.m6-piece.used{opacity:.35;pointer-events:none}.m6-piece.chosen{background:#15213d;color:white;border-color:#15213d}
+.m6-mission{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}
+.m6-style-help{border-left:5px solid var(--primary);background:linear-gradient(180deg,#f7f9ff,#fff)}
+.m6-reference{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+.m6-reference>div{padding:14px;border:1px solid #cdd8f6;border-radius:12px;background:white}
+.m6-reference strong{display:block;margin-bottom:6px}.m6-reference span{color:var(--muted)}
+.m6-decision{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.m6-choice{border:2px solid var(--line);border-radius:12px;padding:13px;background:white;text-align:left}
+.m6-choice:hover{border-color:#9bb0f4}.m6-choice.selected{border-color:var(--primary);background:var(--soft)}
+#module6Workshop .m3-editor{min-height:640px;height:640px}
+#module6Workshop .m3-preview{height:520px;min-height:520px}
+@media(max-width:850px){.m6-compare,.m6-anatomy,.m6-reference,.m6-decision{grid-template-columns:1fr}#module6Workshop .m3-editor{min-height:540px;height:540px}#module6Workshop .m3-preview{height:360px;min-height:360px}}

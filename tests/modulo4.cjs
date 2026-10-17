@@ -10,7 +10,7 @@ const server=http.createServer((req,res)=>{const target=path.resolve(root,'.'+de
  const context=await browser.newContext({viewport:{width:1366,height:900},acceptDownloads:true});
  await context.route('**/*',r=>r.request().url().startsWith(base)?r.continue():r.abort());
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(base);
- assert.equal(await page.locator('#nav button').count(),10);
+ assert.equal(await page.locator('#nav button').count(),12);
  const ids=await page.locator('[id]').evaluateAll(es=>es.map(e=>e.id));assert.equal(ids.length,new Set(ids).size);
  assert.match(await page.textContent('#nav-m1'),/Módulo 1/);assert.ok(!(await page.textContent('#m0')).includes('Módulo 0'));
  // Recuperación de progreso antiguo: m0 continúa conservado; ya no es una entrega.
@@ -37,6 +37,8 @@ const server=http.createServer((req,res)=>{const target=path.resolve(root,'.'+de
  for(let i=0;i<5;i++){await page.fill('#m4Repair'+i,solutions[i]);await page.click('[data-m4-check="'+i+'"]');}
  assert.match(await page.textContent('#m4RepairScore'),/5\/5/);await page.fill('#m4Repair0','<p>Roto</p>');assert.match(await page.textContent('#m4RepairScore'),/4\/5/);await page.fill('#m4Repair0',solutions[0]);await page.click('[data-m4-check="0"]');
  await page.click('#m4ToWorkshop');const before=await page.evaluate(()=>state.moduleThree.code);await page.click('#m4Import');assert.equal(await page.inputValue('#m4Code'),before);
+ assert.match(await page.textContent('.m4-style-help'),/PROPIEDAD:VALOR/);assert.match(await page.textContent('.m4-style-help'),/style=""/);
+ await page.click('#m4ReviewResources');assert.equal(await page.locator('#module4').evaluate(e=>e.classList.contains('active')),true);await page.click('#m4ToWorkshop');assert.equal(await page.inputValue('#m4Code'),before);
  const m4Layout=await page.evaluate(()=>{const editor=document.getElementById('m4Code').getBoundingClientRect(),preview=document.getElementById('m4Preview').getBoundingClientRect();return{editorWidth:editor.width,containerWidth:document.querySelector('#module4Workshop .m3-split').getBoundingClientRect().width,previewTop:preview.top,editorBottom:editor.bottom};});assert.ok(m4Layout.editorWidth>=m4Layout.containerWidth-2);assert.ok(m4Layout.previewTop>=m4Layout.editorBottom);
  const code='<h1 style="color:purple;font-family:Georgia,serif;">SOLO-MODULO-4</h1><p>Inscripción <strong>gratuita</strong>.</p>'+sample+'<ol><li>Elegir</li><li>Confirmar</li></ol>';
  await page.fill('#m4Code',code);await page.click('#m4Check');assert.equal(await page.locator('#m4Checks .ok').count(),6);assert.equal(await page.evaluate(()=>state.moduleThree.code),before);
