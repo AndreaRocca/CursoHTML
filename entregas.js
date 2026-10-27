@@ -2,13 +2,14 @@
 (() => {
   'use strict';
   const $=id=>document.getElementById(id);
-  const names=['','Comunicar y comprender la web','Propósito y destinatarios','Mi primera página HTML','Mejoramos nuestra página','HTML con sentido','Una identidad visual con CSS'];
+  const names=['','Comunicar y comprender la web','Propósito y destinatarios','Mi primera página HTML','Mejoramos nuestra página','HTML con sentido','Una identidad visual con CSS','CSS en su propio archivo'];
   if(!state.moduleDeliveries||typeof state.moduleDeliveries!=='object'||Array.isArray(state.moduleDeliveries))state.moduleDeliveries={};
   const registry=state.moduleDeliveries;
   const originalGo=go,originalPersist=persist;
   function snapshot(n){
     if(n===1)return JSON.stringify([state.studentName,state.projectIdea,state.siteDecision,state.reflection,state.gameResult,state.problemDone,state.quizOneDone,state.quizTwoDone]);
     if(n===2)return JSON.stringify([state.studentName,state.moduleTwoProject,state.moduleTwoMeta,state.moduleTwoComparisonScore,state.moduleTwoQuizScore]);
+    if(n===7)return JSON.stringify(state.moduleSeven||null);
     const w=n===3?state.moduleThree:n===4?state.moduleFour:n===5?state.moduleFive:state.moduleSix;
     if(n===6)return JSON.stringify(w?[w.fields,w.code,w.repairCode,w.repairSolved,w.repairSolutions,w.attempts,w.hints,w.puzzle,w.puzzleAttempts,w.puzzleSolved,w.puzzleHints,w.decision,w.decisionAttempts]:null);
     return JSON.stringify(w?[w.fields,w.code,w.repairCode,w.repairAttempts,w.repairSolved,w.repairSolutions,w.attempts,w.hints]:null);
@@ -32,15 +33,15 @@
     button('Ya tengo guardado el PDF del módulo '+n,()=>{registry[n]={...record(n),pdfElsewhereAt:new Date().toISOString(),pdfElsewhereSnapshot:snapshot(n)};save();refresh();},elsewhere);
     button('Borrar este recordatorio local',()=>{delete registry[n];save();refresh();},elsewhere);
   }
-  const hub=$('deliveries');el('h2','Mis entregas por módulo',hub);el('p','Un módulo = un PDF. Cada clase genera un archivo independiente, aunque trabajes desde notebooks diferentes.',hub);el('p','Este control solo recuerda guardar un PDF por módulo. Abrir el informe no guarda el archivo. La entrega en Classroom la revisa la docente.',hub);const storage=el('p','',hub);storage.id='deliveryStorage';storage.setAttribute('role','status');[1,2,3,4,5,6].forEach(n=>card(n,hub));
-  const note=el('article',undefined,$('home'));note.className='card delivery-card';el('h3','Cada módulo tiene su entrega',note);el('p','Los módulos 1 a 6 tienen un PDF propio. Podés comenzar una clase en otra notebook: recuperá el HTML si está disponible o usá la plantilla del módulo.',note);button('Recordatorio de los PDF por módulo',()=>originalGo('deliveries'),note);
-  card(1,$('delivery'),true);card(2,$('delivery'),true);card(2,$('module2Close'));card(3,$('module3Close'));card(4,$('module4Close'));card(5,$('module5Close'));card(6,$('module6Close'));
+  const hub=$('deliveries');el('h2','Mis entregas por módulo',hub);el('p','Un módulo = un PDF. Cada clase genera un archivo independiente, aunque trabajes desde notebooks diferentes.',hub);el('p','Este control solo recuerda guardar un PDF por módulo. Abrir el informe no guarda el archivo. La entrega en Classroom la revisa la docente.',hub);const storage=el('p','',hub);storage.id='deliveryStorage';storage.setAttribute('role','status');[1,2,3,4,5,6,7].forEach(n=>card(n,hub));
+  const note=el('article',undefined,$('home'));note.className='card delivery-card';el('h3','Cada módulo tiene su entrega',note);el('p','Los módulos 1 a 7 tienen un PDF propio. Podés comenzar una clase en otra notebook: recuperá tus archivos si están disponibles o usá la plantilla del módulo.',note);button('Recordatorio de los PDF por módulo',()=>originalGo('deliveries'),note);
+  card(1,$('delivery'),true);card(2,$('delivery'),true);card(2,$('module2Close'));card(3,$('module3Close'));card(4,$('module4Close'));card(5,$('module5Close'));card(6,$('module6Close'));card(7,$('module7Close'));
   const dialog=el('dialog',undefined,document.body);dialog.id='deliveryGuard';el('h2','Antes de cambiar de módulo',dialog);const message=el('p','',dialog);const actions=el('div',undefined,dialog);actions.className='actions';let target='',leaving=0;
   button('Revisar el cierre y PDF',()=>{dialog.close();open(leaving);},actions);
   button('Sí, continuar',()=>{dialog.close();originalGo(target);refresh();},actions);
   button('Continuar; lo revisaré en Classroom',()=>{dialog.close();originalGo(target);refresh();},actions);
   button('Volver a mi módulo',()=>dialog.close(),actions);
-  function moduleFor(screen){if(['m0','m1','m1b','soon'].includes(screen))return 1;if(screen==='delivery')return deliveryMode==='module2'?2:1;const m=/^module([23456])/.exec(screen||'');return m?Number(m[1]):0;}
+  function moduleFor(screen){if(['m0','m1','m1b','soon'].includes(screen))return 1;if(screen==='delivery')return deliveryMode==='module2'?2:1;const m=/^module([234567])/.exec(screen||'');return m?Number(m[1]):0;}
   go=function(id){const from=moduleFor(document.querySelector('.screen.active')?.id),to=moduleFor(id);if(!openingPDF&&id!=='delivery'&&to>1&&to>from){leaving=to-1;target=id;message.textContent='¿Ya entregaste el PDF del módulo '+leaving+' en Classroom? Podés haberlo hecho desde otra notebook: no necesitás repetirlo acá. Recordá que cada módulo tiene su propio PDF. La entrega la revisa la docente.';if(!dialog.open)dialog.showModal();return;}originalGo(id);refresh();};
   function refresh(){
     document.querySelectorAll('[data-common-delivery]').forEach(e=>e.hidden=Number(e.dataset.commonDelivery)!==(deliveryMode==='module2'?2:1));
