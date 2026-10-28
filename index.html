@@ -718,12 +718,8 @@
               <textarea id="reflection3" placeholder="El concepto que me resultó más claro fue..."></textarea>
             </div>
             <div class="reflection-item">
-              <label for="reflection4">4. ¿Qué preguntas te quedaron sin responder sobre este tema?</label>
-              <textarea id="reflection4" placeholder="Todavía me pregunto..."></textarea>
-            </div>
-            <div class="reflection-item">
-              <label for="reflection5">5. ¿Hay algo que no hayas entendido o sobre lo que quieras más explicación?</label>
-              <textarea id="reflection5" placeholder="Me gustaría que expliquemos nuevamente..."></textarea>
+              <label for="reflection4">4. ¿Qué pregunta te quedó o qué tema necesitás que volvamos a explicar?</label>
+              <textarea id="reflection4" placeholder="Todavía me pregunto... / Necesito volver a revisar..."></textarea>
             </div>
           </div>
           <div class="actions"><button class="btn ghost" onclick="saveReflection()">Guardar devolución</button></div>
@@ -847,13 +843,11 @@
             <p>No tiene que ser una decisión definitiva. Esta primera versión servirá para conversar, revisar y mejorar la idea.</p>
             <div class="project-form">
               <div><label for="m2ProjectName">Nombre de la organización, emprendimiento o proyecto</label><input class="student-name" id="m2ProjectName" type="text" placeholder="Ejemplo: Huerta del Sur"></div>
-              <div><label for="m2ProjectType">¿Qué hace?</label><textarea id="m2ProjectType" placeholder="Se dedica a..."></textarea></div>
-              <div><label for="m2ProjectOffer">¿Qué producto, servicio o propuesta ofrece?</label><textarea id="m2ProjectOffer" placeholder="Ofrece..."></textarea></div>
+              <div><label for="m2ProjectType">¿Qué hace y qué producto, servicio o propuesta ofrece?</label><textarea id="m2ProjectType" placeholder="Se dedica a... y ofrece..."></textarea></div>
               <div><label for="m2ProjectAudience">¿A quién está dirigido?</label><textarea id="m2ProjectAudience" placeholder="Está pensado para..."></textarea></div>
               <div><label for="m2ProjectNeed">¿Qué problema, necesidad o interés busca atender?</label><textarea id="m2ProjectNeed" placeholder="Busca ayudar a resolver..."></textarea></div>
               <div><label for="m2ProjectDifference">¿Qué la diferencia de otras propuestas?</label><textarea id="m2ProjectDifference" placeholder="Se diferencia porque..."></textarea></div>
               <div><label for="m2ProjectAction">¿Qué acción principal debería realizar quien visite el sitio?</label><textarea id="m2ProjectAction" placeholder="La acción principal será..."></textarea></div>
-              <div><label for="m2ProjectTone">¿Qué tono debería tener la comunicación?</label><textarea id="m2ProjectTone" placeholder="Formal, juvenil, cercano, institucional..."></textarea></div>
               <div class="wide"><label for="m2ProjectInformation">¿Qué información debería encontrar una persona al ingresar?</label><textarea id="m2ProjectInformation" placeholder="Debería encontrar..."></textarea></div>
             </div>
             <div class="actions"><button class="btn ghost" onclick="saveModuleTwoProject()">Guardar ficha</button></div>
@@ -883,12 +877,12 @@
         <div class="lesson">
           <article class="card">
             <div class="lesson-label">🚦 Mirá tu propio aprendizaje</div>
-            <p>Elegí <strong>verde</strong> si podrías explicarlo, <strong>amarillo</strong> si todavía dudás y <strong>rojo</strong> si necesitás volver a trabajarlo.</p>
+            <p>Elegí <strong>verde</strong> si podés hacerlo y explicarlo, <strong>amarillo</strong> si podés hacerlo con la guía y <strong>rojo</strong> si todavía necesitás ayuda.</p>
             <div class="comparison-questions">
-              <div><label for="m2MetaPurpose"><strong>Propósito</strong></label><select id="m2MetaPurpose"><option value="">Elegí un color</option><option>🟢 Verde: puedo explicarlo</option><option>🟡 Amarillo: tengo algunas dudas</option><option>🔴 Rojo: necesito más explicación</option></select></div>
-              <div><label for="m2MetaAudience"><strong>Destinatarios</strong></label><select id="m2MetaAudience"><option value="">Elegí un color</option><option>🟢 Verde: puedo explicarlo</option><option>🟡 Amarillo: tengo algunas dudas</option><option>🔴 Rojo: necesito más explicación</option></select></div>
-              <div><label for="m2MetaValue"><strong>Propuesta de valor</strong></label><select id="m2MetaValue"><option value="">Elegí un color</option><option>🟢 Verde: puedo explicarlo</option><option>🟡 Amarillo: tengo algunas dudas</option><option>🔴 Rojo: necesito más explicación</option></select></div>
-              <div><label for="m2MetaAction"><strong>Llamada a la acción</strong></label><select id="m2MetaAction"><option value="">Elegí un color</option><option>🟢 Verde: puedo explicarlo</option><option>🟡 Amarillo: tengo algunas dudas</option><option>🔴 Rojo: necesito más explicación</option></select></div>
+              <div><label for="m2MetaPurpose"><strong>Propósito</strong></label><select id="m2MetaPurpose"><option value="">Elegí un color</option><option>🟢 Verde: puedo hacerlo y explicarlo</option><option>🟡 Amarillo: puedo hacerlo con la guía</option><option>🔴 Rojo: todavía necesito ayuda</option></select></div>
+              <div><label for="m2MetaAudience"><strong>Destinatarios</strong></label><select id="m2MetaAudience"><option value="">Elegí un color</option><option>🟢 Verde: puedo hacerlo y explicarlo</option><option>🟡 Amarillo: puedo hacerlo con la guía</option><option>🔴 Rojo: todavía necesito ayuda</option></select></div>
+              <div><label for="m2MetaValue"><strong>Propuesta de valor</strong></label><select id="m2MetaValue"><option value="">Elegí un color</option><option>🟢 Verde: puedo hacerlo y explicarlo</option><option>🟡 Amarillo: puedo hacerlo con la guía</option><option>🔴 Rojo: todavía necesito ayuda</option></select></div>
+              <div><label for="m2MetaAction"><strong>Llamada a la acción</strong></label><select id="m2MetaAction"><option value="">Elegí un color</option><option>🟢 Verde: puedo hacerlo y explicarlo</option><option>🟡 Amarillo: puedo hacerlo con la guía</option><option>🔴 Rojo: todavía necesito ayuda</option></select></div>
             </div>
           </article>
           <article class="card">
@@ -1105,8 +1099,8 @@
   }
 
   const moduleTwoProjectFields=[
-    'm2ProjectName','m2ProjectType','m2ProjectOffer','m2ProjectAudience','m2ProjectNeed',
-    'm2ProjectDifference','m2ProjectAction','m2ProjectTone','m2ProjectInformation'
+    'm2ProjectName','m2ProjectType','m2ProjectAudience','m2ProjectNeed',
+    'm2ProjectDifference','m2ProjectAction','m2ProjectInformation'
   ];
 
   function collectModuleTwoProject(){
@@ -1170,7 +1164,7 @@
   }
 
   function collectReflection(){
-    state.reflection=Array.from({length:5},(_,index)=>
+    state.reflection=Array.from({length:4},(_,index)=>
       document.getElementById(`reflection${index+1}`).value.trim()
     );
   }
@@ -1250,28 +1244,22 @@ function openWorkReport(title, text, status, workUrl){
         '1. Nombre de la organización, emprendimiento o proyecto',
         project.m2ProjectName || '(Sin respuesta)',
         '',
-        '2. ¿Qué hace?',
-        project.m2ProjectType || '(Sin respuesta)',
+        '2. ¿Qué hace y qué producto, servicio o propuesta ofrece?',
+        project.m2ProjectType || project.m2ProjectOffer || '(Sin respuesta)',
         '',
-        '3. ¿Qué producto, servicio o propuesta ofrece?',
-        project.m2ProjectOffer || '(Sin respuesta)',
-        '',
-        '4. ¿A quién está dirigido?',
+        '3. ¿A quién está dirigido?',
         project.m2ProjectAudience || '(Sin respuesta)',
         '',
-        '5. ¿Qué problema, necesidad o interés busca atender?',
+        '4. ¿Qué problema, necesidad o interés busca atender?',
         project.m2ProjectNeed || '(Sin respuesta)',
         '',
-        '6. ¿Qué la diferencia de otras propuestas?',
+        '5. ¿Qué la diferencia de otras propuestas?',
         project.m2ProjectDifference || '(Sin respuesta)',
         '',
-        '7. ¿Qué acción principal debería realizar quien visite el sitio?',
+        '6. ¿Qué acción principal debería realizar quien visite el sitio?',
         project.m2ProjectAction || '(Sin respuesta)',
         '',
-        '8. ¿Qué tono debería tener la comunicación?',
-        project.m2ProjectTone || '(Sin respuesta)',
-        '',
-        '9. ¿Qué información debería encontrar una persona al ingresar?',
+        '7. ¿Qué información debería encontrar una persona al ingresar?',
         project.m2ProjectInformation || '(Sin respuesta)',
         '',
         'SEMÁFORO DE APRENDIZAJE',
@@ -1319,11 +1307,8 @@ function openWorkReport(title, text, status, workUrl){
         '4.3 ¿Qué concepto te resultó más claro? ¿Por qué?',
         state.reflection[2] || '(Sin respuesta)',
         '',
-        '4.4 ¿Qué preguntas te quedaron sin responder?',
+        '4.4 ¿Qué pregunta te quedó o qué tema necesitás que volvamos a explicar?',
         state.reflection[3] || '(Sin respuesta)',
-        '',
-        '4.5 ¿Sobre qué necesitás más explicación?',
-        state.reflection[4] || '(Sin respuesta)',
         '',
         'ACTIVIDADES COMPLETADAS',
         `Análisis de comunicación web: ${state.problemDone ? 'Sí' : 'No'}`,
@@ -1367,13 +1352,16 @@ function openWorkReport(title, text, status, workUrl){
     document.getElementById('siteDecision').value=state.siteDecision||'';
     document.getElementById('studentName').value=state.studentName||'';
     const savedReflection=Array.isArray(state.reflection)?state.reflection:[];
-    Array.from({length:5},(_,index)=>{
+    Array.from({length:4},(_,index)=>{
       document.getElementById(`reflection${index+1}`).value=savedReflection[index]||'';
     });
     if(state.gameResult){
       document.getElementById('gameStatus').textContent=`✓ Juego completado: ${state.gameResult.score}/${state.gameResult.total} estrellas. El resultado se incluirá en la entrega.`;
     }
     const savedModuleTwoProject=state.moduleTwoProject||{};
+    if(savedModuleTwoProject.m2ProjectOffer&&!String(savedModuleTwoProject.m2ProjectType||'').includes(savedModuleTwoProject.m2ProjectOffer)){
+      savedModuleTwoProject.m2ProjectType=[savedModuleTwoProject.m2ProjectType,'Ofrece: '+savedModuleTwoProject.m2ProjectOffer].filter(Boolean).join(' · ');
+    }
     moduleTwoProjectFields.forEach(id=>{
       document.getElementById(id).value=savedModuleTwoProject[id]||'';
     });

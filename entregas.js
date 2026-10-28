@@ -50,6 +50,6 @@
   }
   window.courseDelivery={prepared(n){registry[n]={preparedAt:new Date().toISOString(),snapshot:snapshot(n)};save();refresh();},refresh};
   persist=function(){originalPersist();refresh();};
-  ['projectIdea','siteDecision','studentName',...Array.from({length:5},(_,i)=>'reflection'+(i+1)),...moduleTwoProjectFields,...moduleTwoMetaFields].forEach(id=>{const input=$(id);input.addEventListener(input.tagName==='SELECT'?'change':'input',()=>{if(id==='projectIdea'||id==='siteDecision'||id==='studentName')state[id]=input.value;else if(id.startsWith('reflection'))collectReflection();else if(moduleTwoProjectFields.includes(id))collectModuleTwoProject();else collectModuleTwoMeta();save();});});
+  ['projectIdea','siteDecision','studentName',...Array.from({length:4},(_,i)=>'reflection'+(i+1)),...moduleTwoProjectFields,...moduleTwoMetaFields].forEach(id=>{const input=$(id);input.addEventListener(input.tagName==='SELECT'?'change':'input',()=>{if(id==='projectIdea'||id==='siteDecision'||id==='studentName')state[id]=input.value;else if(id.startsWith('reflection'))collectReflection();else if(moduleTwoProjectFields.includes(id))collectModuleTwoProject();else collectModuleTwoMeta();save();});});
   window.addEventListener('DOMContentLoaded',refresh);refresh();
 })();

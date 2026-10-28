@@ -132,8 +132,9 @@
       <article class="card">
         <div class="lesson-label">✍️ Recuperá tu intención</div>
         <p>Podés consultar la ficha del Módulo 2 en Classroom, pero esta entrega es independiente. Si no la tenés a mano, respondé estas dos preguntas y empezá.</p>
+        <p>Recuperá de tu ficha anterior —o resumí si hoy usás otra computadora— estos datos para dar contexto a la página.</p>
         <label for="m3Project">Nombre de tu proyecto</label><input class="student-name" data-m3-field id="m3Project" placeholder="Ejemplo: Taller Verde">
-        ${textField('m3Audience','¿Para quién es y qué querés que haga al visitar la página?','Está dirigida a... y quiero que...')}
+        ${textField('m3Audience','Resumí: ¿para quién es y qué querés que haga al visitar la página?','Está dirigida a... y quiero que...')}
       </article>
       <article class="card">
         <div class="lesson-label">🚀 Construí tu página en tres pasos</div>
@@ -200,10 +201,10 @@
         <div class="lesson-label">🧠 Cinco preguntas para cerrar o abrir la clase siguiente</div>
         ${textField('m3Reflect1','1. Elegí dos etiquetas que usaste: ¿qué función cumple cada una?','Usé... para...')}
         ${textField('m3Reflect2','2. ¿Qué error o dificultad encontraste y cómo intentaste resolverlo?')}
-        ${textField('m3Reflect3','3. ¿Qué decisión de tu página ayuda a los destinatarios o al propósito del proyecto?')}
+        ${textField('m3Reflect3','3. Señalá una parte concreta de tu HTML que ayude a comprender la propuesta o realizar la acción principal.')}
         ${textField('m3Reflect4','4. ¿Qué diferencia hay entre verla en este editor y compartir una URL que otra persona puede abrir?')}
         ${textField('m3Reflect5','5. ¿Qué pregunta te quedó sin responder o sobre qué necesitás más explicación?')}
-        <label for="m3Confidence">Semáforo: ¿podrías cambiar esta página sin copiar todo de nuevo?</label><select data-m3-field id="m3Confidence"><option value="">Elegí un color</option><option>🟢 Verde: puedo hacerlo y explicarlo</option><option>🟡 Amarillo: puedo hacerlo con ayuda</option><option>🔴 Rojo: necesito volver a practicar</option></select>
+        <label for="m3Confidence">Semáforo: ¿podrías cambiar esta página sin copiar todo de nuevo?</label><select data-m3-field id="m3Confidence"><option value="">Elegí un color</option><option>🟢 Verde: puedo hacerlo y explicarlo</option><option>🟡 Amarillo: puedo hacerlo con la guía</option><option>🔴 Rojo: todavía necesito ayuda</option></select>
         ${status}
       </article>
       <article class="card">
@@ -358,7 +359,7 @@
       '', '6. DEVOLUCIÓN FINAL',
       '1. Dos etiquetas y sus funciones:',answer('m3Reflect1'),
       '2. Error o dificultad y cómo intenté resolverlo:',answer('m3Reflect2'),
-      '3. Decisión relacionada con destinatarios o propósito:',answer('m3Reflect3'),
+      '3. Parte del HTML que ayuda a comprender la propuesta o realizar la acción:',answer('m3Reflect3'),
       '4. Diferencia entre vista local y enlace compartido:',answer('m3Reflect4'),
       '5. Pregunta pendiente o tema que requiere más explicación:',answer('m3Reflect5'),
       'Semáforo:',answer('m3Confidence'),
